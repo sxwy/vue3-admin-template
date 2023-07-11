@@ -1,2 +1,2 @@
 export * from './error'
-export { default as createHTTP } from './createHTTP'
+export { default as createRequest } from './request'

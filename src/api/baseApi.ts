@@ -1,7 +1,7 @@
-import { createHTTP } from './core'
+import { createRequest } from './core'
 import { BASE_API } from '@/constants'
 
-const baseApi = createHTTP({
+const baseApi = createRequest({
   baseURL: BASE_API,
   header: { 'Content-Type': 'application/json' }
 })

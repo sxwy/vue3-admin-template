@@ -1,6 +1,10 @@
 import axios from 'axios'
 import { useUserStore } from '@/store'
-import { createError, defaultErrorCode, defaultErrorMessage } from './error'
+import {
+  createRequestError,
+  defaultErrorCode,
+  defaultErrorMessage
+} from './error'
 
 export default (requestConfig = {}) => {
   const request = axios.create(requestConfig)
@@ -8,7 +12,7 @@ export default (requestConfig = {}) => {
   request.interceptors.request.use(
     (config) => {
       const user = useUserStore()
-      if (user.current?.userToken) {
+      if (user.current?.userToken && !config.headers.Authorization) {
         config.headers.set('Authorization', `Bearer ${user.current.userToken}`)
       }
       return config
@@ -20,47 +24,51 @@ export default (requestConfig = {}) => {
 
   request.interceptors.response.use(
     (response) => {
-      if (response.data !== null && typeof response.data === 'object') {
-        const code = String(
-          response.data.returncode || response.data.code || ''
-        )
-        if (code) {
+      if (Object.prototype.toString.call(response.data) === '[object Object]') {
+        const keys = Reflect.ownKeys(response.data)
+        if (keys.includes('code') || keys.includes('returncode')) {
+          const code = String(response.data.code || response.data.returncode)
           if (code === '10000') {
             return response.data.body
           } else {
             return Promise.reject(
-              createError(
+              createRequestError(
                 code,
-                response.data.message ||
-                  response.data.msg ||
-                  defaultErrorMessage.ERROR,
+                response.data.message,
+                response.config,
+                response
+              )
+            )
+          }
+        } else if (keys.includes('flag')) {
+          const flag = response.data.flag
+          if (flag) {
+            return response.data.data
+          } else {
+            return Promise.reject(
+              createRequestError(
+                defaultErrorCode,
+                response.data.msg,
                 response.config,
                 response
               )
             )
           }
         } else {
-          const flag = response.data.flag
-          if (flag) {
-            return response.data.data
-          } else {
-            return Promise.reject(
-              createError(
-                defaultErrorCode.ERROR,
-                response.data.message ||
-                  response.data.msg ||
-                  defaultErrorMessage.ERROR,
-                response.config,
-                response
-              )
+          return Promise.reject(
+            createRequestError(
+              defaultErrorCode,
+              defaultErrorMessage,
+              response.config,
+              response
             )
-          }
+          )
         }
       } else {
         return Promise.reject(
-          createError(
-            defaultErrorCode.ERROR,
-            defaultErrorMessage.ERROR,
+          createRequestError(
+            defaultErrorCode,
+            defaultErrorMessage,
             response.config,
             response
           )
