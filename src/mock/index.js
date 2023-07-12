@@ -1,3 +1,4 @@
 module.exports = {
-  ...require('./demo')
+  ...require('./demo'),
+  ...require('./login')
 }

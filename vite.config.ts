@@ -28,7 +28,7 @@ const HTTPMockerPlugin = (): Plugin => {
         mockerAPI(app, path.resolve(__dirname, './src/mock/index.js'), {
           priority: 'mocker',
           proxy: {
-            '/base/(.*)': 'http://alpha-api.sxwy.com'
+            '/base/(.*)': 'http://alpha-api.xxx.com'
           },
           pathRewrite: {
             '^/base/': ''

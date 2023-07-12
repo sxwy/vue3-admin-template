@@ -1,6 +1,8 @@
 import { baseApi } from '@/api'
 
-/** 提交登录信息 */
+/**
+ * 提交登录信息
+ */
 export const submitLoginInfo = (data: {
   account: string
   password: string

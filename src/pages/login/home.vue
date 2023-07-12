@@ -3,20 +3,35 @@
     <div class="content">
       <div class="title">登录</div>
       <el-form
-        ref="formRef"
-        class="form"
         :status-icon="true"
         :model="state.form"
         :rules="state.formRules"
+        ref="formRef"
+        class="form"
       >
         <el-form-item prop="account">
-          <el-input v-model="state.form.account" />
+          <el-input
+            v-model="state.form.account"
+            :prefix-icon="User"
+            clearable
+          />
         </el-form-item>
         <el-form-item prop="password">
-          <el-input v-model="state.form.password" />
+          <el-input
+            v-model="state.form.password"
+            type="password"
+            :prefix-icon="Lock"
+            clearable
+            show-password
+          />
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" class="btn" @click="handleLoginClick">
+          <el-button
+            :loading="state.btnLoading"
+            type="primary"
+            class="btn"
+            @click="handleLoginClick"
+          >
             登录
           </el-button>
         </el-form-item>
@@ -28,6 +43,7 @@
 <script lang="ts" setup>
   import { reactive, ref } from 'vue'
   import { type FormInstance, type FormRules, ElMessage } from 'element-plus'
+  import { User, Lock } from '@element-plus/icons-vue'
   import { submitLoginInfo } from './service'
 
   /** 表单 */
@@ -43,12 +59,14 @@
     form: Form
     /** 表单校验规则 */
     formRules: FormRules<Form>
+    /** 登录按钮 loading 是否展示 */
+    btnLoading: boolean
   }
 
   const state: State = reactive({
     form: {
-      account: '',
-      password: ''
+      account: 'admin',
+      password: '123456'
     },
     formRules: {
       account: [
@@ -65,7 +83,8 @@
           trigger: 'blur'
         }
       ]
-    }
+    },
+    btnLoading: false
   })
 
   /** 表单引用 */
@@ -76,6 +95,7 @@
     formRef.value!.validate(async (valid) => {
       if (valid) {
         try {
+          state.btnLoading = true
           const result = await submitLoginInfo({
             account: state.form.account,
             password: state.form.password
@@ -90,6 +110,8 @@
             type: 'error',
             message: error.message || '登录失败'
           })
+        } finally {
+          state.btnLoading = false
         }
       }
     })
@@ -111,7 +133,7 @@
       border-radius: 10px;
 
       .title {
-        font-size: 28px;
+        font-size: 24px;
         font-weight: bold;
         text-align: center;
       }
@@ -121,6 +143,7 @@
 
         .btn {
           width: 100%;
+          margin-top: 20px;
         }
       }
     }
