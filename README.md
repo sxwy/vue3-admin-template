@@ -27,7 +27,7 @@ Vue3 + TypeScript + ElementPlus 项目模板
 
 ## 开发规范
 
-参照 [掌通家园前端开发规范](http://10.107.147.97:38000/standard/)
+参照 [前端开发规范](https://github.com/sxwy/standard/)
 
 ### 分支管理
 
@@ -259,10 +259,10 @@ ps：图片资源都需要使用 https://tinypng.com/ 压缩优化。
 ### 预发环境
 
 1. 从 master 新建 release 分支，并填写对应版本信息，再把功能分支合并到 release，最后 release 合并到 cicd_rc，再部署预发环境的 sxwy-h5 容器
-2. 访问地址：http://rc-web.xxx.cn/sxwy/admin-template/route
+2. 访问地址：https://rc-web.xxx.cn/sxwy/admin-template/route
 
 ### 正式环境
 
 1. 把预发环境的 release 分支合并到 cicd_prod，再部署正式环境的 sxwy-h5 容器
 2. 上线后，记得让管理员把对应的 release 分支合并到 master 分支
-3. 访问地址：http://web.xxx.cn/sxwy/admin-template/route
+3. 访问地址：https://web.xxx.cn/sxwy/admin-template/route
