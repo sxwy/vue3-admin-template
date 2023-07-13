@@ -13,7 +13,7 @@ module.exports = {
     'function-no-unknown': [
       true,
       {
-        ignoreFunctions: ['constant']
+        ignoreFunctions: ['constant', 'v-bind']
       }
     ]
   }
