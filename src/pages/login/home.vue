@@ -41,7 +41,7 @@
 </template>
 
 <script lang="ts" setup>
-  import { reactive, ref } from 'vue'
+  import { reactive, ref, onMounted, onBeforeUnmount } from 'vue'
   import { type FormInstance, type FormRules, ElMessage } from 'element-plus'
   import { User, Lock } from '@element-plus/icons-vue'
   import { submitLoginInfo } from './service'
@@ -116,6 +116,31 @@
       }
     })
   }
+
+  /** 点击回车事件 */
+  const handleKeyDown = (ev: KeyboardEvent) => {
+    if (ev.key === 'Enter') {
+      handleLoginClick()
+    }
+  }
+
+  /** 监听键盘点击事件 */
+  const handleListenerKeydown = () => {
+    document.addEventListener('keydown', handleKeyDown)
+  }
+
+  /** 移除键盘点击事件 */
+  const handleRemoveKeydown = () => {
+    document.removeEventListener('keydown', handleKeyDown)
+  }
+
+  onMounted(() => {
+    handleListenerKeydown()
+  })
+
+  onBeforeUnmount(() => {
+    handleRemoveKeydown()
+  })
 </script>
 
 <style lang="scss" scoped>
