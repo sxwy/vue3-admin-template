@@ -4,6 +4,7 @@ import { defineConfig, loadEnv, Plugin, ResolvedConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import legacy from '@vitejs/plugin-legacy'
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import mockerAPI from 'mocker-api'
 import express from 'express'
 
@@ -28,7 +29,7 @@ const HTTPMockerPlugin = (): Plugin => {
         mockerAPI(app, path.resolve(__dirname, './src/mock/index.js'), {
           priority: 'mocker',
           proxy: {
-            '/base/(.*)': 'http://alpha-api.sxwy.com'
+            '/base/(.*)': 'http://alpha-api.xxx.com'
           },
           pathRewrite: {
             '^/base/': ''
@@ -55,6 +56,15 @@ export default defineConfig((config) => {
     build: {
       target: 'esnext'
     },
-    plugins: [legacy(), vue(), vueJsx(), HTTPMockerPlugin()]
+    plugins: [
+      legacy(),
+      vue(),
+      vueJsx(),
+      HTTPMockerPlugin(),
+      createSvgIconsPlugin({
+        iconDirs: [path.resolve(process.cwd(), 'src/assets/svg')],
+        symbolId: 'icon-[name]'
+      })
+    ]
   }
 })
