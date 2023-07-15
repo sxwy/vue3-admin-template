@@ -1,17 +1,33 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { BASE_SITE } from '@/constants'
-import { demoRoutes, loginRoutes } from './modules'
+import { useUserStore } from '@/store'
+import { demoRoutes, loginRoutes, mainRoutes } from './modules'
 
-const routes = [demoRoutes, loginRoutes]
+const routes = [demoRoutes, loginRoutes, mainRoutes]
 
 const router = createRouter({
   history: createWebHistory(BASE_SITE),
   routes
 })
 
+const whiteList = ['/login/home']
+
 router.beforeEach((to, from, next) => {
   document.title = to.meta.title
-  next()
+  const userStore = useUserStore()
+  if (userStore.current) {
+    if (to.path === '/login/home') {
+      next('/')
+    } else {
+      next()
+    }
+  } else {
+    if (whiteList.includes(to.path)) {
+      next()
+    } else {
+      next('/login/home')
+    }
+  }
 })
 
 export default router

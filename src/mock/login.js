@@ -6,13 +6,16 @@ module.exports = {
   /**
    * 提交登录信息
    */
-  'POST /base/server/login/v1.0': (req, res) => {
+  'POST /base/api/login/v1.0': (req, res) => {
     setTimeout(() => {
       if (req.body.account === 'admin' && req.body.password === '123456') {
         const data = MockJs.mock({
           code: '10000',
           message: '登录成功',
-          body: req.body
+          body: {
+            ...req.body,
+            token: Date.now()
+          }
         })
         return res.json(data)
       } else {

@@ -1,7 +1,7 @@
 import { type RouteRecordRaw, RouterView } from 'vue-router'
 
-// 登录相关页面
-const loginRoutes: RouteRecordRaw = {
+/** 登录相关路由 */
+export default {
   path: '/login',
   component: RouterView,
   children: [
@@ -12,6 +12,4 @@ const loginRoutes: RouteRecordRaw = {
       component: () => import('@/pages/login/home.vue')
     }
   ]
-}
-
-export default loginRoutes
+} as RouteRecordRaw

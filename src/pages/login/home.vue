@@ -44,15 +44,12 @@
   import { reactive, ref, onMounted, onBeforeUnmount } from 'vue'
   import { type FormInstance, type FormRules, ElMessage } from 'element-plus'
   import { User, Lock } from '@element-plus/icons-vue'
-  import { submitLoginInfo } from './service'
+  import { useRouter } from 'vue-router'
+  import { useUserStore } from '@/store'
+  import type { LoginQuery } from '@/types'
 
   /** 表单 */
-  interface Form {
-    /** 账号 */
-    account: string
-    /** 密码 */
-    password: string
-  }
+  type Form = LoginQuery
 
   /** 状态 */
   interface State {
@@ -90,21 +87,23 @@
   /** 表单引用 */
   const formRef = ref<FormInstance>()
 
+  /** 用户 store */
+  const userStore = useUserStore()
+
+  /** 路由 */
+  const router = useRouter()
+
   /** 点击登录按钮 */
   const handleLoginClick = () => {
     formRef.value!.validate(async (valid) => {
       if (valid) {
         try {
           state.btnLoading = true
-          const result = await submitLoginInfo({
+          await userStore.loginInit({
             account: state.form.account,
             password: state.form.password
           })
-          console.log(
-            '%c result==========>',
-            'color: #4FC08D; font-weight: bold',
-            result
-          )
+          router.push('/')
         } catch (error: any) {
           ElMessage({
             type: 'error',
