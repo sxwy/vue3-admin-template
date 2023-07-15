@@ -33,7 +33,7 @@
   /** 外部图标样式 */
   const externalStyle = computed(() => {
     return {
-      // 这边不使用 class 是因为 url 配合 v-bind 不生效
+      // 因为在 class 中使用 url(v-bind) 不生效，所以使用动态 style
       '-webkit-mask-image': `url(${props.icon})`,
       '-webkit-mask-size': 'cover',
       '-webkit-mask-repeat': 'no-repeat'
@@ -50,7 +50,7 @@
     height: 1em;
 
     &__external {
-      background-color: v-bind(color);
+      background-color: v-bind('props.color');
     }
   }
 </style>
