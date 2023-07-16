@@ -12,8 +12,8 @@ export default (requestConfig = {}) => {
   request.interceptors.request.use(
     (config) => {
       const user = useUserStore()
-      if (user.current?.token && !config.headers.Authorization) {
-        config.headers.set('Authorization', `Bearer ${user.current.token}`)
+      if (user.session?.token && !config.headers.Authorization) {
+        config.headers.set('Authorization', `Bearer ${user.session.token}`)
       }
       return config
     },

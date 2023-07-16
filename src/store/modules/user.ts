@@ -2,12 +2,12 @@ import { defineStore } from 'pinia'
 import { login } from '@/services'
 import type { LoginQuery } from '@/types'
 
-interface Current extends LoginQuery {
+interface Session {
   token: string
 }
 
 export interface UserState {
-  current: Current | null
+  session: Session | null
 }
 
 export const useUserStore = defineStore('user', {
@@ -16,14 +16,14 @@ export const useUserStore = defineStore('user', {
   },
   state(): UserState {
     return {
-      current: null
+      session: null
     }
   },
   actions: {
     /** 登录初始化 */
     async loginInit(payload: LoginQuery) {
       const result = await login(payload)
-      this.current = result
+      this.session = result
     }
   }
 })

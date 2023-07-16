@@ -15,7 +15,7 @@ const whiteList = ['/login/home']
 router.beforeEach((to, from, next) => {
   document.title = to.meta.title
   const userStore = useUserStore()
-  if (userStore.current) {
+  if (userStore.session) {
     if (to.path === '/login/home') {
       next('/')
     } else {

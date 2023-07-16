@@ -13,7 +13,6 @@ module.exports = {
           code: '10000',
           message: '登录成功',
           body: {
-            ...req.body,
             token: Date.now()
           }
         })
