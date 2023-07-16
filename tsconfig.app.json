@@ -3,8 +3,7 @@
   "include": ["src/types/env.d.ts", "src/**/*", "src/**/*.vue"],
   "exclude": ["src/**/__tests__/*"],
   "compilerOptions": {
-    // https://github.com/element-plus/element-plus/issues/11818
-    "moduleResolution": "node",
+    "moduleResolution": "node", // https://github.com/element-plus/element-plus/issues/11818
     "composite": true,
     "baseUrl": ".",
     "paths": {
