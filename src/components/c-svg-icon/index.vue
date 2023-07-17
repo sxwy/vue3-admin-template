@@ -9,7 +9,7 @@
   </svg>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
   import { computed } from 'vue'
 
   const PREFIX = '#icon'
@@ -44,7 +44,7 @@
   const iconName = computed(() => `${PREFIX}-${props.icon}`)
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
   .c-svg-icon {
     width: 1em;
     height: 1em;
