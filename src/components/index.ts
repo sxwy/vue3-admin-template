@@ -1,7 +1,7 @@
 import { type App, type Component, defineAsyncComponent } from 'vue'
 
 export default (app: App) => {
-  const modules = import.meta.glob('./*/index.vue')
+  const modules = import.meta.glob('./c-*/index.vue')
   for (const path in modules) {
     const reg = /\/([^/]+)\//
     const match = path.match(reg)
