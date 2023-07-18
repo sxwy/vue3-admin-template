@@ -17,7 +17,9 @@
             <RouterLink to="/">
               <el-dropdown-item>主页</el-dropdown-item>
             </RouterLink>
-            <el-dropdown-item :divided="true">退出登录</el-dropdown-item>
+            <el-dropdown-item :divided="true" @click="handleLogout"
+              >退出登录</el-dropdown-item
+            >
           </el-dropdown-menu>
         </template>
       </el-dropdown>
@@ -27,10 +29,17 @@
 
 <script lang="ts" setup>
   import { useUserStore } from '@/store'
-  import { RouterLink } from 'vue-router'
+  import { RouterLink, useRouter } from 'vue-router'
   import { Setting } from '@element-plus/icons-vue'
 
   const userStore = useUserStore()
+  const router = useRouter()
+
+  /** 点击退出登录按钮 */
+  const handleLogout = () => {
+    userStore.logout()
+    router.push('/login/home')
+  }
 </script>
 
 <style lang="scss" scoped>

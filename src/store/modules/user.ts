@@ -28,6 +28,11 @@ export const useUserStore = defineStore('user', {
     async userInit() {
       const result = await getUserInfo()
       this.current = result
+    },
+    /** 退出登录 */
+    logout() {
+      this.session = null
+      this.current = null
     }
   }
 })
