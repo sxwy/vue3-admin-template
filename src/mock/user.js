@@ -3,9 +3,7 @@
 const MockJs = require('mockjs')
 
 module.exports = {
-  /**
-   * 提交登录信息
-   */
+  /** 提交登录信息 */
   'POST /base/api/login/v1.0': (req, res) => {
     setTimeout(() => {
       if (req.body.account === 'admin' && req.body.password === '123456') {
@@ -25,6 +23,22 @@ module.exports = {
         })
         return res.json(data)
       }
+    }, 500)
+  },
+  /** 提交登录信息 */
+  'POST /base/api/user/v1.0': (req, res) => {
+    setTimeout(() => {
+      const data = MockJs.mock({
+        code: '10000',
+        message: '获取用户信息成功',
+        body: {
+          id: '@id',
+          name: '@cname',
+          avatar: '@image(50x50)',
+          permission: []
+        }
+      })
+      return res.json(data)
     }, 500)
   }
 }
