@@ -6,13 +6,13 @@ const whiteList = ['/login/home']
 export default (router: Router) => {
   router.beforeEach(async (to, from, next) => {
     document.title = to.meta.title
-    const userStore = useUserStore()
-    if (userStore.session) {
+    const user = useUserStore()
+    if (user.session) {
       if (to.path === '/login/home') {
         next('/')
       } else {
-        if (!userStore.current) {
-          await userStore.userInit()
+        if (!user.current) {
+          await user.userInit()
         }
         next()
       }

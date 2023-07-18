@@ -88,7 +88,7 @@
   const formRef = ref<FormInstance>()
 
   /** 用户 store */
-  const userStore = useUserStore()
+  const user = useUserStore()
 
   /** 路由 */
   const router = useRouter()
@@ -99,7 +99,7 @@
       if (valid) {
         try {
           state.btnLoading = true
-          await userStore.loginInit({
+          await user.loginInit({
             account: state.form.account,
             password: state.form.password
           })

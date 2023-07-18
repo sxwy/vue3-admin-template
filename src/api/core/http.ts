@@ -6,10 +6,13 @@ import {
   defaultErrorMessage
 } from './error'
 
-export default (requestConfig = {}) => {
-  const request = axios.create(requestConfig)
+let isRefreshToken = false // 是否正在刷新 token
+let httpList: (() => void)[] = [] // 暂存多余请求队列
 
-  request.interceptors.request.use(
+export default (requestConfig = {}) => {
+  const http = axios.create(requestConfig)
+
+  http.interceptors.request.use(
     (config) => {
       const user = useUserStore()
       if (user.session?.token && !config.headers.Authorization) {
@@ -22,14 +25,40 @@ export default (requestConfig = {}) => {
     }
   )
 
-  request.interceptors.response.use(
-    (response) => {
+  http.interceptors.response.use(
+    async (response) => {
       if (Object.prototype.toString.call(response.data) === '[object Object]') {
         const keys = Reflect.ownKeys(response.data)
         if (keys.includes('code') || keys.includes('returncode')) {
           const code = String(response.data.code || response.data.returncode)
           if (code === '10000') {
             return response.data.body
+          } else if (code === '401') {
+            if (isRefreshToken) {
+              // 暂存多余请求
+              return new Promise((resolve) => {
+                Reflect.deleteProperty(response.config.headers, 'Authorization')
+                httpList.push(() => {
+                  resolve(http.request(response.config))
+                })
+              })
+            } else {
+              isRefreshToken = true
+              const user = useUserStore()
+              try {
+                await user.updateSession()
+              } catch (error) {
+                return Promise.reject(error)
+              }
+              // 重新执行暂存的多余请求
+              httpList.forEach((cb) => {
+                cb()
+              })
+              httpList = [] // 全部执行完则清空暂存队列
+              isRefreshToken = false
+              Reflect.deleteProperty(response.config.headers, 'Authorization')
+              return http.request(response.config)
+            }
           } else {
             return Promise.reject(
               createRequestError(
@@ -80,5 +109,5 @@ export default (requestConfig = {}) => {
     }
   )
 
-  return request
+  return http
 }

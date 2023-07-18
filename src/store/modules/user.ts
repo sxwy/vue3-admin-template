@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { login, getUserInfo } from '@/services'
+import { login, getUserInfo, refreshToken } from '@/services'
 import type { LoginQuery, Session, User } from '@/types'
 
 export interface UserState {
@@ -22,6 +22,11 @@ export const useUserStore = defineStore('user', {
     /** 登录初始化 */
     async loginInit(payload: LoginQuery) {
       const result = await login(payload)
+      this.session = result
+    },
+    /** 更新会话信息 */
+    async updateSession() {
+      const result = await refreshToken()
       this.session = result
     },
     /** 获取用户信息 */

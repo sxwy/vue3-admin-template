@@ -6,7 +6,7 @@
           <el-avatar
             shape="square"
             class="avatar"
-            :src="userStore.current?.avatar"
+            :src="user.current?.avatar"
           ></el-avatar>
           <el-icon>
             <Setting />
@@ -32,12 +32,12 @@
   import { RouterLink, useRouter } from 'vue-router'
   import { Setting } from '@element-plus/icons-vue'
 
-  const userStore = useUserStore()
+  const user = useUserStore()
   const router = useRouter()
 
   /** 点击退出登录按钮 */
   const handleLogout = () => {
-    userStore.logout()
+    user.logout()
     router.push('/login/home')
   }
 </script>

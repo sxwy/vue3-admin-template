@@ -10,10 +10,18 @@ export const login = (data: LoginQuery) => {
   })
 }
 
+/** 刷新 token */
+export const refreshToken = () => {
+  return baseApi.request<Session>({
+    method: 'POST',
+    url: '/api/refreshToken/v1.0'
+  })
+}
+
 /** 获取用户信息 */
 export const getUserInfo = () => {
   return baseApi.request<User>({
     method: 'POST',
-    url: '/api/user/v1.0'
+    url: '/api/getUserInfo/v1.0'
   })
 }
