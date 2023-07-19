@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { BASE_SITE } from '@/constants'
 import { loginRoutes, mainRoutes } from './modules'
-import permission from './permission'
+import guard from './guard'
 
 const routes = [loginRoutes, mainRoutes]
 
@@ -10,6 +10,6 @@ const router = createRouter({
   routes
 })
 
-permission(router)
+guard(router)
 
 export default router

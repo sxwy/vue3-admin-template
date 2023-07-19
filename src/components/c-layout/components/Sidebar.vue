@@ -5,12 +5,9 @@
       default-active="2"
       menu-trigger="click"
       :unique-opened="true"
-      class="el-menu-vertical-demo"
       active-text-color="#ffd04b"
       background-color="#545c64"
       text-color="#fff"
-      @open="handleOpen"
-      @close="handleClose"
     >
       <el-sub-menu index="1">
         <template #title>
@@ -42,35 +39,12 @@
         <el-menu-item index="6-3">item three</el-menu-item>
         <el-menu-item index="6-5-1">item one</el-menu-item>
       </el-sub-menu>
-      <el-menu-item index="2">
-        <el-icon><icon-menu /></el-icon>
-        <span>Navigator Two</span>
-      </el-menu-item>
-      <el-menu-item index="3" disabled>
-        <el-icon><document /></el-icon>
-        <span>Navigator Three</span>
-      </el-menu-item>
-      <el-menu-item index="4">
-        <el-icon><setting /></el-icon>
-        <span>Navigator Four</span>
-      </el-menu-item>
     </el-menu>
   </div>
 </template>
 
 <script lang="ts" setup>
-  import {
-    Document,
-    Menu as IconMenu,
-    Location,
-    Setting
-  } from '@element-plus/icons-vue'
-  const handleOpen = (key: string, keyPath: string[]) => {
-    console.log(key, keyPath)
-  }
-  const handleClose = (key: string, keyPath: string[]) => {
-    console.log(key, keyPath)
-  }
+  import { Location } from '@element-plus/icons-vue'
 </script>
 
 <style lang="scss" scoped></style>
