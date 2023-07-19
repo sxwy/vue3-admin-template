@@ -24,17 +24,31 @@
 </template>
 
 <script lang="ts" setup>
-  import { useUserStore } from '@/store'
   import { RouterLink, useRouter } from 'vue-router'
+  import { ElMessageBox } from 'element-plus'
   import { Setting } from '@element-plus/icons-vue'
+  import { useUserStore } from '@/store'
 
   const user = useUserStore()
   const router = useRouter()
 
   /** 点击退出登录按钮 */
   const handleLogout = () => {
-    user.logout()
-    router.push('/login/home')
+    ElMessageBox.confirm('是否确认退出系统?', '提示', {
+      confirmButtonText: '确定',
+      cancelButtonText: '取消',
+      type: 'warning'
+    })
+      .then(() => {
+        user.logout()
+        router.push('/login/home')
+      })
+      .catch(() => {
+        console.log(
+          '%c 点击取消按钮==========>',
+          'color: #4FC08D; font-weight: bold'
+        )
+      })
   }
 </script>
 
