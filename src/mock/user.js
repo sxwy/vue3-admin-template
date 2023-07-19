@@ -47,7 +47,7 @@ module.exports = {
         body: {
           id: '@id',
           name: '@cname',
-          avatar: '@image(50x50)',
+          avatar: '@image(40x40)',
           permission: []
         }
       })
