@@ -1,5 +1,5 @@
 <template>
-  <el-dropdown trigger="click" class="c-user-dropdown">
+  <el-dropdown trigger="click" class="user-dropdown">
     <div>
       <el-avatar
         shape="square"
@@ -39,7 +39,7 @@
 </script>
 
 <style lang="scss" scoped>
-  .c-user-dropdown {
+  .user-dropdown {
     cursor: pointer;
 
     .avatar {

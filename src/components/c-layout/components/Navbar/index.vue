@@ -1,12 +1,14 @@
 <template>
   <div class="navbar">
     <div class="right">
-      <c-user-dropdown />
+      <UserDropdown />
     </div>
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+  import UserDropdown from './components/UserDropdown.vue'
+</script>
 
 <style lang="scss" scoped>
   .navbar {
