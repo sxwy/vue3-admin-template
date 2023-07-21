@@ -50,5 +50,5 @@ export interface User {
   /** 名称 */
   name: string
   /** 路由 */
-  route: Route[]
+  routes: Route[]
 }

@@ -9,9 +9,9 @@ module.exports = {
       if (req.body.account === 'admin' && req.body.password === '123456') {
         const data = MockJs.mock({
           code: '10000',
-          message: '登录成功',
+          message: 'ok',
           body: {
-            token: Date.now()
+            token: '@id'
           }
         })
         return res.json(data)
@@ -30,9 +30,9 @@ module.exports = {
     setTimeout(() => {
       const data = MockJs.mock({
         code: '10000',
-        message: '获取 token 成功',
+        message: 'ok',
         body: {
-          token: Date.now()
+          token: '@id'
         }
       })
       return res.json(data)
@@ -43,12 +43,213 @@ module.exports = {
     setTimeout(() => {
       const data = MockJs.mock({
         code: '10000',
-        message: '获取用户信息成功',
+        message: 'ok',
         body: {
           id: '@id',
           name: '@cname',
           avatar: '@image(40x40)',
-          permission: []
+          routes: [
+            {
+              name: 'System',
+              path: '/system',
+              alias: '',
+              redirect: '/system/role/index',
+              components: '',
+              meta: {
+                menuAuth: true,
+                menuShow: true,
+                menuTitle: '权限管理',
+                menuIcon: '',
+                buttonAuth: []
+              },
+              children: [
+                {
+                  name: 'RoleIndex',
+                  path: 'role/index',
+                  alias: '',
+                  redirect: '',
+                  components: '',
+                  meta: {
+                    menuAuth: true,
+                    menuShow: true,
+                    menuTitle: '角色管理',
+                    menuIcon: '',
+                    buttonAuth: ['add', 'edit', 'delete']
+                  }
+                },
+                {
+                  name: 'RoleAdd',
+                  path: 'role/add',
+                  alias: '',
+                  redirect: '',
+                  components: '',
+                  meta: {
+                    menuAuth: true,
+                    menuShow: true,
+                    menuTitle: '添加角色',
+                    menuIcon: '',
+                    buttonAuth: []
+                  }
+                },
+                {
+                  name: 'RoleEdit',
+                  path: 'role/edit',
+                  alias: '',
+                  redirect: '',
+                  components: '',
+                  meta: {
+                    menuAuth: true,
+                    menuShow: true,
+                    menuTitle: '修改角色',
+                    menuIcon: '',
+                    buttonAuth: []
+                  }
+                },
+                {
+                  name: 'UserIndex',
+                  path: 'user/index',
+                  alias: '',
+                  redirect: '',
+                  components: '',
+                  meta: {
+                    menuAuth: true,
+                    menuShow: true,
+                    menuTitle: '用户管理',
+                    menuIcon: '',
+                    buttonAuth: ['add', 'edit', 'delete']
+                  }
+                },
+                {
+                  name: 'UserAdd',
+                  path: 'user/add',
+                  alias: '',
+                  redirect: '',
+                  components: '',
+                  meta: {
+                    menuAuth: true,
+                    menuShow: true,
+                    menuTitle: '添加用户',
+                    menuIcon: '',
+                    buttonAuth: []
+                  }
+                },
+                {
+                  name: 'UserEdit',
+                  path: 'user/edit',
+                  alias: '',
+                  redirect: '',
+                  components: '',
+                  meta: {
+                    menuAuth: true,
+                    menuShow: true,
+                    menuTitle: '修改用户',
+                    menuIcon: '',
+                    buttonAuth: []
+                  }
+                }
+              ]
+            },
+            {
+              name: 'Media',
+              path: '/media',
+              alias: '',
+              redirect: '/media/audio/index',
+              components: '',
+              meta: {
+                menuAuth: true,
+                menuShow: true,
+                menuTitle: '媒体管理',
+                menuIcon: '',
+                buttonAuth: []
+              },
+              children: [
+                {
+                  name: 'AudioIndex',
+                  path: 'audio/index',
+                  alias: '',
+                  redirect: '',
+                  components: '',
+                  meta: {
+                    menuAuth: true,
+                    menuShow: true,
+                    menuTitle: '音频管理',
+                    menuIcon: '',
+                    buttonAuth: ['add', 'edit', 'delete']
+                  }
+                },
+                {
+                  name: 'AudioAdd',
+                  path: 'audio/add',
+                  alias: '',
+                  redirect: '',
+                  components: '',
+                  meta: {
+                    menuAuth: true,
+                    menuShow: true,
+                    menuTitle: '添加音频',
+                    menuIcon: '',
+                    buttonAuth: []
+                  }
+                },
+                {
+                  name: 'AudioEdit',
+                  path: 'audio/edit',
+                  alias: '',
+                  redirect: '',
+                  components: '',
+                  meta: {
+                    menuAuth: true,
+                    menuShow: true,
+                    menuTitle: '修改音频',
+                    menuIcon: '',
+                    buttonAuth: []
+                  }
+                },
+                {
+                  name: 'VideoIndex',
+                  path: 'video/index',
+                  alias: '',
+                  redirect: '',
+                  components: '',
+                  meta: {
+                    menuAuth: true,
+                    menuShow: true,
+                    menuTitle: '视频管理',
+                    menuIcon: '',
+                    buttonAuth: ['add', 'edit', 'delete']
+                  }
+                },
+                {
+                  name: 'VideoAdd',
+                  path: 'video/add',
+                  alias: '',
+                  redirect: '',
+                  components: '',
+                  meta: {
+                    menuAuth: true,
+                    menuShow: true,
+                    menuTitle: '添加视频',
+                    menuIcon: '',
+                    buttonAuth: []
+                  }
+                },
+                {
+                  name: 'VideoEdit',
+                  path: 'video/edit',
+                  alias: '',
+                  redirect: '',
+                  components: '',
+                  meta: {
+                    menuAuth: true,
+                    menuShow: true,
+                    menuTitle: '修改视频',
+                    menuIcon: '',
+                    buttonAuth: []
+                  }
+                }
+              ]
+            }
+          ]
         }
       })
       return res.json(data)

@@ -201,7 +201,7 @@ yarn format # 修正代码格式
 
 ### 静态资源
 
-静态资源命名格式：`模块_类别_功能_状态.扩展名`，例如：`home_pic_ad_1.jpg`
+静态资源命名格式：`模块_类别_功能_状态.扩展名`，例如：`index_pic_ad_1.jpg`
 
 - 模块：是哪个模块使用到，例如：user，report，product 等，如果是公共的图标就 common
 - 类别：什么类型的，例如：bg 表示背景，icon 表示图标，btn 表示按钮，pic 表示图片，photo 表示照片

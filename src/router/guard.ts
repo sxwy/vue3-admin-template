@@ -1,7 +1,7 @@
 import type { Router } from 'vue-router'
 import { useUserStore } from '@/store'
 
-const whiteList = ['/login/home']
+const whiteList = ['/basics/login/index']
 
 /**
  * 原来逻辑
@@ -22,42 +22,12 @@ const whiteList = ['/login/home']
  * ——2.3、如果都没有权限则停留在登录页面
  */
 
-interface Route {
-  /** 路由名称 */
-  name: string
-  /** 路由地址 */
-  path: string
-  /** 路由别名 */
-  alias: string
-  /** 重定向路由地址 */
-  redirect: string
-  /** 组件路径 */
-  components: string
-  /** 元信息 */
-  meta: {
-    /** 菜单是否有权限 */
-    menuAuth: boolean
-    /** 菜单是否展示 */
-    menuShow: boolean
-    /** 菜单标题 */
-    menuTitle: string
-    /** 菜单图标 */
-    menuIcon: string
-    /** 当前路由中的按钮权限 */
-    buttonAuth: string[]
-  }
-  /** 子集路由 */
-  children: Route[]
-}
-
-type Routes = Route[]
-
 export default (router: Router) => {
   router.beforeEach(async (to, from, next) => {
     document.title = to.meta.title
     const user = useUserStore()
     if (user.session) {
-      if (to.path === '/login/home') {
+      if (to.path === '/basics/login/index') {
         next('/')
       } else {
         if (!user.current) {
@@ -69,7 +39,7 @@ export default (router: Router) => {
       if (whiteList.includes(to.path)) {
         next()
       } else {
-        next('/login/home')
+        next('/basics/login/index')
       }
     }
   })

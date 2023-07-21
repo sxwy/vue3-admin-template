@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { BASE_SITE } from '@/constants'
-import { loginRoutes, mainRoutes } from './modules'
+import { basicsRoutes, mainRoutes } from './modules'
 import guard from './guard'
 
-const routes = [loginRoutes, mainRoutes]
+const routes = [basicsRoutes, mainRoutes]
 
 const router = createRouter({
   history: createWebHistory(BASE_SITE),
