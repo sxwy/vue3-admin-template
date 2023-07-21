@@ -32,8 +32,10 @@ export default (router: Router) => {
       } else {
         if (!user.current) {
           await user.userInit()
+          next({ ...to, replace: true })
+        } else {
+          next()
         }
-        next()
       }
     } else {
       if (whiteList.includes(to.path)) {

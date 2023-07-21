@@ -1,7 +1,8 @@
 import { defineStore } from 'pinia'
 import router from '@/router'
-import { useRouter, type RouteRecordRaw } from 'vue-router'
+import { type RouteRecordRaw, RouterView } from 'vue-router'
 import CLayout from '@/components/c-layout/index.vue'
+import Role from '@/pages/system/role/index.vue'
 import { login, getUserInfo, refreshToken } from '@/services'
 import type { LoginQuery, Session, User } from '@/types'
 
@@ -15,8 +16,7 @@ const filterRoutes = (routes: User['routes']): User['routes'] => {
     if (item.components === 'Layout') {
       item.components = CLayout as any
     } else {
-      item.components = (() =>
-        import(/* @vite-ignore */ '@/pages' + item.components + '.vue')) as any
+      item.components = Role as any
     }
     if (item.children && item.children.length) {
       item.children = filterRoutes(item.children)
@@ -57,7 +57,29 @@ export const useUserStore = defineStore('user', {
         'color: #4FC08D; font-weight: bold',
         result
       )
-      router.addRoute(result.routes as unknown as RouteRecordRaw)
+      // router.addRoute(result.routes as unknown as RouteRecordRaw)
+      router.addRoute({
+        name: 'AAA',
+        path: '/system/role/index',
+        component: CLayout,
+        children: [
+          // {
+          //   name: 'RoleIndex',
+          //   path: 'role/index',
+          //   alias: '',
+          //   redirect: '',
+          //   components: () => import('@/pages/system/role/index.vue'),
+          //   meta: {
+          //     menuAuth: true,
+          //     menuShow: true,
+          //     menuTitle: '角色管理',
+          //     menuIcon: '',
+          //     buttonAuth: ['add', 'edit', 'delete']
+          //   } as any,
+          //   children: []
+          // }
+        ]
+      })
       console.log(
         '%c 111==========>',
         'color: #4FC08D; font-weight: bold',

@@ -54,7 +54,7 @@ module.exports = {
               path: '/system',
               alias: '',
               redirect: '/system/role/index',
-              components: '',
+              component: 'Layout',
               meta: {
                 menuAuth: true,
                 menuShow: true,
@@ -68,7 +68,7 @@ module.exports = {
                   path: 'role/index',
                   alias: '',
                   redirect: '',
-                  components: '',
+                  component: '',
                   meta: {
                     menuAuth: true,
                     menuShow: true,
@@ -82,7 +82,7 @@ module.exports = {
                   path: 'role/add',
                   alias: '',
                   redirect: '',
-                  components: '',
+                  component: '',
                   meta: {
                     menuAuth: true,
                     menuShow: true,
@@ -96,7 +96,7 @@ module.exports = {
                   path: 'role/edit',
                   alias: '',
                   redirect: '',
-                  components: '',
+                  component: '',
                   meta: {
                     menuAuth: true,
                     menuShow: true,
@@ -110,7 +110,7 @@ module.exports = {
                   path: 'user/index',
                   alias: '',
                   redirect: '',
-                  components: '',
+                  component: '',
                   meta: {
                     menuAuth: true,
                     menuShow: true,
@@ -124,7 +124,7 @@ module.exports = {
                   path: 'user/add',
                   alias: '',
                   redirect: '',
-                  components: '',
+                  component: '',
                   meta: {
                     menuAuth: true,
                     menuShow: true,
@@ -138,7 +138,7 @@ module.exports = {
                   path: 'user/edit',
                   alias: '',
                   redirect: '',
-                  components: '',
+                  component: '',
                   meta: {
                     menuAuth: true,
                     menuShow: true,
@@ -154,7 +154,7 @@ module.exports = {
               path: '/media',
               alias: '',
               redirect: '/media/audio/index',
-              components: '',
+              component: 'Layout',
               meta: {
                 menuAuth: true,
                 menuShow: true,
@@ -168,7 +168,7 @@ module.exports = {
                   path: 'audio/index',
                   alias: '',
                   redirect: '',
-                  components: '',
+                  component: '',
                   meta: {
                     menuAuth: true,
                     menuShow: true,
@@ -182,7 +182,7 @@ module.exports = {
                   path: 'audio/add',
                   alias: '',
                   redirect: '',
-                  components: '',
+                  component: '',
                   meta: {
                     menuAuth: true,
                     menuShow: true,
@@ -196,7 +196,7 @@ module.exports = {
                   path: 'audio/edit',
                   alias: '',
                   redirect: '',
-                  components: '',
+                  component: '',
                   meta: {
                     menuAuth: true,
                     menuShow: true,
@@ -210,7 +210,7 @@ module.exports = {
                   path: 'video/index',
                   alias: '',
                   redirect: '',
-                  components: '',
+                  component: '',
                   meta: {
                     menuAuth: true,
                     menuShow: true,
@@ -224,7 +224,7 @@ module.exports = {
                   path: 'video/add',
                   alias: '',
                   redirect: '',
-                  components: '',
+                  component: '',
                   meta: {
                     menuAuth: true,
                     menuShow: true,
@@ -238,7 +238,7 @@ module.exports = {
                   path: 'video/edit',
                   alias: '',
                   redirect: '',
-                  components: '',
+                  component: '',
                   meta: {
                     menuAuth: true,
                     menuShow: true,
