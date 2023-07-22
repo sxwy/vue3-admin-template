@@ -18,6 +18,19 @@ export default {
         buttonAuth: []
       },
       component: () => import('@/pages/basics/login/index.vue')
+    },
+    {
+      // 404
+      name: '404',
+      path: '/:catchAll(.*)',
+      meta: {
+        menuAuth: true,
+        menuShow: false,
+        menuTitle: '缺省页',
+        menuIcon: '',
+        buttonAuth: []
+      },
+      component: () => import('@/pages/basics/404.vue')
     }
   ]
 } as RouteRecordRaw
