@@ -12,7 +12,13 @@ export default {
       // 首页
       name: 'MainIndex',
       path: '/main/index',
-      meta: { title: '首页' },
+      meta: {
+        menuAuth: true,
+        menuShow: false,
+        menuTitle: '首页',
+        menuIcon: '',
+        buttonAuth: []
+      },
       component: () => import('@/pages/main/index.vue')
     }
   ]

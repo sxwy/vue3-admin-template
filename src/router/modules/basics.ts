@@ -10,7 +10,13 @@ export default {
       // 登录首页
       name: 'BasicsLoginIndex',
       path: 'login/index',
-      meta: { title: '登录首页' },
+      meta: {
+        menuAuth: true,
+        menuShow: false,
+        menuTitle: '登录首页',
+        menuIcon: '',
+        buttonAuth: []
+      },
       component: () => import('@/pages/basics/login/index.vue')
     }
   ]
