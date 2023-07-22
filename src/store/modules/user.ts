@@ -53,6 +53,19 @@ export const useUserStore = defineStore('user', {
     /** 获取用户信息 */
     async userInit() {
       const result = await getUserInfo()
+      result.routes.push({
+        name: '404',
+        path: '/:catchAll(.*)',
+        meta: {
+          menuAuth: true,
+          menuShow: false,
+          menuTitle: '缺省页',
+          menuIcon: '',
+          buttonAuth: []
+        },
+        component: '/basics/404',
+        children: []
+      })
       result.routes = filterRoutes(result.routes)
       result.routes.forEach((item) => {
         router.addRoute(item as unknown as RouteRecordRaw)
