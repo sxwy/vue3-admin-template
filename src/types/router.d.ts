@@ -1,8 +1,7 @@
 import 'vue-router'
+import type { Meta } from './user'
 
 declare module 'vue-router' {
-  interface RouteMeta {
-    /** 页面标题 */
-    title: string
-  }
+  // eslint-disable-next-line @typescript-eslint/no-empty-interface
+  interface RouteMeta extends Meta {}
 }

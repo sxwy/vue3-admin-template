@@ -52,7 +52,7 @@ module.exports = {
             {
               name: 'System',
               path: '/system',
-              alias: '',
+              alias: undefined,
               redirect: '/system/role/index',
               component: 'Layout',
               meta: {
@@ -66,93 +66,99 @@ module.exports = {
                 {
                   name: 'RoleIndex',
                   path: 'role/index',
-                  alias: '',
-                  redirect: '',
-                  component: '',
+                  alias: undefined,
+                  redirect: undefined,
+                  component: '/system/role/index',
                   meta: {
                     menuAuth: true,
                     menuShow: true,
                     menuTitle: '角色管理',
                     menuIcon: '',
                     buttonAuth: ['add', 'edit', 'delete']
-                  }
+                  },
+                  children: []
                 },
                 {
                   name: 'RoleAdd',
                   path: 'role/add',
-                  alias: '',
-                  redirect: '',
-                  component: '',
+                  alias: undefined,
+                  redirect: undefined,
+                  component: '/system/role/add',
                   meta: {
                     menuAuth: true,
                     menuShow: true,
                     menuTitle: '添加角色',
                     menuIcon: '',
                     buttonAuth: []
-                  }
+                  },
+                  children: []
                 },
                 {
                   name: 'RoleEdit',
                   path: 'role/edit',
-                  alias: '',
-                  redirect: '',
-                  component: '',
+                  alias: undefined,
+                  redirect: undefined,
+                  component: '/system/role/edit',
                   meta: {
                     menuAuth: true,
                     menuShow: true,
                     menuTitle: '修改角色',
                     menuIcon: '',
                     buttonAuth: []
-                  }
+                  },
+                  children: []
                 },
                 {
                   name: 'UserIndex',
                   path: 'user/index',
-                  alias: '',
-                  redirect: '',
-                  component: '',
+                  alias: undefined,
+                  redirect: undefined,
+                  component: '/system/user/index',
                   meta: {
                     menuAuth: true,
                     menuShow: true,
                     menuTitle: '用户管理',
                     menuIcon: '',
                     buttonAuth: ['add', 'edit', 'delete']
-                  }
+                  },
+                  children: []
                 },
                 {
                   name: 'UserAdd',
                   path: 'user/add',
-                  alias: '',
-                  redirect: '',
-                  component: '',
+                  alias: undefined,
+                  redirect: undefined,
+                  component: '/system/user/add',
                   meta: {
                     menuAuth: true,
                     menuShow: true,
                     menuTitle: '添加用户',
                     menuIcon: '',
                     buttonAuth: []
-                  }
+                  },
+                  children: []
                 },
                 {
                   name: 'UserEdit',
                   path: 'user/edit',
-                  alias: '',
-                  redirect: '',
-                  component: '',
+                  alias: undefined,
+                  redirect: undefined,
+                  component: '/system/user/edit',
                   meta: {
                     menuAuth: true,
                     menuShow: true,
                     menuTitle: '修改用户',
                     menuIcon: '',
                     buttonAuth: []
-                  }
+                  },
+                  children: []
                 }
               ]
             },
             {
               name: 'Media',
               path: '/media',
-              alias: '',
+              alias: undefined,
               redirect: '/media/audio/index',
               component: 'Layout',
               meta: {
@@ -166,86 +172,92 @@ module.exports = {
                 {
                   name: 'AudioIndex',
                   path: 'audio/index',
-                  alias: '',
-                  redirect: '',
-                  component: '',
+                  alias: undefined,
+                  redirect: undefined,
+                  component: '/media/audio/index',
                   meta: {
                     menuAuth: true,
                     menuShow: true,
                     menuTitle: '音频管理',
                     menuIcon: '',
                     buttonAuth: ['add', 'edit', 'delete']
-                  }
+                  },
+                  children: []
                 },
                 {
                   name: 'AudioAdd',
                   path: 'audio/add',
-                  alias: '',
-                  redirect: '',
-                  component: '',
+                  alias: undefined,
+                  redirect: undefined,
+                  component: '/media/audio/add',
                   meta: {
                     menuAuth: true,
                     menuShow: true,
                     menuTitle: '添加音频',
                     menuIcon: '',
                     buttonAuth: []
-                  }
+                  },
+                  children: []
                 },
                 {
                   name: 'AudioEdit',
                   path: 'audio/edit',
-                  alias: '',
-                  redirect: '',
-                  component: '',
+                  alias: undefined,
+                  redirect: undefined,
+                  component: '/media/audio/edit',
                   meta: {
                     menuAuth: true,
                     menuShow: true,
                     menuTitle: '修改音频',
                     menuIcon: '',
                     buttonAuth: []
-                  }
+                  },
+                  children: []
                 },
                 {
                   name: 'VideoIndex',
                   path: 'video/index',
-                  alias: '',
-                  redirect: '',
-                  component: '',
+                  alias: undefined,
+                  redirect: undefined,
+                  component: '/media/video/index',
                   meta: {
                     menuAuth: true,
                     menuShow: true,
                     menuTitle: '视频管理',
                     menuIcon: '',
                     buttonAuth: ['add', 'edit', 'delete']
-                  }
+                  },
+                  children: []
                 },
                 {
                   name: 'VideoAdd',
                   path: 'video/add',
-                  alias: '',
-                  redirect: '',
-                  component: '',
+                  alias: undefined,
+                  redirect: undefined,
+                  component: '/media/video/add',
                   meta: {
                     menuAuth: true,
                     menuShow: true,
                     menuTitle: '添加视频',
                     menuIcon: '',
                     buttonAuth: []
-                  }
+                  },
+                  children: []
                 },
                 {
                   name: 'VideoEdit',
                   path: 'video/edit',
-                  alias: '',
-                  redirect: '',
-                  component: '',
+                  alias: undefined,
+                  redirect: undefined,
+                  component: '/media/video/edit',
                   meta: {
                     menuAuth: true,
                     menuShow: true,
                     menuTitle: '修改视频',
                     menuIcon: '',
                     buttonAuth: []
-                  }
+                  },
+                  children: []
                 }
               ]
             }

@@ -24,17 +24,17 @@ const whiteList = ['/basics/login/index']
 
 export default (router: Router) => {
   router.beforeEach(async (to, from, next) => {
-    document.title = to.meta.title
+    document.title = to.meta.menuTitle
     const user = useUserStore()
     if (user.session) {
       if (to.path === '/basics/login/index') {
         next('/')
       } else {
-        if (!user.current) {
+        if (user.current) {
+          next()
+        } else {
           await user.userInit()
           next({ ...to, replace: true })
-        } else {
-          next()
         }
       }
     } else {

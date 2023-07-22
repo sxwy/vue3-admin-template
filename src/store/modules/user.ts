@@ -1,28 +1,31 @@
 import { defineStore } from 'pinia'
+import type { RouteRecordRaw, RouteComponent } from 'vue-router'
 import router from '@/router'
-import { type RouteRecordRaw, RouterView } from 'vue-router'
-import CLayout from '@/components/c-layout/index.vue'
-import Role from '@/pages/system/role/index.vue'
 import { login, getUserInfo, refreshToken } from '@/services'
-import type { LoginQuery, Session, User } from '@/types'
+import type { LoginQuery, Session, User, Route } from '@/types'
+import { resolveComponent } from '@/utils'
+import CLayout from '@/components/c-layout/index.vue'
 
-export interface UserState {
-  session: Session | null
-  current: User | null
-}
-
-const filterRoutes = (routes: User['routes']): User['routes'] => {
+/** 过滤处理路由结构 */
+const filterRoutes = (routes: Route[]): Route[] => {
   routes.forEach((item) => {
-    if (item.components === 'Layout') {
-      item.components = CLayout as any
+    if (item.component === 'Layout') {
+      ;(item.component as unknown as RouteComponent) = CLayout
     } else {
-      item.components = Role as any
+      ;(item.component as unknown as RouteComponent) = resolveComponent(
+        item.component
+      )
     }
-    if (item.children && item.children.length) {
+    if (item.children.length) {
       item.children = filterRoutes(item.children)
     }
   })
   return routes
+}
+
+interface UserState {
+  session: Session | null
+  current: User | null
 }
 
 export const useUserStore = defineStore('user', {
@@ -51,40 +54,10 @@ export const useUserStore = defineStore('user', {
     async userInit() {
       const result = await getUserInfo()
       result.routes = filterRoutes(result.routes)
-      this.current = result
-      console.log(
-        '%c result==========>',
-        'color: #4FC08D; font-weight: bold',
-        result
-      )
-      // router.addRoute(result.routes as unknown as RouteRecordRaw)
-      router.addRoute({
-        name: 'AAA',
-        path: '/system/role/index',
-        component: CLayout,
-        children: [
-          // {
-          //   name: 'RoleIndex',
-          //   path: 'role/index',
-          //   alias: '',
-          //   redirect: '',
-          //   components: () => import('@/pages/system/role/index.vue'),
-          //   meta: {
-          //     menuAuth: true,
-          //     menuShow: true,
-          //     menuTitle: '角色管理',
-          //     menuIcon: '',
-          //     buttonAuth: ['add', 'edit', 'delete']
-          //   } as any,
-          //   children: []
-          // }
-        ]
+      result.routes.forEach((item) => {
+        router.addRoute(item as unknown as RouteRecordRaw)
       })
-      console.log(
-        '%c 111==========>',
-        'color: #4FC08D; font-weight: bold',
-        router.getRoutes()
-      )
+      this.current = result
     },
     /** 退出登录 */
     logout() {
