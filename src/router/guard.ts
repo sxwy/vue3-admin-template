@@ -1,7 +1,8 @@
 import type { Router } from 'vue-router'
 import { useUserStore } from '@/store'
+import { APP_NAME } from '@/constants'
 
-const whiteList = ['/basics/login/index']
+const whiteList = ['/login']
 
 /**
  * 原来逻辑
@@ -24,16 +25,21 @@ const whiteList = ['/basics/login/index']
 
 export default (router: Router) => {
   router.beforeEach(async (to, from, next) => {
-    document.title = to.meta.menuTitle
+    document.title = to.meta.menuTitle || APP_NAME
     const user = useUserStore()
     if (user.session) {
-      if (to.path === '/basics/login/index') {
+      if (to.path === '/login') {
         next('/')
       } else {
         if (user.current) {
           next()
         } else {
           await user.userInit()
+          console.log(
+            '%c 111==========>',
+            'color: #4FC08D; font-weight: bold',
+            router.getRoutes()
+          )
           next({ ...to, replace: true })
         }
       }
@@ -41,7 +47,7 @@ export default (router: Router) => {
       if (whiteList.includes(to.path)) {
         next()
       } else {
-        next('/basics/login/index')
+        next('/login')
       }
     }
   })

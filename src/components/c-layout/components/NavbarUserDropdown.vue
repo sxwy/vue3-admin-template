@@ -41,7 +41,7 @@
     })
       .then(() => {
         user.logout()
-        router.push('/basics/login/index')
+        router.push('/login')
       })
       .catch(() => {
         console.log(
@@ -61,7 +61,9 @@
     }
   }
 
-  :deep(.router-link-active) {
-    text-decoration: none;
+  .el-dropdown-menu {
+    :deep(a) {
+      text-decoration: none;
+    }
   }
 </style>
