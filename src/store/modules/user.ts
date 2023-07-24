@@ -4,13 +4,13 @@ import router from '@/router'
 import { login, getUserInfo, refreshToken } from '@/services'
 import type { LoginQuery, Session, User, Route } from '@/types'
 import { resolveComponent } from '@/utils'
-import CLayout from '@/components/c-layout/index.vue'
+import Layout from '@/components/Layout/index.vue'
 
 /** 过滤处理路由结构 */
 const filterRoutes = (routes: Route[]): Route[] => {
   routes.forEach((item) => {
     if (item.component === 'Layout') {
-      ;(item.component as unknown as RouteComponent) = CLayout
+      ;(item.component as unknown as RouteComponent) = Layout
     } else {
       ;(item.component as unknown as RouteComponent) = resolveComponent(
         item.component

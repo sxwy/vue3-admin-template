@@ -1,5 +1,5 @@
 <template>
-  <div class="c-layout">
+  <div class="layout">
     <Sidebar
       class="sidebar"
       :style="{
@@ -25,7 +25,7 @@
 <style lang="scss" scoped>
   @import '@/styles/variables.module.scss';
 
-  .c-layout {
+  .layout {
     position: relative;
     height: 100vh;
     width: 100%;

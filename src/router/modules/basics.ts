@@ -1,5 +1,5 @@
 import { type RouteRecordRaw } from 'vue-router'
-import CLayout from '@/components/c-layout/index.vue'
+import Layout from '@/components/Layout/index.vue'
 
 /** 基础相关路由 */
 export default [
@@ -18,7 +18,7 @@ export default [
   {
     path: '/',
     redirect: '/main',
-    component: CLayout,
+    component: Layout,
     children: [
       {
         name: 'Main',

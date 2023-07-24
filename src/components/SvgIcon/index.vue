@@ -1,10 +1,10 @@
 <template>
   <div
     v-if="isExternal"
-    class="c-svg-icon c-svg-icon__external"
+    class="svg-icon svg-icon__external"
     :style="externalStyle"
   />
-  <svg v-else class="c-svg-icon" aria-hidden="true">
+  <svg v-else class="svg-icon" aria-hidden="true">
     <use :xlink:href="iconName" :fill="color" />
   </svg>
 </template>
@@ -45,7 +45,7 @@
 </script>
 
 <style lang="scss" scoped>
-  .c-svg-icon {
+  .svg-icon {
     width: 1em;
     height: 1em;
 
