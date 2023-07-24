@@ -1,4 +1,5 @@
 import type { Router } from 'vue-router'
+import { ElMessage } from 'element-plus'
 import { useUserStore } from '@/store'
 import { APP_NAME } from '@/constants'
 
@@ -13,17 +14,37 @@ export default (router: Router) => {
         next('/')
       } else {
         if (user.current) {
-          if (to.meta.routePermission) {
-            next()
+          const routes = router.getRoutes()
+          const findResult = routes.find((item) => item.path === to.path)
+          if (findResult) {
+            if (to.meta.routePermission) {
+              next()
+            } else {
+              next('/403')
+            }
           } else {
-            next('/403')
+            next('/404')
           }
         } else {
-          await user.userInit()
-          if (to.meta.routePermission) {
-            next({ ...to, replace: true })
-          } else {
-            next('/403')
+          try {
+            await user.userInit()
+            const routes = router.getRoutes()
+            const findResult = routes.find((item) => item.path === to.path)
+            if (findResult) {
+              if (to.meta.routePermission) {
+                next({ ...to, replace: true })
+              } else {
+                next('/403')
+              }
+            } else {
+              next('/404')
+            }
+          } catch (error: any) {
+            ElMessage({
+              type: 'error',
+              message: error.message || '获取用户信息失败，请重新登录'
+            })
+            next('/login')
           }
         }
       }

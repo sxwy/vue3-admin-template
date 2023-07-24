@@ -57,10 +57,6 @@ export const useUserStore = defineStore('user', {
       result.routes.forEach((item) => {
         router.addRoute(item as unknown as RouteRecordRaw)
       })
-      router.addRoute({
-        path: '/:catchAll(.*)',
-        redirect: '/404'
-      })
       this.current = result
     },
     /** 退出登录 */
