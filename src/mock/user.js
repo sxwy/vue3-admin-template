@@ -202,8 +202,8 @@ module.exports = {
               },
               children: [
                 {
-                  name: 'MediaAudioIndex',
-                  path: 'audio/index',
+                  name: 'MediaAudio',
+                  path: 'audio',
                   alias: undefined,
                   redirect: undefined,
                   component: '/media/audio/index',
@@ -212,43 +212,59 @@ module.exports = {
                     menuShow: true,
                     menuIcon: '',
                     routePermission: true,
-                    buttonPermission: ['add', 'edit', 'delete']
-                  },
-                  children: []
-                },
-                {
-                  name: 'MediaAudioAdd',
-                  path: 'audio/add',
-                  alias: undefined,
-                  redirect: undefined,
-                  component: '/media/audio/add',
-                  meta: {
-                    title: '添加音频',
-                    menuShow: true,
-                    menuIcon: '',
-                    routePermission: true,
                     buttonPermission: []
                   },
-                  children: []
+                  children: [
+                    {
+                      name: 'MediaAudioIndex',
+                      path: 'index',
+                      alias: undefined,
+                      redirect: undefined,
+                      component: '/media/audio/index',
+                      meta: {
+                        title: '音频管理',
+                        menuShow: true,
+                        menuIcon: '',
+                        routePermission: true,
+                        buttonPermission: ['add', 'edit', 'delete']
+                      },
+                      children: []
+                    },
+                    {
+                      name: 'MediaAudioAdd',
+                      path: 'add',
+                      alias: undefined,
+                      redirect: undefined,
+                      component: '/media/audio/add',
+                      meta: {
+                        title: '添加音频',
+                        menuShow: true,
+                        menuIcon: '',
+                        routePermission: true,
+                        buttonPermission: []
+                      },
+                      children: []
+                    },
+                    {
+                      name: 'MediaAudioEdit',
+                      path: 'edit',
+                      alias: undefined,
+                      redirect: undefined,
+                      component: '/media/audio/edit',
+                      meta: {
+                        title: '修改音频',
+                        menuShow: true,
+                        menuIcon: '',
+                        routePermission: true,
+                        buttonPermission: []
+                      },
+                      children: []
+                    }
+                  ]
                 },
                 {
-                  name: 'MediaAudioEdit',
-                  path: 'audio/edit',
-                  alias: undefined,
-                  redirect: undefined,
-                  component: '/media/audio/edit',
-                  meta: {
-                    title: '修改音频',
-                    menuShow: true,
-                    menuIcon: '',
-                    routePermission: true,
-                    buttonPermission: []
-                  },
-                  children: []
-                },
-                {
-                  name: 'MediaVideoIndex',
-                  path: 'video/index',
+                  name: 'MediaVideo',
+                  path: 'video',
                   alias: undefined,
                   redirect: undefined,
                   component: '/media/video/index',
@@ -257,39 +273,55 @@ module.exports = {
                     menuShow: true,
                     menuIcon: '',
                     routePermission: true,
-                    buttonPermission: ['add', 'edit', 'delete']
-                  },
-                  children: []
-                },
-                {
-                  name: 'MediaVideoAdd',
-                  path: 'video/add',
-                  alias: undefined,
-                  redirect: undefined,
-                  component: '/media/video/add',
-                  meta: {
-                    title: '添加视频',
-                    menuShow: true,
-                    menuIcon: '',
-                    routePermission: true,
                     buttonPermission: []
                   },
-                  children: []
-                },
-                {
-                  name: 'MediaVideoEdit',
-                  path: 'video/edit',
-                  alias: undefined,
-                  redirect: undefined,
-                  component: '/media/video/edit',
-                  meta: {
-                    title: '修改视频',
-                    menuShow: true,
-                    menuIcon: '',
-                    routePermission: true,
-                    buttonPermission: []
-                  },
-                  children: []
+                  children: [
+                    {
+                      name: 'MediaVideoIndex',
+                      path: 'index',
+                      alias: undefined,
+                      redirect: undefined,
+                      component: '/media/video/index',
+                      meta: {
+                        title: '视频管理',
+                        menuShow: true,
+                        menuIcon: '',
+                        routePermission: true,
+                        buttonPermission: ['add', 'edit', 'delete']
+                      },
+                      children: []
+                    },
+                    {
+                      name: 'MediaVideoAdd',
+                      path: 'add',
+                      alias: undefined,
+                      redirect: undefined,
+                      component: '/media/video/add',
+                      meta: {
+                        title: '添加视频',
+                        menuShow: true,
+                        menuIcon: '',
+                        routePermission: true,
+                        buttonPermission: []
+                      },
+                      children: []
+                    },
+                    {
+                      name: 'MediaVideoEdit',
+                      path: 'edit',
+                      alias: undefined,
+                      redirect: undefined,
+                      component: '/media/video/edit',
+                      meta: {
+                        title: '修改视频',
+                        menuShow: true,
+                        menuIcon: '',
+                        routePermission: true,
+                        buttonPermission: []
+                      },
+                      children: []
+                    }
+                  ]
                 }
               ]
             }

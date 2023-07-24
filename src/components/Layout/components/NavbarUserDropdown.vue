@@ -1,5 +1,5 @@
 <template>
-  <el-dropdown trigger="click" class="navbar-user-dropdown">
+  <el-dropdown class="navbar-user-dropdown">
     <div>
       <el-avatar
         shape="square"

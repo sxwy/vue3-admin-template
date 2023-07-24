@@ -1,13 +1,15 @@
 <template>
   <!-- 一级 menu 菜单 -->
   <el-menu
-    default-active=""
-    :collapse="true"
+    mode="vertical"
+    default-active="/main"
     background-color=""
     text-color=""
     active-text-color=""
+    :router="true"
+    :collapse="true"
     :unique-opened="true"
-    router
+    class="sidebar-menu"
   >
     <SidebarSubMenu v-for="item in routes" :key="item.path" :route="item" />
   </el-menu>
@@ -15,24 +17,26 @@
 
 <script lang="ts" setup>
   import { computed } from 'vue'
+  import { useRouter } from 'vue-router'
   import SidebarSubMenu from './SidebarSubMenu.vue'
-  import { useRouter, useRoute } from 'vue-router'
+  import { filterRouters, generateMenus } from '../utils'
 
-  // 计算路由表结构
   const router = useRouter()
+
   const routes = computed(() => {
-    return [] as any
+    const filterRoutes = filterRouters(router.getRoutes())
+    return generateMenus(filterRoutes)
   })
 
-  // 计算高亮 menu 的方法
-  const route = useRoute()
-  const activeMenu = computed(() => {
-    const { meta, path } = route
-    if (meta.activeMenu) {
-      return meta.activeMenu
-    }
-    return path
-  })
+  console.log(
+    '%c routes==========>',
+    'color: #4FC08D; font-weight: bold',
+    routes.value
+  )
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+  .sidebar-menu {
+    width: 100%;
+  }
+</style>
