@@ -14,16 +14,16 @@ export interface Session {
 
 /** 路由元信息 */
 export interface Meta {
-  /** 菜单是否有权限 */
-  menuAuth: boolean
+  /** 标题 */
+  title: string
   /** 菜单是否展示 */
   menuShow: boolean
-  /** 菜单标题 */
-  menuTitle: string
   /** 菜单图标 */
   menuIcon: string
+  /** 当前路由是否有权限 */
+  routePermission: boolean
   /** 当前路由中的按钮权限 */
-  buttonAuth: string[]
+  buttonPermission: string[]
 }
 
 /** 路由 */

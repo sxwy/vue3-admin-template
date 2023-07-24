@@ -56,11 +56,11 @@ module.exports = {
               redirect: '/system/role/index',
               component: 'Layout',
               meta: {
-                menuAuth: true,
+                title: '权限管理',
                 menuShow: true,
-                menuTitle: '权限管理',
                 menuIcon: '',
-                buttonAuth: []
+                routePermission: true,
+                buttonPermission: []
               },
               children: [
                 {
@@ -70,11 +70,11 @@ module.exports = {
                   redirect: '/system/role/index',
                   component: undefined,
                   meta: {
-                    menuAuth: true,
+                    title: '角色管理',
                     menuShow: false,
-                    menuTitle: '角色管理',
                     menuIcon: '',
-                    buttonAuth: []
+                    routePermission: true,
+                    buttonPermission: []
                   },
                   children: [
                     {
@@ -84,11 +84,11 @@ module.exports = {
                       redirect: undefined,
                       component: '/system/role/index',
                       meta: {
-                        menuAuth: true,
+                        title: '角色管理',
                         menuShow: true,
-                        menuTitle: '角色管理',
                         menuIcon: '',
-                        buttonAuth: ['add', 'edit', 'delete']
+                        routePermission: true,
+                        buttonPermission: ['add', 'edit', 'delete']
                       },
                       children: []
                     },
@@ -99,11 +99,11 @@ module.exports = {
                       redirect: undefined,
                       component: '/system/role/add',
                       meta: {
-                        menuAuth: true,
+                        title: '添加角色',
                         menuShow: true,
-                        menuTitle: '添加角色',
                         menuIcon: '',
-                        buttonAuth: []
+                        routePermission: true,
+                        buttonPermission: []
                       },
                       children: []
                     },
@@ -114,11 +114,11 @@ module.exports = {
                       redirect: undefined,
                       component: '/system/role/edit',
                       meta: {
-                        menuAuth: true,
+                        title: '修改角色',
                         menuShow: true,
-                        menuTitle: '修改角色',
                         menuIcon: '',
-                        buttonAuth: []
+                        routePermission: true,
+                        buttonPermission: []
                       },
                       children: []
                     }
@@ -131,11 +131,11 @@ module.exports = {
                   redirect: '/system/user/index',
                   component: undefined,
                   meta: {
-                    menuAuth: true,
+                    title: '用户管理',
                     menuShow: false,
-                    menuTitle: '用户管理',
                     menuIcon: '',
-                    buttonAuth: []
+                    routePermission: true,
+                    buttonPermission: []
                   },
                   children: [
                     {
@@ -145,11 +145,11 @@ module.exports = {
                       redirect: undefined,
                       component: '/system/user/index',
                       meta: {
-                        menuAuth: true,
+                        title: '用户管理',
                         menuShow: true,
-                        menuTitle: '用户管理',
                         menuIcon: '',
-                        buttonAuth: ['add', 'edit', 'delete']
+                        routePermission: true,
+                        buttonPermission: ['add', 'edit', 'delete']
                       },
                       children: []
                     },
@@ -160,11 +160,11 @@ module.exports = {
                       redirect: undefined,
                       component: '/system/user/add',
                       meta: {
-                        menuAuth: true,
+                        title: '添加用户',
                         menuShow: true,
-                        menuTitle: '添加用户',
                         menuIcon: '',
-                        buttonAuth: []
+                        routePermission: true,
+                        buttonPermission: []
                       },
                       children: []
                     },
@@ -175,11 +175,11 @@ module.exports = {
                       redirect: undefined,
                       component: '/system/user/edit',
                       meta: {
-                        menuAuth: true,
+                        title: '修改用户',
                         menuShow: true,
-                        menuTitle: '修改用户',
                         menuIcon: '',
-                        buttonAuth: []
+                        routePermission: true,
+                        buttonPermission: []
                       },
                       children: []
                     }
@@ -194,11 +194,11 @@ module.exports = {
               redirect: '/media/audio/index',
               component: 'Layout',
               meta: {
-                menuAuth: true,
+                title: '媒体管理',
                 menuShow: true,
-                menuTitle: '媒体管理',
                 menuIcon: '',
-                buttonAuth: []
+                routePermission: true,
+                buttonPermission: []
               },
               children: [
                 {
@@ -208,11 +208,11 @@ module.exports = {
                   redirect: undefined,
                   component: '/media/audio/index',
                   meta: {
-                    menuAuth: true,
+                    title: '音频管理',
                     menuShow: true,
-                    menuTitle: '音频管理',
                     menuIcon: '',
-                    buttonAuth: ['add', 'edit', 'delete']
+                    routePermission: true,
+                    buttonPermission: ['add', 'edit', 'delete']
                   },
                   children: []
                 },
@@ -223,11 +223,11 @@ module.exports = {
                   redirect: undefined,
                   component: '/media/audio/add',
                   meta: {
-                    menuAuth: true,
+                    title: '添加音频',
                     menuShow: true,
-                    menuTitle: '添加音频',
                     menuIcon: '',
-                    buttonAuth: []
+                    routePermission: true,
+                    buttonPermission: []
                   },
                   children: []
                 },
@@ -238,11 +238,11 @@ module.exports = {
                   redirect: undefined,
                   component: '/media/audio/edit',
                   meta: {
-                    menuAuth: true,
+                    title: '修改音频',
                     menuShow: true,
-                    menuTitle: '修改音频',
                     menuIcon: '',
-                    buttonAuth: []
+                    routePermission: true,
+                    buttonPermission: []
                   },
                   children: []
                 },
@@ -253,11 +253,11 @@ module.exports = {
                   redirect: undefined,
                   component: '/media/video/index',
                   meta: {
-                    menuAuth: true,
+                    title: '视频管理',
                     menuShow: true,
-                    menuTitle: '视频管理',
                     menuIcon: '',
-                    buttonAuth: ['add', 'edit', 'delete']
+                    routePermission: true,
+                    buttonPermission: ['add', 'edit', 'delete']
                   },
                   children: []
                 },
@@ -268,11 +268,11 @@ module.exports = {
                   redirect: undefined,
                   component: '/media/video/add',
                   meta: {
-                    menuAuth: true,
+                    title: '添加视频',
                     menuShow: true,
-                    menuTitle: '添加视频',
                     menuIcon: '',
-                    buttonAuth: []
+                    routePermission: true,
+                    buttonPermission: []
                   },
                   children: []
                 },
@@ -283,11 +283,11 @@ module.exports = {
                   redirect: undefined,
                   component: '/media/video/edit',
                   meta: {
-                    menuAuth: true,
+                    title: '修改视频',
                     menuShow: true,
-                    menuTitle: '修改视频',
                     menuIcon: '',
-                    buttonAuth: []
+                    routePermission: true,
+                    buttonPermission: []
                   },
                   children: []
                 }

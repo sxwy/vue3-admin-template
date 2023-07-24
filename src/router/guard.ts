@@ -25,7 +25,7 @@ const whiteList = ['/login']
 
 export default (router: Router) => {
   router.beforeEach(async (to, from, next) => {
-    document.title = to.meta.menuTitle || APP_NAME
+    document.title = to.meta.title || APP_NAME
     const user = useUserStore()
     if (user.session) {
       if (to.path === '/login') {

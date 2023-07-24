@@ -7,11 +7,11 @@ export default [
     name: 'Login',
     path: '/login',
     meta: {
-      menuAuth: true,
+      title: '登录',
       menuShow: false,
-      menuTitle: '登录',
       menuIcon: '',
-      buttonAuth: []
+      routePermission: true,
+      buttonPermission: []
     },
     component: () => import('@/pages/basics/login/index.vue')
   },
@@ -25,22 +25,22 @@ export default [
         path: '/main',
         component: () => import('@/pages/basics/main/index.vue'),
         meta: {
-          menuAuth: true,
+          title: '首页',
           menuShow: true,
-          menuTitle: '首页',
           menuIcon: '',
-          buttonAuth: []
+          routePermission: true,
+          buttonPermission: []
         }
       },
       {
         name: '404',
         path: '/404',
         meta: {
-          menuAuth: true,
+          title: '404',
           menuShow: false,
-          menuTitle: '404',
           menuIcon: '',
-          buttonAuth: []
+          routePermission: true,
+          buttonPermission: []
         },
         component: () => import('@/pages/basics/404/index.vue')
       },
@@ -48,11 +48,11 @@ export default [
         name: '403',
         path: '/403',
         meta: {
-          menuAuth: true,
+          title: '403',
           menuShow: false,
-          menuTitle: '403',
           menuIcon: '',
-          buttonAuth: []
+          routePermission: true,
+          buttonPermission: []
         },
         component: () => import('@/pages/basics/403/index.vue')
       }
