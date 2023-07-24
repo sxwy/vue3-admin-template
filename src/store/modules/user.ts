@@ -59,7 +59,7 @@ export const useUserStore = defineStore('user', {
       })
       router.addRoute({
         path: '/:catchAll(.*)',
-        redirect: '/not-found'
+        redirect: '/404'
       })
       this.current = result
     },

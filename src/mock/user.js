@@ -64,94 +64,126 @@ module.exports = {
               },
               children: [
                 {
-                  name: 'RoleIndex',
-                  path: 'role/index',
+                  name: 'SystemRole',
+                  path: 'role',
                   alias: undefined,
-                  redirect: undefined,
-                  component: '/system/role/index',
+                  redirect: '/system/role/index',
+                  component: undefined,
                   meta: {
                     menuAuth: true,
-                    menuShow: true,
+                    menuShow: false,
                     menuTitle: '角色管理',
                     menuIcon: '',
-                    buttonAuth: ['add', 'edit', 'delete']
-                  },
-                  children: []
-                },
-                {
-                  name: 'RoleAdd',
-                  path: 'role/add',
-                  alias: undefined,
-                  redirect: undefined,
-                  component: '/system/role/add',
-                  meta: {
-                    menuAuth: true,
-                    menuShow: true,
-                    menuTitle: '添加角色',
-                    menuIcon: '',
                     buttonAuth: []
                   },
-                  children: []
+                  children: [
+                    {
+                      name: 'SystemRoleIndex',
+                      path: 'index',
+                      alias: undefined,
+                      redirect: undefined,
+                      component: '/system/role/index',
+                      meta: {
+                        menuAuth: true,
+                        menuShow: true,
+                        menuTitle: '角色管理',
+                        menuIcon: '',
+                        buttonAuth: ['add', 'edit', 'delete']
+                      },
+                      children: []
+                    },
+                    {
+                      name: 'SystemRoleAdd',
+                      path: 'add',
+                      alias: undefined,
+                      redirect: undefined,
+                      component: '/system/role/add',
+                      meta: {
+                        menuAuth: true,
+                        menuShow: true,
+                        menuTitle: '添加角色',
+                        menuIcon: '',
+                        buttonAuth: []
+                      },
+                      children: []
+                    },
+                    {
+                      name: 'SystemRoleEdit',
+                      path: 'edit',
+                      alias: undefined,
+                      redirect: undefined,
+                      component: '/system/role/edit',
+                      meta: {
+                        menuAuth: true,
+                        menuShow: true,
+                        menuTitle: '修改角色',
+                        menuIcon: '',
+                        buttonAuth: []
+                      },
+                      children: []
+                    }
+                  ]
                 },
                 {
-                  name: 'RoleEdit',
-                  path: 'role/edit',
+                  name: 'SystemUser',
+                  path: 'user',
                   alias: undefined,
-                  redirect: undefined,
-                  component: '/system/role/edit',
+                  redirect: '/system/user/index',
+                  component: undefined,
                   meta: {
                     menuAuth: true,
-                    menuShow: true,
-                    menuTitle: '修改角色',
-                    menuIcon: '',
-                    buttonAuth: []
-                  },
-                  children: []
-                },
-                {
-                  name: 'UserIndex',
-                  path: 'user/index',
-                  alias: undefined,
-                  redirect: undefined,
-                  component: '/system/user/index',
-                  meta: {
-                    menuAuth: true,
-                    menuShow: true,
+                    menuShow: false,
                     menuTitle: '用户管理',
                     menuIcon: '',
-                    buttonAuth: ['add', 'edit', 'delete']
-                  },
-                  children: []
-                },
-                {
-                  name: 'UserAdd',
-                  path: 'user/add',
-                  alias: undefined,
-                  redirect: undefined,
-                  component: '/system/user/add',
-                  meta: {
-                    menuAuth: true,
-                    menuShow: true,
-                    menuTitle: '添加用户',
-                    menuIcon: '',
                     buttonAuth: []
                   },
-                  children: []
-                },
-                {
-                  name: 'UserEdit',
-                  path: 'user/edit',
-                  alias: undefined,
-                  redirect: undefined,
-                  component: '/system/user/edit',
-                  meta: {
-                    menuAuth: true,
-                    menuShow: true,
-                    menuTitle: '修改用户',
-                    menuIcon: '',
-                    buttonAuth: []
-                  },
-                  children: []
+                  children: [
+                    {
+                      name: 'SystemUserIndex',
+                      path: 'index',
+                      alias: undefined,
+                      redirect: undefined,
+                      component: '/system/user/index',
+                      meta: {
+                        menuAuth: true,
+                        menuShow: true,
+                        menuTitle: '用户管理',
+                        menuIcon: '',
+                        buttonAuth: ['add', 'edit', 'delete']
+                      },
+                      children: []
+                    },
+                    {
+                      name: 'SystemUserAdd',
+                      path: 'add',
+                      alias: undefined,
+                      redirect: undefined,
+                      component: '/system/user/add',
+                      meta: {
+                        menuAuth: true,
+                        menuShow: true,
+                        menuTitle: '添加用户',
+                        menuIcon: '',
+                        buttonAuth: []
+                      },
+                      children: []
+                    },
+                    {
+                      name: 'SystemUserEdit',
+                      path: 'edit',
+                      alias: undefined,
+                      redirect: undefined,
+                      component: '/system/user/edit',
+                      meta: {
+                        menuAuth: true,
+                        menuShow: true,
+                        menuTitle: '修改用户',
+                        menuIcon: '',
+                        buttonAuth: []
+                      },
+                      children: []
+                    }
+                  ]
                 }
               ]
             },
@@ -170,7 +202,7 @@ module.exports = {
               },
               children: [
                 {
-                  name: 'AudioIndex',
+                  name: 'MediaAudioIndex',
                   path: 'audio/index',
                   alias: undefined,
                   redirect: undefined,
@@ -185,7 +217,7 @@ module.exports = {
                   children: []
                 },
                 {
-                  name: 'AudioAdd',
+                  name: 'MediaAudioAdd',
                   path: 'audio/add',
                   alias: undefined,
                   redirect: undefined,
@@ -200,7 +232,7 @@ module.exports = {
                   children: []
                 },
                 {
-                  name: 'AudioEdit',
+                  name: 'MediaAudioEdit',
                   path: 'audio/edit',
                   alias: undefined,
                   redirect: undefined,
@@ -215,7 +247,7 @@ module.exports = {
                   children: []
                 },
                 {
-                  name: 'VideoIndex',
+                  name: 'MediaVideoIndex',
                   path: 'video/index',
                   alias: undefined,
                   redirect: undefined,
@@ -230,7 +262,7 @@ module.exports = {
                   children: []
                 },
                 {
-                  name: 'VideoAdd',
+                  name: 'MediaVideoAdd',
                   path: 'video/add',
                   alias: undefined,
                   redirect: undefined,
@@ -245,7 +277,7 @@ module.exports = {
                   children: []
                 },
                 {
-                  name: 'VideoEdit',
+                  name: 'MediaVideoEdit',
                   path: 'video/edit',
                   alias: undefined,
                   redirect: undefined,

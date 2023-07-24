@@ -9,11 +9,11 @@ export default [
     meta: {
       menuAuth: true,
       menuShow: false,
-      menuTitle: '登录首页',
+      menuTitle: '登录',
       menuIcon: '',
       buttonAuth: []
     },
-    component: () => import('@/pages/login/index.vue')
+    component: () => import('@/pages/basics/login/index.vue')
   },
   {
     path: '/',
@@ -23,7 +23,7 @@ export default [
       {
         name: 'Main',
         path: '/main',
-        component: () => import('@/pages/main/index.vue'),
+        component: () => import('@/pages/basics/main/index.vue'),
         meta: {
           menuAuth: true,
           menuShow: true,
@@ -33,28 +33,28 @@ export default [
         }
       },
       {
-        name: 'NotFound',
-        path: '/not-found',
+        name: '404',
+        path: '/404',
         meta: {
           menuAuth: true,
           menuShow: false,
-          menuTitle: '缺省页',
+          menuTitle: '404',
           menuIcon: '',
           buttonAuth: []
         },
-        component: () => import('@/pages/not-found/index.vue')
+        component: () => import('@/pages/basics/404/index.vue')
       },
       {
-        name: 'Forbidden',
-        path: '/forbidden',
+        name: '403',
+        path: '/403',
         meta: {
           menuAuth: true,
           menuShow: false,
-          menuTitle: '无权限',
+          menuTitle: '403',
           menuIcon: '',
           buttonAuth: []
         },
-        component: () => import('@/pages/forbidden/index.vue')
+        component: () => import('@/pages/basics/403/index.vue')
       }
     ]
   }
