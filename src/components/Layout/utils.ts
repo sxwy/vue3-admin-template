@@ -29,20 +29,17 @@ export const generateMenus = (routes: any[], basePath = '') => {
   routes.forEach((item) => {
     const routePath = path.resolve(basePath, item.path)
 
-    console.log(
-      '%c routePath==========>',
-      'color: #4FC08D; font-weight: bold',
-      routePath
-    )
-
     let route = result.find((item) => item.path === routePath)
+
     if (!route) {
       route = {
         ...item,
         path: routePath,
         children: []
       }
-      result.push(route)
+      if (route.meta.routePermission && route.meta.menuShow) {
+        result.push(route)
+      }
     }
 
     if (item.children) {

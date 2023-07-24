@@ -18,7 +18,6 @@
 </template>
 
 <script lang="ts" setup>
-  import { watchEffect } from 'vue'
   import SidebarMenuItem from './SidebarMenuItem.vue'
 
   interface Props {
@@ -28,14 +27,6 @@
 
   const props = withDefaults(defineProps<Props>(), {
     route: {}
-  })
-
-  watchEffect(() => {
-    console.log(
-      '%c props==========>',
-      'color: #4FC08D; font-weight: bold',
-      props
-    )
   })
 </script>
 

@@ -1,13 +1,12 @@
 <template>
   <!-- 一级 menu 菜单 -->
   <el-menu
-    mode="vertical"
     default-active="/main"
     background-color=""
     text-color=""
     active-text-color=""
     :router="true"
-    :collapse="true"
+    :collapse="false"
     :unique-opened="true"
     class="sidebar-menu"
   >
@@ -27,6 +26,12 @@
     const filterRoutes = filterRouters(router.getRoutes())
     return generateMenus(filterRoutes)
   })
+
+  console.log(
+    '%c routes==========>',
+    'color: #4FC08D; font-weight: bold',
+    router.getRoutes()
+  )
 
   console.log(
     '%c routes==========>',
