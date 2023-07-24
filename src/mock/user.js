@@ -87,7 +87,7 @@ module.exports = {
                         title: '角色管理',
                         menuShow: true,
                         menuIcon: '',
-                        routePermission: false,
+                        routePermission: true,
                         buttonPermission: ['add', 'edit', 'delete']
                       },
                       children: []

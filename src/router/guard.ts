@@ -15,9 +15,9 @@ export default (router: Router) => {
       } else {
         if (user.current) {
           const routes = router.getRoutes()
-          const findResult = routes.find((item) => item.path === to.path)
-          if (findResult) {
-            if (to.meta.routePermission) {
+          const route = routes.find((item) => item.path === to.path)
+          if (route) {
+            if (route.meta.routePermission) {
               next()
             } else {
               next('/403')
@@ -29,9 +29,9 @@ export default (router: Router) => {
           try {
             await user.userInit()
             const routes = router.getRoutes()
-            const findResult = routes.find((item) => item.path === to.path)
-            if (findResult) {
-              if (to.meta.routePermission) {
+            const route = routes.find((item) => item.path === to.path)
+            if (route) {
+              if (route.meta.routePermission) {
                 next({ ...to, replace: true })
               } else {
                 next('/403')
