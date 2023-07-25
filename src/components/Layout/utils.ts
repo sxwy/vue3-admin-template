@@ -6,7 +6,33 @@ const getPathPrefix = (path: string) => {
   return path.substring(0, lastIndex)
 }
 
+const getName = (routes: any[], name: string): boolean => {
+  return routes.some((item) => {
+    if (item.name === name) {
+      return true
+    } else {
+      if (item.children?.length) {
+        return getName(item.children, name)
+      } else {
+        return false
+      }
+    }
+  })
+}
+
+const getChildrenRoutes = (routes: any[]) => {
+  const arr = JSON.parse(JSON.stringify(routes))
+  return routes.filter((item, index) => {
+    const list = arr.slice(index + 1, routes.length)
+    return !getName(list, item.name)
+  })
+}
+
 export const filterRouters = (routes: RouteRecordNormalized[]) => {
+  const arr = getChildrenRoutes(routes)
+
+  console.log('%c arr==========>', 'color: #4FC08D; font-weight: bold', arr)
+
   return routes.filter((filterItem) => {
     const prefix = getPathPrefix(filterItem.path)
     return !routes.filter((someItem) => someItem.path === prefix).length

@@ -22,7 +22,7 @@ export default [
     children: [
       {
         name: 'Main',
-        path: '/main',
+        path: 'main',
         component: () => import('@/pages/basics/main/index.vue'),
         meta: {
           title: '首页',
@@ -34,7 +34,7 @@ export default [
       },
       {
         name: '404',
-        path: '/404',
+        path: '404',
         meta: {
           title: '404',
           menuShow: false,
@@ -46,7 +46,7 @@ export default [
       },
       {
         name: '403',
-        path: '/403',
+        path: '403',
         meta: {
           title: '403',
           menuShow: false,
