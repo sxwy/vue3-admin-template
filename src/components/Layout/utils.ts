@@ -7,19 +7,9 @@ const getPathPrefix = (path: string) => {
 }
 
 export const filterRouters = (routes: RouteRecordNormalized[]) => {
-  const filterList = routes.filter((filterItem) => {
+  return routes.filter((filterItem) => {
     const prefix = getPathPrefix(filterItem.path)
     return !routes.filter((someItem) => someItem.path === prefix).length
-  })
-
-  const arr = ['/login', '/404', '/403', '/']
-
-  return filterList.filter((item) => {
-    if (arr.includes(item.path)) {
-      return false
-    } else {
-      return true
-    }
   })
 }
 
