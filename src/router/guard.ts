@@ -14,31 +14,11 @@ export default (router: Router) => {
         next('/')
       } else {
         if (user.current) {
-          const routes = router.getRoutes()
-          const route = routes.find((item) => item.path === to.path)
-          if (route) {
-            if (route.meta.routePermission) {
-              next()
-            } else {
-              next('/403')
-            }
-          } else {
-            next('/404')
-          }
+          next()
         } else {
           try {
             await user.userInit()
-            const routes = router.getRoutes()
-            const route = routes.find((item) => item.path === to.path)
-            if (route) {
-              if (route.meta.routePermission) {
-                next({ ...to, replace: true })
-              } else {
-                next('/403')
-              }
-            } else {
-              next('/404')
-            }
+            next({ ...to, replace: true })
           } catch (error: any) {
             ElMessage({
               type: 'error',

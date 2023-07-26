@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import type { RouteRecordRaw, RouteComponent } from 'vue-router'
-import router from '@/router'
+import router, { catchAllRoute } from '@/router'
 import { login, getUserInfo, refreshToken } from '@/services'
 import type { LoginQuery, Session, User, Route } from '@/types'
 import { resolveComponent } from '@/utils'
@@ -57,6 +57,7 @@ export const useUserStore = defineStore('user', {
       result.routes.forEach((item) => {
         router.addRoute(item as unknown as RouteRecordRaw)
       })
+      router.addRoute(catchAllRoute)
       this.current = result
     },
     /** 退出登录 */

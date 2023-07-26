@@ -1,5 +1,5 @@
 <template>
-  <div> 403 </div>
+  <div> workbench/index </div>
 </template>
 
 <script lang="ts" setup></script>

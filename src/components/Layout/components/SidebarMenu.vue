@@ -28,13 +28,13 @@
   })
 
   console.log(
-    '%c routes==========>',
+    '%c getRoutes==========>',
     'color: #4FC08D; font-weight: bold',
     router.getRoutes()
   )
 
   console.log(
-    '%c routes==========>',
+    '%c generateMenus==========>',
     'color: #4FC08D; font-weight: bold',
     routes.value
   )

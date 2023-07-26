@@ -1,48 +1,60 @@
 import path from 'path-browserify'
-import { type RouteRecordNormalized } from 'vue-router'
+import type { RouteRecordNormalized, RouteRecordRaw } from 'vue-router'
 
-const getPathPrefix = (path: string) => {
-  const lastIndex = path.lastIndexOf('/')
-  return path.substring(0, lastIndex)
-}
-
-const getName = (routes: any[], name: string): boolean => {
+/** 查询是否有相同的路由名称 */
+const findRouteName = (
+  routes: RouteRecordRaw[] | RouteRecordNormalized[],
+  routeName: string
+): boolean => {
   return routes.some((item) => {
-    if (item.name === name) {
-      return true
-    } else {
-      if (item.children?.length) {
-        return getName(item.children, name)
+    if (routeName) {
+      if (item.name === routeName) {
+        return true
       } else {
-        return false
+        if (item.children?.length) {
+          return findRouteName(item.children, routeName)
+        } else {
+          return false
+        }
       }
+    } else {
+      return false
     }
   })
 }
 
-const getChildrenRoutes = (routes: any[]) => {
-  const arr = JSON.parse(JSON.stringify(routes))
-  return routes.filter((item, index) => {
-    const list = arr.slice(index + 1, routes.length)
-    return !getName(list, item.name)
-  })
-}
-
+/** 过滤路由表 */
 export const filterRouters = (routes: RouteRecordNormalized[]) => {
-  const arr = getChildrenRoutes(routes)
-
-  console.log('%c arr==========>', 'color: #4FC08D; font-weight: bold', arr)
-
-  return routes.filter((filterItem) => {
-    const prefix = getPathPrefix(filterItem.path)
-    return !routes.filter((someItem) => someItem.path === prefix).length
+  const result = routes.filter((item, index) => {
+    const residueRoutes = routes.slice(index + 1)
+    return !findRouteName(residueRoutes, item.name as string)
   })
+  console.log(
+    '%c result==========>',
+    'color: #4FC08D; font-weight: bold',
+    result
+  )
+  return result
 }
 
-export const generateMenus = (routes: any[], basePath = '') => {
+/** 生成路由表 */
+export const generateMenus = (
+  routes: RouteRecordRaw[] | RouteRecordNormalized[],
+  basePath = ''
+) => {
   const result: any[] = []
 
   routes.forEach((item) => {
+    // if (item.path === '/' && item.children?.length) {
+    //   console.log(
+    //     '%c item==========>',
+    //     'color: #4FC08D; font-weight: bold',
+    //     item
+    //   )
+    //   result.push(...generateMenus(item.children, item.path))
+    //   return
+    // }
+
     const routePath = path.resolve(basePath, item.path)
 
     let route = result.find((item) => item.path === routePath)
@@ -58,7 +70,7 @@ export const generateMenus = (routes: any[], basePath = '') => {
       }
     }
 
-    if (item.children) {
+    if (item.children?.length) {
       route.children.push(...generateMenus(item.children, route.path))
     }
   })
