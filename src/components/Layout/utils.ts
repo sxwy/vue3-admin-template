@@ -1,40 +1,39 @@
 import path from 'path-browserify'
-import type { RouteRecordNormalized, RouteRecordRaw } from 'vue-router'
+import type {
+  RouteRecordNormalized,
+  RouteRecordRaw,
+  RouteRecordName
+} from 'vue-router'
 
-/** 查询是否有相同的路由名称 */
+/** 递归查询是否有相同的路由名称 */
 const findRouteName = (
   routes: RouteRecordRaw[] | RouteRecordNormalized[],
-  routeName: string
+  routeName: RouteRecordName
 ): boolean => {
   return routes.some((item) => {
-    if (routeName) {
-      if (item.name === routeName) {
-        return true
-      } else {
-        if (item.children?.length) {
-          return findRouteName(item.children, routeName)
-        } else {
-          return false
-        }
-      }
+    if (item.name === routeName) {
+      return true
     } else {
-      return false
+      if (item.children?.length) {
+        return findRouteName(item.children, routeName)
+      } else {
+        return false
+      }
     }
   })
 }
 
 /** 过滤路由表 */
 export const filterRouters = (routes: RouteRecordNormalized[]) => {
-  const result = routes.filter((item, index) => {
+  return routes.filter((item, index) => {
+    // 1、过滤没有 name 字段的路由（基础路由或异常路由）
+    if (!item.name) {
+      return false
+    }
+    // 2、过滤脱离层级的路由
     const residueRoutes = routes.slice(index + 1)
-    return !findRouteName(residueRoutes, item.name as string)
+    return !findRouteName(residueRoutes, item.name)
   })
-  console.log(
-    '%c result==========>',
-    'color: #4FC08D; font-weight: bold',
-    result
-  )
-  return result
 }
 
 /** 生成路由表 */
@@ -42,38 +41,23 @@ export const generateMenus = (
   routes: RouteRecordRaw[] | RouteRecordNormalized[],
   basePath = ''
 ) => {
-  const result: any[] = []
-
+  const result: RouteRecordNormalized[] = []
   routes.forEach((item) => {
-    // if (item.path === '/' && item.children?.length) {
-    //   console.log(
-    //     '%c item==========>',
-    //     'color: #4FC08D; font-weight: bold',
-    //     item
-    //   )
-    //   result.push(...generateMenus(item.children, item.path))
-    //   return
-    // }
-
+    // 合并层级 path
     const routePath = path.resolve(basePath, item.path)
-
-    let route = result.find((item) => item.path === routePath)
-
-    if (!route) {
-      route = {
-        ...item,
-        path: routePath,
-        children: []
-      }
-      if (route.meta.routePermission && route.meta.menuShow) {
-        result.push(route)
-      }
+    const route: RouteRecordRaw | RouteRecordNormalized = {
+      ...item,
+      path: routePath,
+      children: []
     }
-
+    // 判断是否在菜单展示
+    if (route.meta?.menuShow) {
+      result.push(route as RouteRecordNormalized)
+    }
+    // 递归处理子集
     if (item.children?.length) {
-      route.children.push(...generateMenus(item.children, route.path))
+      route.children!.push(...generateMenus(item.children, route.path))
     }
   })
-
   return result
 }

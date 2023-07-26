@@ -1,7 +1,7 @@
 import type { RouteRecordRaw } from 'vue-router'
 import Layout from '@/components/Layout/index.vue'
 
-/** 基础相关路由 */
+/** 异常相关路由 */
 export default {
   name: 'Exception',
   path: '/exception',

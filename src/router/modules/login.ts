@@ -2,7 +2,7 @@ import type { RouteRecordRaw } from 'vue-router'
 
 /** 登录相关路由 */
 export default {
-  name: 'Login',
+  name: 'LoginIndex',
   path: '/login/index',
   meta: {
     title: '登录',

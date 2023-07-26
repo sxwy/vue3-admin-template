@@ -24,6 +24,11 @@
 
   const routes = computed(() => {
     const filterRoutes = filterRouters(router.getRoutes())
+    console.log(
+      '%c filterRoutes==========>',
+      'color: #4FC08D; font-weight: bold',
+      filterRoutes
+    )
     return generateMenus(filterRoutes)
   })
 
