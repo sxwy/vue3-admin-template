@@ -16,7 +16,7 @@ export default {
   },
   children: [
     {
-      name: 'ExceptionNotFound',
+      name: 'ExceptionNotFoundIndex',
       path: 'not-found/index',
       component: () => import('@/pages/exception/not-found/index.vue'),
       meta: {

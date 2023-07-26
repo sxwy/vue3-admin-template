@@ -1,14 +1,14 @@
 import type { RouteRecordRaw } from 'vue-router'
 import Layout from '@/components/Layout/index.vue'
 
-/** 控制面板相关路由 */
+/** 仪表盘相关路由 */
 export default {
   name: 'Dashboard',
   path: '/dashboard',
   redirect: '/dashboard/console/index',
   component: Layout,
   meta: {
-    title: '控制面板',
+    title: '仪表盘',
     menuShow: true,
     menuIcon: '',
     routePermission: true,
@@ -16,7 +16,7 @@ export default {
   },
   children: [
     {
-      name: 'DashboardConsole',
+      name: 'DashboardConsoleIndex',
       path: 'console/index',
       component: () => import('@/pages/dashboard/console/index.vue'),
       meta: {
@@ -28,7 +28,7 @@ export default {
       }
     },
     {
-      name: 'DashboardWorkbench',
+      name: 'DashboardWorkbenchIndex',
       path: 'workbench/index',
       component: () => import('@/pages/dashboard/workbench/index.vue'),
       meta: {
