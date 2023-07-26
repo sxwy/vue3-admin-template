@@ -3,14 +3,14 @@ import { ElMessage } from 'element-plus'
 import { useUserStore } from '@/store'
 import { APP_NAME } from '@/constants'
 
-const whiteList = ['/login']
+const whiteList = ['/login/index']
 
 export default (router: Router) => {
   router.beforeEach(async (to, from, next) => {
     document.title = to.meta.title || APP_NAME
     const user = useUserStore()
     if (user.session) {
-      if (to.path === '/login') {
+      if (to.path === '/login/index') {
         next('/')
       } else {
         if (user.current) {
@@ -24,7 +24,7 @@ export default (router: Router) => {
               type: 'error',
               message: error.message || '获取用户信息失败，请重新登录'
             })
-            next('/login')
+            next('/login/index')
           }
         }
       }
@@ -32,7 +32,7 @@ export default (router: Router) => {
       if (whiteList.includes(to.path)) {
         next()
       } else {
-        next('/login')
+        next('/login/index')
       }
     }
   })

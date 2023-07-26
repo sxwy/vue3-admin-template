@@ -41,7 +41,7 @@
     })
       .then(() => {
         user.logout()
-        router.push('/login')
+        router.push('/login/index')
       })
       .catch(() => {
         console.log(

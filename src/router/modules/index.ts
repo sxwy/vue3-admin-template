@@ -1,3 +1,5 @@
 export * from './basics'
 export { default as basicsRoutes } from './basics'
+export { default as exceptionRoutes } from './exception'
+export { default as loginRoutes } from './login'
 export { default as dashboardRoutes } from './dashboard'
