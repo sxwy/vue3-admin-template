@@ -1,5 +1,6 @@
 <template>
   <div class="navbar">
+    <button @click="handleClick">按钮</button>
     <div class="right">
       <NavbarUserDropdown />
     </div>
@@ -8,6 +9,13 @@
 
 <script lang="ts" setup>
   import NavbarUserDropdown from './NavbarUserDropdown.vue'
+  import { useAppStore } from '@/store'
+
+  const app = useAppStore()
+
+  const handleClick = () => {
+    app.toggleSidebarCollapse()
+  }
 </script>
 
 <style lang="scss" scoped>

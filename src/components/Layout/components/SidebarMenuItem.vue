@@ -1,10 +1,8 @@
 <template>
-  <div class="sidebarMenuItem">
-    <el-icon v-if="currentElIcon">
-      <component :is="currentElIcon"></component>
-    </el-icon>
-    <div>{{ title }}</div>
-  </div>
+  <el-icon v-if="currentElIcon">
+    <component :is="currentElIcon"></component>
+  </el-icon>
+  <span>{{ title }}</span>
 </template>
 
 <script lang="ts" setup>
@@ -39,10 +37,4 @@
   })
 </script>
 
-<style lang="scss" scoped>
-  .sidebarMenuItem {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-</style>
+<style lang="scss" scoped></style>
