@@ -1,5 +1,5 @@
 <template>
-  <div class="app-main">
+  <div class="appMain">
     <router-view v-slot="{ Component, route }">
       <component :is="Component" :key="route.path" />
     </router-view>
@@ -9,7 +9,7 @@
 <script lang="ts" setup></script>
 
 <style lang="scss" scoped>
-  .app-main {
+  .appMain {
     box-sizing: border-box;
     height: 100%;
     padding: 104px 20px 20px;

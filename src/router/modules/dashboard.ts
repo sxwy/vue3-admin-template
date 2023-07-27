@@ -10,7 +10,7 @@ export default {
   meta: {
     title: '仪表盘',
     menuShow: true,
-    menuIcon: '',
+    menuIcon: 'Odometer',
     buttons: []
   },
   children: [
@@ -21,7 +21,7 @@ export default {
       meta: {
         title: '控制台',
         menuShow: true,
-        menuIcon: '',
+        menuIcon: 'Cpu',
         buttons: []
       }
     },
@@ -32,7 +32,7 @@ export default {
       meta: {
         title: '工作台',
         menuShow: true,
-        menuIcon: '',
+        menuIcon: 'Mouse',
         buttons: []
       }
     }

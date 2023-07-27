@@ -1,10 +1,6 @@
 <template>
-  <div
-    v-if="isExternal"
-    class="svg-icon svg-icon__external"
-    :style="externalStyle"
-  />
-  <svg v-else class="svg-icon" aria-hidden="true">
+  <div v-if="isExternal" class="svgIcon external" :style="externalStyle" />
+  <svg v-else class="svgIcon" aria-hidden="true">
     <use :xlink:href="iconName" :fill="color" />
   </svg>
 </template>
@@ -45,12 +41,12 @@
 </script>
 
 <style lang="scss" scoped>
-  .svg-icon {
+  .svgIcon {
     width: 1em;
     height: 1em;
+  }
 
-    &__external {
-      background-color: v-bind('props.color');
-    }
+  .external {
+    background-color: v-bind('props.color');
   }
 </style>

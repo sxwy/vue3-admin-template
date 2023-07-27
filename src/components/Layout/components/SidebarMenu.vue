@@ -1,6 +1,6 @@
 <template>
   <el-menu
-    class="sidebar-menu"
+    class="sidebarMenu"
     default-active="/main"
     background-color=""
     text-color=""
@@ -28,7 +28,7 @@
 </script>
 
 <style lang="scss" scoped>
-  .sidebar-menu {
+  .sidebarMenu {
     width: 100%;
   }
 </style>
