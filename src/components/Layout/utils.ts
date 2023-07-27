@@ -48,7 +48,7 @@ export const generateMenus = (
     const route: RouteRecordRaw | RouteRecordNormalized = {
       ...item,
       path: routePath,
-      children: []
+      children: [] as RouteRecordRaw[]
     }
     // 判断是否在菜单展示
     if (route.meta?.menuShow) {
