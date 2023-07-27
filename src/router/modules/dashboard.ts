@@ -11,8 +11,7 @@ export default {
     title: '仪表盘',
     menuShow: true,
     menuIcon: '',
-    routePermission: true,
-    buttonPermission: []
+    buttons: []
   },
   children: [
     {
@@ -23,8 +22,7 @@ export default {
         title: '控制台',
         menuShow: true,
         menuIcon: '',
-        routePermission: true,
-        buttonPermission: []
+        buttons: []
       }
     },
     {
@@ -35,8 +33,7 @@ export default {
         title: '工作台',
         menuShow: true,
         menuIcon: '',
-        routePermission: true,
-        buttonPermission: []
+        buttons: []
       }
     }
   ]

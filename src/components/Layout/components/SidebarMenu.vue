@@ -1,6 +1,6 @@
 <template>
-  <!-- 一级 menu 菜单 -->
   <el-menu
+    class="sidebar-menu"
     default-active="/main"
     background-color=""
     text-color=""
@@ -8,7 +8,6 @@
     :router="true"
     :collapse="false"
     :unique-opened="true"
-    class="sidebar-menu"
   >
     <SidebarSubMenu v-for="item in routes" :key="item.path" :route="item" />
   </el-menu>
@@ -24,25 +23,8 @@
 
   const routes = computed(() => {
     const filterRoutes = filterRouters(router.getRoutes())
-    console.log(
-      '%c filterRoutes==========>',
-      'color: #4FC08D; font-weight: bold',
-      filterRoutes
-    )
     return generateMenus(filterRoutes)
   })
-
-  console.log(
-    '%c getRoutes==========>',
-    'color: #4FC08D; font-weight: bold',
-    router.getRoutes()
-  )
-
-  console.log(
-    '%c generateMenus==========>',
-    'color: #4FC08D; font-weight: bold',
-    routes.value
-  )
 </script>
 
 <style lang="scss" scoped>

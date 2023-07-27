@@ -20,10 +20,8 @@ export interface Meta {
   menuShow: boolean
   /** 菜单图标 */
   menuIcon: string
-  /** 当前路由是否有权限 */
-  routePermission: boolean
   /** 当前路由中的按钮权限 */
-  buttonPermission: string[]
+  buttons: string[]
 }
 
 /** 路由 */

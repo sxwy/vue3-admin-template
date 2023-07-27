@@ -11,8 +11,7 @@ export default {
     title: '异常页面',
     menuShow: false,
     menuIcon: '',
-    routePermission: true,
-    buttonPermission: []
+    buttons: []
   },
   children: [
     {
@@ -23,8 +22,7 @@ export default {
         title: '缺省页',
         menuShow: false,
         menuIcon: '',
-        routePermission: true,
-        buttonPermission: []
+        buttons: []
       }
     }
   ]

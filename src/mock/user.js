@@ -59,8 +59,7 @@ module.exports = {
                 title: '系统管理',
                 menuShow: true,
                 menuIcon: '',
-                routePermission: true,
-                buttonPermission: []
+                buttons: []
               },
               children: [
                 {
@@ -73,8 +72,7 @@ module.exports = {
                     title: '角色管理',
                     menuShow: true,
                     menuIcon: '',
-                    routePermission: true,
-                    buttonPermission: ['add', 'edit', 'delete']
+                    buttons: ['add', 'edit', 'delete']
                   },
                   children: []
                 },
@@ -88,8 +86,7 @@ module.exports = {
                     title: '添加角色',
                     menuShow: false,
                     menuIcon: '',
-                    routePermission: true,
-                    buttonPermission: []
+                    buttons: []
                   },
                   children: []
                 },
@@ -103,8 +100,7 @@ module.exports = {
                     title: '修改角色',
                     menuShow: false,
                     menuIcon: '',
-                    routePermission: true,
-                    buttonPermission: []
+                    buttons: []
                   },
                   children: []
                 },
@@ -118,8 +114,7 @@ module.exports = {
                     title: '用户管理',
                     menuShow: true,
                     menuIcon: '',
-                    routePermission: true,
-                    buttonPermission: ['add', 'edit', 'delete']
+                    buttons: ['add', 'edit', 'delete']
                   },
                   children: []
                 },
@@ -133,8 +128,7 @@ module.exports = {
                     title: '添加用户',
                     menuShow: false,
                     menuIcon: '',
-                    routePermission: true,
-                    buttonPermission: []
+                    buttons: []
                   },
                   children: []
                 },
@@ -148,8 +142,7 @@ module.exports = {
                     title: '修改用户',
                     menuShow: false,
                     menuIcon: '',
-                    routePermission: true,
-                    buttonPermission: []
+                    buttons: []
                   },
                   children: []
                 }
@@ -165,8 +158,7 @@ module.exports = {
                 title: '媒体管理',
                 menuShow: true,
                 menuIcon: '',
-                routePermission: true,
-                buttonPermission: []
+                buttons: []
               },
               children: [
                 {
@@ -179,8 +171,7 @@ module.exports = {
                     title: '音频管理',
                     menuShow: true,
                     menuIcon: '',
-                    routePermission: true,
-                    buttonPermission: ['add', 'edit', 'delete']
+                    buttons: ['add', 'edit', 'delete']
                   },
                   children: []
                 },
@@ -194,8 +185,7 @@ module.exports = {
                     title: '添加音频',
                     menuShow: false,
                     menuIcon: '',
-                    routePermission: true,
-                    buttonPermission: []
+                    buttons: []
                   },
                   children: []
                 },
@@ -209,8 +199,7 @@ module.exports = {
                     title: '修改音频',
                     menuShow: false,
                     menuIcon: '',
-                    routePermission: true,
-                    buttonPermission: []
+                    buttons: []
                   },
                   children: []
                 },
@@ -224,8 +213,7 @@ module.exports = {
                     title: '视频管理',
                     menuShow: true,
                     menuIcon: '',
-                    routePermission: true,
-                    buttonPermission: ['add', 'edit', 'delete']
+                    buttons: ['add', 'edit', 'delete']
                   },
                   children: []
                 },
@@ -239,8 +227,7 @@ module.exports = {
                     title: '添加视频',
                     menuShow: false,
                     menuIcon: '',
-                    routePermission: true,
-                    buttonPermission: []
+                    buttons: []
                   },
                   children: []
                 },
@@ -254,8 +241,7 @@ module.exports = {
                     title: '修改视频',
                     menuShow: false,
                     menuIcon: '',
-                    routePermission: true,
-                    buttonPermission: []
+                    buttons: []
                   },
                   children: []
                 }

@@ -8,8 +8,7 @@ export default {
     title: '登录',
     menuShow: false,
     menuIcon: '',
-    routePermission: true,
-    buttonPermission: []
+    buttons: []
   },
   component: () => import('@/pages/login/index.vue')
 } as RouteRecordRaw
