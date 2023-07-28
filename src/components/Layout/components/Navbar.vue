@@ -1,6 +1,8 @@
 <template>
   <div class="navbar">
-    <button @click="handleClick">按钮</button>
+    <div class="left">
+      <NavbarHamburger />
+    </div>
     <div class="right">
       <NavbarUserDropdown />
     </div>
@@ -8,28 +10,31 @@
 </template>
 
 <script lang="ts" setup>
+  import NavbarHamburger from './NavbarHamburger.vue'
   import NavbarUserDropdown from './NavbarUserDropdown.vue'
-  import { useAppStore } from '@/store'
-
-  const app = useAppStore()
-
-  const handleClick = () => {
-    app.toggleSidebarCollapseState()
-  }
 </script>
 
 <style lang="scss" scoped>
   .navbar {
+    box-sizing: border-box;
+    width: 100%;
     height: 50px;
-    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
     box-shadow: 0 1px 4px rgb(0 21 41 / 8%);
+
+    .left {
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
 
     .right {
       height: 100%;
       display: flex;
       align-items: center;
-      float: right;
-      padding-right: 16px;
     }
   }
 </style>

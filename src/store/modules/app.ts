@@ -13,7 +13,7 @@ export const useAppStore = defineStore('app', {
   },
   actions: {
     /** 切换侧边栏折叠状态 */
-    toggleSidebarCollapseState() {
+    toggleSidebarCollapse() {
       this.isSidebarCollapse = !this.isSidebarCollapse
     }
   }

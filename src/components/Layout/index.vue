@@ -55,7 +55,6 @@
         right: 0;
         width: calc(100% - $sideBarWidth);
         transition: width $sideBarCollapseTransitionDuration;
-        background-color: red;
       }
     }
   }
