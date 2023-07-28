@@ -1,5 +1,5 @@
 <template>
-  <div v-if="isExternal" class="svgIcon external" :style="externalStyle" />
+  <div v-if="isExternal" class="svgIcon" :style="externalStyle" />
   <svg v-else class="svgIcon" aria-hidden="true">
     <use :xlink:href="iconName" :fill="color" />
   </svg>
@@ -29,7 +29,7 @@
   /** 外部图标样式 */
   const externalStyle = computed(() => {
     return {
-      // 因为在 class 中使用 url(v-bind) 不生效，所以使用动态 style
+      'background-color': props.color,
       '-webkit-mask-image': `url(${props.icon})`,
       '-webkit-mask-size': 'cover',
       '-webkit-mask-repeat': 'no-repeat'
@@ -44,9 +44,5 @@
   .svgIcon {
     width: 1em;
     height: 1em;
-  }
-
-  .external {
-    background-color: v-bind('props.color');
   }
 </style>
