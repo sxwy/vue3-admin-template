@@ -1,20 +1,25 @@
 import { defineStore } from 'pinia'
 
 interface AppState {
-  /** 侧边栏是否折叠 */
-  sidebarCollapse: boolean
+  /**
+   * 侧边栏折叠状态
+   * - open 打开
+   * - close 关闭
+   */
+  sidebarCollapseState: 'open' | 'close'
 }
 
 export const useAppStore = defineStore('app', {
   state(): AppState {
     return {
-      sidebarCollapse: false
+      sidebarCollapseState: 'open'
     }
   },
   actions: {
     /** 切换侧边栏折叠状态 */
-    toggleSidebarCollapse() {
-      this.sidebarCollapse = !this.sidebarCollapse
+    toggleSidebarCollapseState() {
+      this.sidebarCollapseState =
+        this.sidebarCollapseState === 'open' ? 'close' : 'open'
     }
   }
 })

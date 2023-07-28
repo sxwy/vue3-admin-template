@@ -1,5 +1,5 @@
 <template>
-  <div class="layout">
+  <div class="layout" :class="{ sidebarClose }">
     <Sidebar
       class="sidebar"
       :style="{
@@ -16,10 +16,19 @@
 </template>
 
 <script lang="ts" setup>
+  import { computed } from 'vue'
   import Sidebar from './components/Sidebar.vue'
   import Navbar from './components/Navbar.vue'
   import AppMain from './components/AppMain.vue'
+  import { useAppStore } from '@/store'
   import variables from '@/styles/variables.module.scss'
+
+  const app = useAppStore()
+
+  /** 侧边栏是否关闭 */
+  const sidebarClose = computed(() => {
+    return app.sidebarCollapseState === 'close'
+  })
 </script>
 
 <style lang="scss" scoped>
@@ -53,6 +62,20 @@
         width: calc(100% - $sideBarWidth);
         transition: width $sideBarDuration;
         background-color: red;
+      }
+    }
+  }
+
+  .sidebarClose {
+    .sidebar {
+      width: $closeSideBarWidth;
+    }
+
+    .content {
+      margin-left: $closeSideBarWidth;
+
+      .header {
+        width: calc(100% - #{$closeSideBarWidth});
       }
     }
   }

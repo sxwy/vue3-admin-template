@@ -1,9 +1,9 @@
 <template>
   <el-menu
-    class="sidebarMenu"
     :router="true"
     :unique-opened="true"
-    :collapse="app.sidebarCollapse"
+    :collapse-transition="false"
+    :collapse="sidebarClose"
     :default-active="route.path"
     :text-color="variables.menuTextColor"
     :background-color="variables.menuBgColor"
@@ -30,11 +30,15 @@
     const filterRoutes = filterRouters(router.getRoutes())
     return generateMenus(filterRoutes)
   })
+
+  /** 侧边栏是否关闭 */
+  const sidebarClose = computed(() => {
+    return app.sidebarCollapseState === 'close'
+  })
 </script>
 
 <style lang="scss" scoped>
-  .sidebarMenu {
-    width: 100%;
-    border-right: none; // 去除 el-menu 样式
+  .el-menu {
+    border: none;
   }
 </style>

@@ -14,7 +14,7 @@
   const app = useAppStore()
 
   const handleClick = () => {
-    app.toggleSidebarCollapse()
+    app.toggleSidebarCollapseState()
   }
 </script>
 

@@ -11,7 +11,7 @@ $menuHoverColor: #263445; // 菜单悬浮颜色
 $subMenuHoverColor: #001528; // 子菜单悬浮颜色
 
 $sideBarWidth: 210px; // 侧边栏宽度
-$hideSideBarWidth: 54px; // 侧边栏收缩时的宽度
+$closeSideBarWidth: 64px; // 侧边栏收缩时的宽度
 
 $sideBarDuration: 0.28s; // 侧边栏收缩动画时长
 
@@ -25,4 +25,5 @@ $sideBarDuration: 0.28s; // 侧边栏收缩动画时长
   menuHoverColor: $menuHoverColor;
   subMenuHoverColor: $subMenuHoverColor;
   sideBarWidth: $sideBarWidth;
+  closeSideBarWidth: $closeSideBarWidth;
 }
