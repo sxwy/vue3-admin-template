@@ -3,7 +3,7 @@
     :router="true"
     :unique-opened="true"
     :collapse-transition="false"
-    :collapse="sidebarClose"
+    :collapse="!app.isSidebarCollapse"
     :default-active="route.path"
     :text-color="variables.menuTextColor"
     :background-color="variables.menuBgColor"
@@ -29,11 +29,6 @@
   const routes = computed(() => {
     const filterRoutes = filterRouters(router.getRoutes())
     return generateMenus(filterRoutes)
-  })
-
-  /** 侧边栏是否关闭 */
-  const sidebarClose = computed(() => {
-    return app.sidebarCollapseState === 'close'
   })
 </script>
 

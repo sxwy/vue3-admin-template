@@ -1,13 +1,13 @@
 #app {
   .right {
     min-height: 100%;
-    transition: margin-left #{$sideBarDuration};
+    transition: margin-left #{$sideBarCollapseTransitionDuration};
     margin-left: $sideBarWidth;
     position: relative;
   }
 
   .sidebar {
-    transition: width #{$sideBarDuration};
+    transition: width #{$sideBarCollapseTransitionDuration};
     width: $sideBarWidth !important;
     height: 100%;
     position: fixed;

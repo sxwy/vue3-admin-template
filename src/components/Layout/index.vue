@@ -1,5 +1,5 @@
 <template>
-  <div class="layout" :class="{ sidebarClose }">
+  <div class="layout" :class="{ sidebarCollapse: !app.isSidebarCollapse }">
     <Sidebar
       class="sidebar"
       :style="{
@@ -16,7 +16,6 @@
 </template>
 
 <script lang="ts" setup>
-  import { computed } from 'vue'
   import Sidebar from './components/Sidebar.vue'
   import Navbar from './components/Navbar.vue'
   import AppMain from './components/AppMain.vue'
@@ -24,11 +23,6 @@
   import variables from '@/styles/variables.module.scss'
 
   const app = useAppStore()
-
-  /** 侧边栏是否关闭 */
-  const sidebarClose = computed(() => {
-    return app.sidebarCollapseState === 'close'
-  })
 </script>
 
 <style lang="scss" scoped>
@@ -45,14 +39,14 @@
       left: 0;
       width: $sideBarWidth;
       height: 100%;
-      transition: width $sideBarDuration;
+      transition: width $sideBarCollapseTransitionDuration;
     }
 
     .content {
       position: relative;
       height: 100%;
       margin-left: $sideBarWidth;
-      transition: margin-left $sideBarDuration;
+      transition: margin-left $sideBarCollapseTransitionDuration;
       background-color: green;
 
       .header {
@@ -60,22 +54,22 @@
         top: 0;
         right: 0;
         width: calc(100% - $sideBarWidth);
-        transition: width $sideBarDuration;
+        transition: width $sideBarCollapseTransitionDuration;
         background-color: red;
       }
     }
   }
 
-  .sidebarClose {
+  .sidebarCollapse {
     .sidebar {
-      width: $closeSideBarWidth;
+      width: $collapseSideBarWidth;
     }
 
     .content {
-      margin-left: $closeSideBarWidth;
+      margin-left: $collapseSideBarWidth;
 
       .header {
-        width: calc(100% - #{$closeSideBarWidth});
+        width: calc(100% - #{$collapseSideBarWidth});
       }
     }
   }

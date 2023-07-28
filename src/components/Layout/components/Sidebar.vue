@@ -2,7 +2,7 @@
   <div class="sidebar">
     <div class="logo" @click="handleLogoClick">
       <img src="../assets/logo.png" class="img" />
-      <div v-show="sidebarOpen" class="title">{{ APP_NAME }}</div>
+      <div v-show="app.isSidebarCollapse" class="title">{{ APP_NAME }}</div>
     </div>
     <el-scrollbar>
       <SidebarMenu />
@@ -11,7 +11,6 @@
 </template>
 
 <script lang="ts" setup>
-  import { computed } from 'vue'
   import { useRouter } from 'vue-router'
   import { useAppStore } from '@/store'
   import { APP_NAME } from '@/constants'
@@ -19,11 +18,6 @@
 
   const router = useRouter()
   const app = useAppStore()
-
-  /** 侧边栏是否打开 */
-  const sidebarOpen = computed(() => {
-    return app.sidebarCollapseState === 'open'
-  })
 
   /** 点击 logo 按钮 */
   const handleLogoClick = () => {
@@ -50,6 +44,9 @@
         font-weight: bold;
         color: #fff;
         margin-left: 5px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
     }
   }

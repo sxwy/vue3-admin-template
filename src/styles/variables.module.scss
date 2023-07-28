@@ -11,9 +11,9 @@ $menuHoverColor: #263445; // 菜单悬浮颜色
 $subMenuHoverColor: #001528; // 子菜单悬浮颜色
 
 $sideBarWidth: 210px; // 侧边栏宽度
-$closeSideBarWidth: 64px; // 侧边栏收缩时的宽度
+$collapseSideBarWidth: 64px; // 侧边栏折叠时的宽度
 
-$sideBarDuration: 0.28s; // 侧边栏收缩动画时长
+$sideBarCollapseTransitionDuration: 0.3s; // 侧边栏折叠动画时长
 
 // https://github.com/vitejs/vite/discussions/9601
 :export {
@@ -25,5 +25,6 @@ $sideBarDuration: 0.28s; // 侧边栏收缩动画时长
   menuHoverColor: $menuHoverColor;
   subMenuHoverColor: $subMenuHoverColor;
   sideBarWidth: $sideBarWidth;
-  closeSideBarWidth: $closeSideBarWidth;
+  collapseSideBarWidth: $collapseSideBarWidth;
+  sideBarCollapseTransitionDuration: $sideBarCollapseTransitionDuration;
 }
