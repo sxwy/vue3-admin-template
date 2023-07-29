@@ -2,9 +2,7 @@
   <div class="layout" :class="{ sidebarCollapse: !app.isSidebarCollapse }">
     <Sidebar class="sidebar" />
     <div class="content">
-      <div class="header">
-        <Navbar />
-      </div>
+      <Navbar class="navbar" />
       <AppMain />
     </div>
   </div>
@@ -44,7 +42,7 @@
       transition: margin-left $sideBarCollapseTransitionDuration;
       background-color: green;
 
-      .header {
+      .navbar {
         position: fixed;
         top: 0;
         right: 0;
@@ -62,7 +60,7 @@
     .content {
       margin-left: $collapseSideBarWidth;
 
-      .header {
+      .navbar {
         width: calc(100% - #{$collapseSideBarWidth});
       }
     }
