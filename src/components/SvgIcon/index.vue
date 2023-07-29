@@ -26,7 +26,7 @@
   /** 是否为外部图标 */
   const isExternal = computed(() => /^(https?:|mailto:|tel:)/.test(props.icon))
 
-  /** 外部图标样式 */
+  /** 外部图标样式（因为 v-bind 不支持 url，所以这边使用 style） */
   const externalStyle = computed(() => {
     return {
       'background-color': props.color,

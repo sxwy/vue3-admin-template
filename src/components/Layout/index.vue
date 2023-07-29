@@ -1,11 +1,6 @@
 <template>
   <div class="layout" :class="{ sidebarCollapse: !app.isSidebarCollapse }">
-    <Sidebar
-      class="sidebar"
-      :style="{
-        backgroundColor: variables.menuBgColor
-      }"
-    />
+    <Sidebar class="sidebar" />
     <div class="content">
       <div class="header">
         <Navbar />
@@ -16,11 +11,10 @@
 </template>
 
 <script lang="ts" setup>
+  import { useAppStore } from '@/store'
   import Sidebar from './components/Sidebar.vue'
   import Navbar from './components/Navbar.vue'
   import AppMain from './components/AppMain.vue'
-  import { useAppStore } from '@/store'
-  import variables from '@/styles/variables.module.scss'
 
   const app = useAppStore()
 </script>
@@ -40,6 +34,7 @@
       width: $sideBarWidth;
       height: 100%;
       transition: width $sideBarCollapseTransitionDuration;
+      background-color: $menuBgColor;
     }
 
     .content {

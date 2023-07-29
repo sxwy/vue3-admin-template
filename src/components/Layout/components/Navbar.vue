@@ -2,6 +2,7 @@
   <div class="navbar">
     <div class="left">
       <NavbarHamburger />
+      <NavbarBreadcrumb />
     </div>
     <div class="right">
       <NavbarUserDropdown />
@@ -11,6 +12,7 @@
 
 <script lang="ts" setup>
   import NavbarHamburger from './NavbarHamburger.vue'
+  import NavbarBreadcrumb from './NavbarBreadcrumb.vue'
   import NavbarUserDropdown from './NavbarUserDropdown.vue'
 </script>
 
