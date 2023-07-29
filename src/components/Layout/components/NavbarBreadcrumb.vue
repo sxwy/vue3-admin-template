@@ -45,7 +45,8 @@
       font-weight: 600;
 
       &:hover {
-        color: v-bind(redirecthovercolor);
+        /* stylelint-disable-next-line */
+        color: v-bind(redirectHoverColor);
       }
     }
   }
