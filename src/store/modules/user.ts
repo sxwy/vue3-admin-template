@@ -20,7 +20,15 @@ const filterRoutes = (routes: Route[]): Route[] => {
       item.children = filterRoutes(item.children)
     }
   })
+  routes.push(catchAllRoute as Route) // 追加 404 路由
   return routes
+}
+
+/** 重置路由表 */
+const resetRoutes = (routes: Route[]) => {
+  routes.forEach((item) => {
+    router.removeRoute(item.name)
+  })
 }
 
 interface UserState {
@@ -57,11 +65,11 @@ export const useUserStore = defineStore('user', {
       result.routes.forEach((item) => {
         router.addRoute(item as unknown as RouteRecordRaw)
       })
-      router.addRoute(catchAllRoute)
       this.current = result
     },
     /** 退出登录 */
     logout() {
+      resetRoutes(this.current!.routes)
       this.session = null
       this.current = null
     }
