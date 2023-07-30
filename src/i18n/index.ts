@@ -1,7 +1,6 @@
 import { createI18n } from 'vue-i18n'
 import { STORE_CACHE_KEY } from '@/constants'
 import { getLocalStorage } from '@/utils'
-import { defaultLocaleLang } from '@/store'
 import * as lang from './lang'
 
 /** 中文 */
@@ -19,7 +18,7 @@ const messages = {
 const getLocale = () => {
   const key = `${STORE_CACHE_KEY}_app`
   const val = getLocalStorage(key)
-  return val.localeLang || defaultLocaleLang
+  return val?.localeLang || zhCn
 }
 
 const i18n = createI18n({

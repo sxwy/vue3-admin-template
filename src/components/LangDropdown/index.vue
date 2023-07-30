@@ -33,6 +33,8 @@
 
 <style lang="scss" scoped>
   .langDropdown {
+    cursor: pointer;
+
     .content {
       padding: 5px;
       border-radius: 5px;

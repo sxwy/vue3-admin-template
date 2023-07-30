@@ -8,14 +8,11 @@ interface AppState {
   localeLang: string
 }
 
-/** 默认语言 */
-export const defaultLocaleLang = zhCn
-
 export const useAppStore = defineStore('app', {
   state(): AppState {
     return {
       isSidebarCollapse: false,
-      localeLang: defaultLocaleLang
+      localeLang: zhCn
     }
   },
   actions: {
