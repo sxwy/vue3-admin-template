@@ -38,7 +38,6 @@ interface UserState {
 
 export const useUserStore = defineStore('user', {
   persist: {
-    storage: localStorage,
     paths: ['session']
   },
   state(): UserState {

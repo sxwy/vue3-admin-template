@@ -1,7 +1,8 @@
 <template>
   <div class="container">
     <div class="content">
-      <div class="title">登录</div>
+      <LangDropdown class="langDropdown" />
+      <div class="title">{{ $t('login.title') }}</div>
       <el-form
         :status-icon="true"
         :model="state.form"
@@ -32,7 +33,7 @@
             class="btn"
             @click="handleLoginClick"
           >
-            登录
+            {{ $t('login.btnText') }}
           </el-button>
         </el-form-item>
       </el-form>
@@ -45,6 +46,7 @@
   import { type FormInstance, type FormRules, ElMessage } from 'element-plus'
   import { User, Lock } from '@element-plus/icons-vue'
   import { useRouter } from 'vue-router'
+  import LangDropdown from '@/components/LangDropdown/index.vue'
   import { useUserStore } from '@/store'
   import type { LoginQuery } from '@/types'
 
@@ -155,6 +157,13 @@
       padding: 30px;
       background-color: #fff;
       border-radius: 10px;
+      position: relative;
+
+      .langDropdown {
+        position: absolute;
+        top: -50px;
+        right: 0;
+      }
 
       .title {
         font-size: 24px;

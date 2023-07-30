@@ -8,8 +8,7 @@ const store = createPinia()
 store.use(
   createPersistedState({
     auto: true,
-    key: (id) => `${STORE_CACHE_KEY}_${id}`,
-    storage: sessionStorage
+    key: (id) => `${STORE_CACHE_KEY}_${id}`
   })
 )
 
