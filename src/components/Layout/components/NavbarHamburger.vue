@@ -23,7 +23,7 @@
 
 <style lang="scss" scoped>
   .navbarHamburger {
-    padding: 16px;
+    padding: 15px;
     cursor: pointer;
     transition: background 0.5s;
 

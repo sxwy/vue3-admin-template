@@ -28,6 +28,8 @@
 <style lang="scss" scoped>
   .sidebar {
     .logo {
+      box-sizing: border-box;
+      height: 50px;
       padding: 10px;
       display: flex;
       justify-content: center;

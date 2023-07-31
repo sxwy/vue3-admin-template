@@ -41,7 +41,7 @@
       align-items: center;
 
       .langDropdown {
-        margin-right: 16px;
+        margin-right: 15px;
       }
     }
   }
