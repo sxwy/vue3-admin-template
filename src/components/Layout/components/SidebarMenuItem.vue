@@ -2,7 +2,7 @@
   <el-icon v-if="currentElIcon">
     <component :is="currentElIcon"></component>
   </el-icon>
-  <span>{{ title }}</span>
+  <span>{{ $t(`route.${title}`) }}</span>
 </template>
 
 <script lang="ts" setup>

@@ -56,7 +56,7 @@ module.exports = {
               redirect: '/system/role/index',
               component: 'Layout',
               meta: {
-                title: '系统管理',
+                title: 'System',
                 menuShow: true,
                 menuIcon: 'Setting',
                 buttons: []
@@ -69,7 +69,7 @@ module.exports = {
                   redirect: undefined,
                   component: '/system/role/index',
                   meta: {
-                    title: '角色管理',
+                    title: 'SystemRoleIndex',
                     menuShow: true,
                     menuIcon: 'Lock',
                     buttons: ['add', 'edit', 'delete']
@@ -83,7 +83,7 @@ module.exports = {
                   redirect: undefined,
                   component: '/system/role/add',
                   meta: {
-                    title: '添加角色',
+                    title: 'SystemRoleAdd',
                     menuShow: false,
                     menuIcon: 'Lock',
                     buttons: []
@@ -97,7 +97,7 @@ module.exports = {
                   redirect: undefined,
                   component: '/system/role/edit',
                   meta: {
-                    title: '修改角色',
+                    title: 'SystemRoleEdit',
                     menuShow: false,
                     menuIcon: 'Lock',
                     buttons: []
@@ -111,7 +111,7 @@ module.exports = {
                   redirect: undefined,
                   component: '/system/user/index',
                   meta: {
-                    title: '用户管理',
+                    title: 'SystemUserIndex',
                     menuShow: true,
                     menuIcon: 'User',
                     buttons: ['add', 'edit', 'delete']
@@ -125,7 +125,7 @@ module.exports = {
                   redirect: undefined,
                   component: '/system/user/add',
                   meta: {
-                    title: '添加用户',
+                    title: 'SystemUserAdd',
                     menuShow: false,
                     menuIcon: 'User',
                     buttons: []
@@ -139,7 +139,7 @@ module.exports = {
                   redirect: undefined,
                   component: '/system/user/edit',
                   meta: {
-                    title: '修改用户',
+                    title: 'SystemUserEdit',
                     menuShow: false,
                     menuIcon: 'User',
                     buttons: []
@@ -155,7 +155,7 @@ module.exports = {
               redirect: '/media/audio/index',
               component: 'Layout',
               meta: {
-                title: '媒体管理',
+                title: 'Media',
                 menuShow: true,
                 menuIcon: 'Film',
                 buttons: []
@@ -168,7 +168,7 @@ module.exports = {
                   redirect: undefined,
                   component: '/media/audio/index',
                   meta: {
-                    title: '音频管理',
+                    title: 'MediaAudioIndex',
                     menuShow: true,
                     menuIcon: 'Headset',
                     buttons: ['add', 'edit', 'delete']
@@ -182,7 +182,7 @@ module.exports = {
                   redirect: undefined,
                   component: '/media/audio/add',
                   meta: {
-                    title: '添加音频',
+                    title: 'MediaAudioAdd',
                     menuShow: false,
                     menuIcon: 'Headset',
                     buttons: []
@@ -196,7 +196,7 @@ module.exports = {
                   redirect: undefined,
                   component: '/media/audio/edit',
                   meta: {
-                    title: '修改音频',
+                    title: 'MediaAudioEdit',
                     menuShow: false,
                     menuIcon: 'Headset',
                     buttons: []
@@ -210,7 +210,7 @@ module.exports = {
                   redirect: undefined,
                   component: '/media/video/index',
                   meta: {
-                    title: '视频管理',
+                    title: 'MediaVideoIndex',
                     menuShow: true,
                     menuIcon: 'VideoCamera',
                     buttons: ['add', 'edit', 'delete']
@@ -224,7 +224,7 @@ module.exports = {
                   redirect: undefined,
                   component: '/media/video/add',
                   meta: {
-                    title: '添加视频',
+                    title: 'MediaVideoAdd',
                     menuShow: false,
                     menuIcon: 'VideoCamera',
                     buttons: []
@@ -238,7 +238,7 @@ module.exports = {
                   redirect: undefined,
                   component: '/media/video/edit',
                   meta: {
-                    title: '修改视频',
+                    title: 'MediaVideoEdit',
                     menuShow: false,
                     menuIcon: 'VideoCamera',
                     buttons: []

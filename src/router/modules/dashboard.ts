@@ -8,7 +8,7 @@ export default {
   redirect: '/dashboard/console/index',
   component: Layout,
   meta: {
-    title: '仪表盘',
+    title: 'Dashboard',
     menuShow: true,
     menuIcon: 'Odometer',
     buttons: []
@@ -19,7 +19,7 @@ export default {
       path: 'console/index',
       component: () => import('@/pages/dashboard/console/index.vue'),
       meta: {
-        title: '控制台',
+        title: 'DashboardConsoleIndex',
         menuShow: true,
         menuIcon: 'Cpu',
         buttons: []
@@ -30,7 +30,7 @@ export default {
       path: 'workbench/index',
       component: () => import('@/pages/dashboard/workbench/index.vue'),
       meta: {
-        title: '工作台',
+        title: 'DashboardWorkbenchIndex',
         menuShow: true,
         menuIcon: 'Mouse',
         buttons: []

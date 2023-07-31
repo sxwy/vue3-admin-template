@@ -10,6 +10,26 @@ export default {
     logout: 'Logout'
   },
   toast: {
-    switchLangSuccess: 'Switch Language Success'
+    switchLangSuccess: 'Switch Language Success',
+    switchLangFail: 'Switch Language Fail'
+  },
+  route: {
+    Dashboard: 'Dashboard',
+    DashboardConsoleIndex: 'Console',
+    DashboardWorkbenchIndex: 'Workbench',
+    System: 'SystemManage',
+    SystemRoleIndex: 'RoleManage',
+    SystemRoleAdd: 'AddRole',
+    SystemRoleEdit: 'EditRole',
+    SystemUserIndex: 'UserManage',
+    SystemUserAdd: 'AddUser',
+    SystemUserEdit: 'EditUser',
+    Media: 'MediaManage',
+    MediaAudioIndex: 'AudioManage',
+    MediaAudioAdd: 'AddAudio',
+    MediaAudioEdit: 'EditAudio',
+    MediaVideoIndex: 'VideoManage',
+    MediaVideoAdd: 'AddVideo',
+    MediaVideoEdit: 'EditVideo'
   }
 }
