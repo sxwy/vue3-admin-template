@@ -6,10 +6,10 @@
         :key="item.path"
       >
         <span v-if="index === route.matched.length - 1" class="noRedirect">{{
-          item.meta.title
+          $t(`route.${item.meta.title}`)
         }}</span>
         <a v-else class="redirect" @click.prevent="handleLinkClick(item)">{{
-          item.meta.title
+          $t(`route.${item.meta.title}`)
         }}</a>
       </el-breadcrumb-item>
     </transition-group>

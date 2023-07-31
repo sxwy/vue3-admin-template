@@ -17,24 +17,22 @@
 </template>
 
 <script lang="ts" setup>
-  import { useI18n } from 'vue-i18n'
   import { ElMessage } from 'element-plus'
   import SvgIcon from '@/components/SvgIcon/index.vue'
   import { useAppStore } from '@/store'
-  import { zhCn, en } from '@/i18n'
+  import i18n, { zhCn, en } from '@/i18n'
 
   const emit = defineEmits(['langChange'])
 
-  const i18n = useI18n()
   const app = useAppStore()
 
   const handleSetLang = (lang: string) => {
     app.setlLcaleLang(lang)
-    i18n.locale.value = lang
+    i18n.global.locale.value = lang
     emit('langChange', lang)
     ElMessage({
       type: 'success',
-      message: i18n.t('toast.switchLangSuccess')
+      message: i18n.global.t('toast.switchLangSuccess')
     })
   }
 </script>

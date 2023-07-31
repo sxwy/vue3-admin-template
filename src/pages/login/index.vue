@@ -46,11 +46,11 @@
 <script lang="ts" setup>
   import { reactive, ref } from 'vue'
   import { useRouter } from 'vue-router'
-  import { useI18n } from 'vue-i18n'
   import { type FormInstance, type FormRules, ElMessage } from 'element-plus'
   import { User, Lock } from '@element-plus/icons-vue'
   import LangDropdown from '@/components/LangDropdown/index.vue'
   import { useUserStore } from '@/store'
+  import i18n from '@/i18n'
   import type { LoginQuery } from '@/types'
 
   /** 表单 */
@@ -68,7 +68,6 @@
   /** 表单引用 */
   const formRef = ref<FormInstance>()
 
-  const i18n = useI18n()
   const user = useUserStore()
   const router = useRouter()
 
@@ -85,7 +84,7 @@
         {
           required: true,
           trigger: 'blur',
-          message: i18n.t('login.accountRuleMessage')
+          message: i18n.global.t('login.accountRuleMessage')
         }
       ],
       /** 密码 */
@@ -93,7 +92,7 @@
         {
           required: true,
           trigger: 'blur',
-          message: i18n.t('login.passwordRuleMessage')
+          message: i18n.global.t('login.passwordRuleMessage')
         }
       ]
     },

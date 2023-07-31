@@ -1,13 +1,16 @@
 import type { Router } from 'vue-router'
 import { ElMessage } from 'element-plus'
 import { useUserStore } from '@/store'
+import i18n from '@/i18n'
 import { APP_NAME } from '@/constants'
 
 const whiteList = ['/login/index']
 
 export default (router: Router) => {
   router.beforeEach(async (to, from, next) => {
-    document.title = to.meta.title || APP_NAME
+    document.title = to.meta.title
+      ? i18n.global.t(`route.${to.meta.title}`)
+      : APP_NAME
     const user = useUserStore()
     if (user.session) {
       if (to.path === '/login/index') {
