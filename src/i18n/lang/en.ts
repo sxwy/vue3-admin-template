@@ -14,6 +14,7 @@ export default {
     switchLangFail: 'Switch Language Fail'
   },
   route: {
+    LoginIndex: 'Login',
     Dashboard: 'Dashboard',
     DashboardConsoleIndex: 'Console',
     DashboardWorkbenchIndex: 'Workbench',

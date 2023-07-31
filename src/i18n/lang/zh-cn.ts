@@ -14,6 +14,7 @@ export default {
     switchLangFail: '切换语言失败'
   },
   route: {
+    LoginIndex: '登录',
     Dashboard: '仪表盘',
     DashboardConsoleIndex: '控制台',
     DashboardWorkbenchIndex: '工作台',

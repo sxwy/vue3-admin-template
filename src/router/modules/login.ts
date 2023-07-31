@@ -5,7 +5,7 @@ export default {
   name: 'LoginIndex',
   path: '/login/index',
   meta: {
-    title: '登录',
+    title: 'LoginIndex',
     menuShow: false,
     menuIcon: '',
     buttons: []
