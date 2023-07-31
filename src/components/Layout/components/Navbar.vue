@@ -5,12 +5,14 @@
       <NavbarBreadcrumb />
     </div>
     <div class="right">
+      <LangDropdown class="langDropdown" />
       <NavbarUserDropdown />
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
+  import LangDropdown from '@/components/LangDropdown/index.vue'
   import NavbarHamburger from './NavbarHamburger.vue'
   import NavbarBreadcrumb from './NavbarBreadcrumb.vue'
   import NavbarUserDropdown from './NavbarUserDropdown.vue'
@@ -37,6 +39,10 @@
       height: 100%;
       display: flex;
       align-items: center;
+
+      .langDropdown {
+        margin-right: 16px;
+      }
     }
   }
 </style>

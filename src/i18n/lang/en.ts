@@ -4,5 +4,12 @@ export default {
     btnText: 'login',
     accountRuleMessage: 'Please enter your account number',
     passwordRuleMessage: 'Please enter your password'
+  },
+  navbar: {
+    home: 'Home',
+    logout: 'Logout'
+  },
+  toast: {
+    switchLangSuccess: 'Switch Language Success'
   }
 }
