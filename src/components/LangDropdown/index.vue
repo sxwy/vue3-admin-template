@@ -22,12 +22,15 @@
   import { useAppStore } from '@/store'
   import { zhCn, en } from '@/i18n'
 
+  const emit = defineEmits(['langChange'])
+
   const i18n = useI18n()
   const app = useAppStore()
 
   const handleSetLang = (lang: string) => {
     app.setlLcaleLang(lang)
     i18n.locale.value = lang
+    emit('langChange', lang)
   }
 </script>
 

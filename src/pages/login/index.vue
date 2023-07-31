@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="content">
-      <LangDropdown class="langDropdown" />
+      <LangDropdown class="langDropdown" @langChange="handleLangChange" />
       <div class="title">{{ $t('login.title') }}</div>
       <el-form
         :status-icon="true"
@@ -13,17 +13,19 @@
         <el-form-item prop="account">
           <el-input
             v-model="state.form.account"
-            :prefix-icon="User"
             clearable
+            :prefix-icon="User"
+            @keydown.enter="handleLoginClick"
           />
         </el-form-item>
         <el-form-item prop="password">
           <el-input
             v-model="state.form.password"
             type="password"
-            :prefix-icon="Lock"
             clearable
             show-password
+            :prefix-icon="Lock"
+            @keydown.enter="handleLoginClick"
           />
         </el-form-item>
         <el-form-item>
@@ -42,10 +44,11 @@
 </template>
 
 <script lang="ts" setup>
-  import { reactive, ref, onMounted, onBeforeUnmount } from 'vue'
+  import { reactive, ref } from 'vue'
+  import { useRouter } from 'vue-router'
+  import { useI18n } from 'vue-i18n'
   import { type FormInstance, type FormRules, ElMessage } from 'element-plus'
   import { User, Lock } from '@element-plus/icons-vue'
-  import { useRouter } from 'vue-router'
   import LangDropdown from '@/components/LangDropdown/index.vue'
   import { useUserStore } from '@/store'
   import type { LoginQuery } from '@/types'
@@ -62,38 +65,41 @@
     btnLoading: boolean
   }
 
+  /** 表单引用 */
+  const formRef = ref<FormInstance>()
+
+  const i18n = useI18n()
+  const user = useUserStore()
+  const router = useRouter()
+
   const state: State = reactive({
+    /** 表单 */
     form: {
       account: 'admin',
       password: '123456'
     },
+    /** 校验规则 */
     formRules: {
+      /** 账号 */
       account: [
         {
           required: true,
-          message: '请输入账号',
-          trigger: 'blur'
+          trigger: 'blur',
+          message: i18n.t('login.accountRuleMessage')
         }
       ],
+      /** 密码 */
       password: [
         {
           required: true,
-          message: '请输入密码',
-          trigger: 'blur'
+          trigger: 'blur',
+          message: i18n.t('login.passwordRuleMessage')
         }
       ]
     },
+    /** 登录按钮 loading 是否显示 */
     btnLoading: false
   })
-
-  /** 表单引用 */
-  const formRef = ref<FormInstance>()
-
-  /** 用户 store */
-  const user = useUserStore()
-
-  /** 路由 */
-  const router = useRouter()
 
   /** 点击登录按钮 */
   const handleLoginClick = () => {
@@ -118,30 +124,10 @@
     })
   }
 
-  /** 点击回车事件 */
-  const handleKeyDown = (ev: KeyboardEvent) => {
-    if (ev.key === 'Enter') {
-      handleLoginClick()
-    }
+  /** 切换语言回调 */
+  const handleLangChange = () => {
+    formRef.value!.resetFields()
   }
-
-  /** 监听键盘点击事件 */
-  const handleListenerKeydown = () => {
-    document.addEventListener('keydown', handleKeyDown)
-  }
-
-  /** 移除键盘点击事件 */
-  const handleRemoveKeydown = () => {
-    document.removeEventListener('keydown', handleKeyDown)
-  }
-
-  onMounted(() => {
-    handleListenerKeydown()
-  })
-
-  onBeforeUnmount(() => {
-    handleRemoveKeydown()
-  })
 </script>
 
 <style lang="scss" scoped>
