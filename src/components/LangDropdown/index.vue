@@ -17,6 +17,7 @@
 </template>
 
 <script lang="ts" setup>
+  import { useRoute } from 'vue-router'
   import { ElMessage } from 'element-plus'
   import SvgIcon from '@/components/SvgIcon/index.vue'
   import { useAppStore } from '@/store'
@@ -24,11 +25,13 @@
 
   const emit = defineEmits(['langChange'])
 
+  const route = useRoute()
   const app = useAppStore()
 
   const handleSetLang = (lang: string) => {
     app.setlLcaleLang(lang)
     i18n.global.locale.value = lang
+    document.title = i18n.global.t(`route.${route.meta.title}`)
     emit('langChange', lang)
     ElMessage({
       type: 'success',
