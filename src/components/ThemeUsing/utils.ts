@@ -1,7 +1,7 @@
 import color from 'css-color-function'
 import rgbHex from 'rgb-hex'
 import elementPlusCss from 'element-plus/dist/index.css?inline'
-import { markingMaoColor, colorMapMarking } from './constants'
+import { markingMapColor, colorMapMarking } from './constants'
 
 /**
  * 写入新样式到 style
@@ -40,8 +40,8 @@ export const generateColors = (primary: string) => {
   } = {
     primary
   }
-  Object.keys(markingMaoColor).forEach((key) => {
-    const value = markingMaoColor[key].replace(/marking/g, primary)
+  Object.keys(markingMapColor).forEach((key) => {
+    const value = markingMapColor[key].replace(/marking/g, primary)
     colors[key] = '#' + rgbHex(color.convert(value))
   })
   return colors

@@ -1,4 +1,4 @@
-export const markingMaoColor: {
+export const markingMapColor: {
   [key: string]: string
 } = {
   'shade-1': 'color(marking shade(10%))',
