@@ -1,7 +1,7 @@
 <template>
   <el-menu
-    :router="true"
-    :unique-opened="true"
+    router
+    unique-opened
     :collapse-transition="false"
     :collapse="!app.isSidebarCollapse"
     :default-active="route.path"

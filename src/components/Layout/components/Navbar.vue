@@ -5,6 +5,7 @@
       <NavbarBreadcrumb />
     </div>
     <div class="right">
+      <ThemeUsing class="themeUsing" />
       <LangDropdown class="langDropdown" />
       <NavbarUserDropdown />
     </div>
@@ -12,6 +13,7 @@
 </template>
 
 <script lang="ts" setup>
+  import ThemeUsing from '@/components/ThemeUsing/index.vue'
   import LangDropdown from '@/components/LangDropdown/index.vue'
   import NavbarHamburger from './NavbarHamburger.vue'
   import NavbarBreadcrumb from './NavbarBreadcrumb.vue'
@@ -40,6 +42,7 @@
       display: flex;
       align-items: center;
 
+      .themeUsing,
       .langDropdown {
         margin-right: 15px;
       }

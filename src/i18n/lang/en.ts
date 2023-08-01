@@ -8,7 +8,8 @@ export default {
   navbar: {
     home: 'Home',
     logout: 'Logout',
-    lang: 'Globalization'
+    lang: 'Globalization',
+    themeUsing: 'Theme Modification'
   },
   toast: {
     switchLangSuccess: 'Switch Language Success',

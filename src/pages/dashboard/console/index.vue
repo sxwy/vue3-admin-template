@@ -1,5 +1,9 @@
 <template>
-  <div> console/index </div>
+  <div>
+    console/index
+
+    <el-pagination :total="100" />
+  </div>
 </template>
 
 <script lang="ts" setup></script>

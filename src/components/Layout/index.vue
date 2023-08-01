@@ -40,7 +40,6 @@
       height: 100%;
       margin-left: $sideBarWidth;
       transition: margin-left $sideBarCollapseTransitionDuration;
-      background-color: green;
 
       .navbar {
         position: fixed;
