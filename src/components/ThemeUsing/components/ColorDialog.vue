@@ -11,7 +11,7 @@
     <div class="content">
       <el-color-picker
         v-model="state.selectColor"
-        :show-alpha="true"
+        show-alpha
         :predefine="predefineColors"
       />
     </div>
@@ -26,7 +26,8 @@
 
 <script lang="ts" setup>
   import { reactive } from 'vue'
-  import { generateNewStyle } from '../utils'
+  import { defaultColor, predefineColors } from '../constants'
+  import { generateNewStyle, writeNewStyle } from '../utils'
 
   interface State {
     /** 选择的颜色 */
@@ -45,39 +46,17 @@
   const emits = defineEmits(['update:modelValue'])
 
   const state: State = reactive({
-    selectColor: ''
+    selectColor: defaultColor
   })
-
-  /** 预定义色值 */
-  const predefineColors = [
-    '#ff4500',
-    '#ff8c00',
-    '#ffd700',
-    '#90ee90',
-    '#00ced1',
-    '#1e90ff',
-    '#c71585',
-    'rgba(255, 69, 0, 0.68)',
-    'rgb(255, 120, 0)',
-    'hsv(51, 100, 98)',
-    'hsva(120, 40, 94, 0.5)',
-    'hsl(181, 100%, 37%)',
-    'hsla(209, 100%, 56%, 0.73)',
-    '#c7158577'
-  ]
 
   const handleClose = () => {
     emits('update:modelValue', false)
   }
 
   const handleConfirm = () => {
-    console.log(
-      '%c color==========>',
-      'color: #4FC08D; font-weight: bold',
-      state.selectColor
-    )
-    generateNewStyle(state.selectColor)
-    // handleClose()
+    const styleText = generateNewStyle(state.selectColor)
+    writeNewStyle(styleText)
+    handleClose()
   }
 </script>
 
