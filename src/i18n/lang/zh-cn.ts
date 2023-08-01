@@ -7,7 +7,8 @@ export default {
   },
   navbar: {
     home: '主页',
-    logout: '退出登录'
+    logout: '退出登录',
+    lang: '国际化'
   },
   toast: {
     switchLangSuccess: '切换语言成功',
