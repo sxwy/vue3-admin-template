@@ -1,30 +1,32 @@
 /* stylelint-disable property-no-unknown */
 
-$menuTextColor: #bfcbd9; // 菜单文字颜色
-$menuActiveTextColor: #fff; // 菜单激活时的文字颜色
-$subMenuActiveTextColor: #f4f4f5; // 子菜单激活时的文字颜色
+:root {
+  --sxwy-menu-bg-color: #304156; // 菜单背景颜色
+  --sxwy-menu-text-color: #bbb; // 菜单文字颜色
+  --sxwy-menu-hover-text-color: #fff; // 菜单文字悬浮颜色
+  --sxwy-menu-active-text-color: #fff; // 菜单激活时的文字颜色
+}
 
-$menuBgColor: #304156; // 菜单背景颜色
-$subMenuBgColor: #1f2d3d; // 子菜单背景颜色
+$menuBgColor: var(--sxwy-menu-bg-color);
+$menuTextColor: var(--sxwy-menu-text-color);
+$menuHoverTextColor: var(--sxwy-menu-hover-text-color);
+$menuActiveTextColor: var(--sxwy-menu-active-text-color);
 
-$menuHoverColor: #263445; // 菜单悬浮颜色
-$subMenuHoverColor: #001528; // 子菜单悬浮颜色
+$subMenuBgColor: var(--el-color-primary); // 子菜单背景颜色
 
 $sideBarWidth: 210px; // 侧边栏宽度
-$collapseSideBarWidth: 64px; // 侧边栏折叠时的宽度
+$sideBarCollapseWidth: 64px; // 侧边栏折叠时的宽度
 
 $sideBarCollapseTransitionDuration: 0.3s; // 侧边栏折叠动画时长
 
 // https://github.com/vitejs/vite/discussions/9601
 :export {
-  menuTextColor: $menuTextColor;
-  menuActiveTextColor: $menuActiveTextColor;
-  subMenuActiveTextColor: $subMenuActiveTextColor;
   menuBgColor: $menuBgColor;
+  menuTextColor: $menuTextColor;
+  menuHoverTextColor: $menuHoverTextColor;
+  menuActiveTextColor: $menuActiveTextColor;
   subMenuBgColor: $subMenuBgColor;
-  menuHoverColor: $menuHoverColor;
-  subMenuHoverColor: $subMenuHoverColor;
   sideBarWidth: $sideBarWidth;
-  collapseSideBarWidth: $collapseSideBarWidth;
+  sideBarCollapseWidth: $sideBarCollapseWidth;
   sideBarCollapseTransitionDuration: $sideBarCollapseTransitionDuration;
 }

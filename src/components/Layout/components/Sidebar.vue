@@ -26,7 +26,11 @@
 </script>
 
 <style lang="scss" scoped>
+  @import '@/styles/variables.module.scss';
+
   .sidebar {
+    background-color: $menuBgColor;
+
     .logo {
       box-sizing: border-box;
       height: 50px;

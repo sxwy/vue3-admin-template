@@ -32,7 +32,6 @@
       width: $sideBarWidth;
       height: 100%;
       transition: width $sideBarCollapseTransitionDuration;
-      background-color: $menuBgColor;
     }
 
     .content {
@@ -53,14 +52,14 @@
 
   .sidebarCollapse {
     .sidebar {
-      width: $collapseSideBarWidth;
+      width: $sideBarCollapseWidth;
     }
 
     .content {
-      margin-left: $collapseSideBarWidth;
+      margin-left: $sideBarCollapseWidth;
 
       .navbar {
-        width: calc(100% - #{$collapseSideBarWidth});
+        width: calc(100% - #{$sideBarCollapseWidth});
       }
     }
   }
