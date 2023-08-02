@@ -8,11 +8,14 @@
   import { computed } from 'vue'
   import { RouterView } from 'vue-router'
   import { useAppStore } from '@/store'
+  import { setElCSSVar } from '@/utils'
   import { zhCn } from '@/i18n'
   import zhCnLang from 'element-plus/es/locale/lang/zh-cn'
   import enLang from 'element-plus/es/locale/lang/en'
 
   const app = useAppStore()
+
+  setElCSSVar(app.themePrimaryColor)
 
   const locale = computed(() => (app.localeLang === zhCn ? zhCnLang : enLang))
 </script>

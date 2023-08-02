@@ -29,7 +29,6 @@
 <style lang="scss" scoped>
   .themeUsing {
     cursor: pointer;
-    padding: 5px;
     border-radius: 5px;
     background-color: #fff;
 

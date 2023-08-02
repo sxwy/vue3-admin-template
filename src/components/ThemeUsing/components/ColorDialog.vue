@@ -26,8 +26,8 @@
 
 <script lang="ts" setup>
   import { reactive } from 'vue'
-  import { defaultColor, predefineColors } from '../constants'
-  import { setElCSSVar } from '../utils'
+  import { useAppStore } from '@/store'
+  import { setElCSSVar } from '@/utils'
 
   interface State {
     /** 选择的颜色 */
@@ -45,15 +45,32 @@
 
   const emits = defineEmits(['update:modelValue'])
 
+  const app = useAppStore()
+
   const state: State = reactive({
-    selectColor: defaultColor
+    selectColor: app.themePrimaryColor
   })
+
+  /** 颜色选择器中的预设值 */
+  const predefineColors = [
+    '#009688',
+    '#DAA96E',
+    '#0C819F',
+    '#409EFF',
+    '#27AE60',
+    '#FF5C93',
+    '#E74C3C',
+    '#FD726D',
+    '#F39C12',
+    '#9B59B6'
+  ]
 
   const handleClose = () => {
     emits('update:modelValue', false)
   }
 
   const handleConfirm = () => {
+    app.setlThemePrimaryColor(state.selectColor)
     setElCSSVar(state.selectColor)
     handleClose()
   }

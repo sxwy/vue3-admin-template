@@ -148,6 +148,10 @@
         position: absolute;
         top: -50px;
         right: 0;
+
+        :deep(.svgIcon) {
+          padding: 5px;
+        }
       }
 
       .title {
