@@ -18,7 +18,9 @@
 </script>
 
 <style lang="scss" scoped>
-  @import '@/styles/variables.module.scss';
+  $sideBarWidth: 210px; // 侧边栏宽度
+  $sideBarCollapseWidth: 64px; // 侧边栏折叠时的宽度
+  $sideBarCollapseTransitionDuration: 0.3s; // 侧边栏折叠动画时长
 
   .layout {
     position: relative;

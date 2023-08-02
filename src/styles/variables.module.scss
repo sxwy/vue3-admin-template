@@ -12,12 +12,7 @@ $menuTextColor: var(--sxwy-menu-text-color);
 $menuHoverTextColor: var(--sxwy-menu-hover-text-color);
 $menuActiveTextColor: var(--sxwy-menu-active-text-color);
 
-$subMenuBgColor: var(--el-color-primary); // 子菜单背景颜色
-
-$sideBarWidth: 210px; // 侧边栏宽度
-$sideBarCollapseWidth: 64px; // 侧边栏折叠时的宽度
-
-$sideBarCollapseTransitionDuration: 0.3s; // 侧边栏折叠动画时长
+$subMenuBgColor: var(--el-color-primary-light-3); // 子菜单背景颜色
 
 // https://github.com/vitejs/vite/discussions/9601
 :export {
@@ -26,7 +21,4 @@ $sideBarCollapseTransitionDuration: 0.3s; // 侧边栏折叠动画时长
   menuHoverTextColor: $menuHoverTextColor;
   menuActiveTextColor: $menuActiveTextColor;
   subMenuBgColor: $subMenuBgColor;
-  sideBarWidth: $sideBarWidth;
-  sideBarCollapseWidth: $sideBarCollapseWidth;
-  sideBarCollapseTransitionDuration: $sideBarCollapseTransitionDuration;
 }
