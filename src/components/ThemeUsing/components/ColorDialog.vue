@@ -27,7 +27,7 @@
 <script lang="ts" setup>
   import { reactive } from 'vue'
   import { defaultColor, predefineColors } from '../constants'
-  import { generateNewStyle, writeNewStyle } from '../utils'
+  import { setElCSSVar } from '../utils'
 
   interface State {
     /** 选择的颜色 */
@@ -54,8 +54,7 @@
   }
 
   const handleConfirm = () => {
-    const styleText = generateNewStyle(state.selectColor)
-    writeNewStyle(styleText)
+    setElCSSVar(state.selectColor)
     handleClose()
   }
 </script>
