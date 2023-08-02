@@ -21,6 +21,10 @@
   }
 
   .el-menu-item.is-active {
+    background-color: $subMenuActiveBgColor;
+  }
+
+  .el-menu.el-menu--inline {
     background-color: $subMenuBgColor;
   }
 }

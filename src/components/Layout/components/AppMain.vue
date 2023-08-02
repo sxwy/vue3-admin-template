@@ -13,5 +13,6 @@
     box-sizing: border-box;
     height: 100%;
     padding: 104px 20px 20px;
+    background-color: #eee;
   }
 </style>
