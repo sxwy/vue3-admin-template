@@ -1,6 +1,5 @@
 <template>
   <el-menu
-    class="sidebarMenu"
     router
     unique-opened
     :collapse-transition="false"
@@ -33,33 +32,4 @@
   })
 </script>
 
-<style lang="scss" scoped>
-  @import '@/styles/variables.module.scss';
-
-  .sidebarMenu {
-    border: none;
-
-    :deep(.el-sub-menu.is-active) {
-      .el-sub-menu__title {
-        color: $menuActiveTextColor !important;
-      }
-    }
-
-    :deep(.el-sub-menu__title) {
-      &:hover {
-        color: $menuHoverTextColor !important;
-      }
-    }
-
-    :deep(.el-menu-item) {
-      &:hover {
-        color: $menuHoverTextColor;
-        background-color: transparent;
-      }
-    }
-
-    :deep(.el-menu-item.is-active) {
-      background-color: $subMenuBgColor;
-    }
-  }
-</style>
+<style lang="scss" scoped></style>
