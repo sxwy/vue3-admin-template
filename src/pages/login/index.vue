@@ -2,7 +2,7 @@
   <div class="container">
     <div class="content">
       <LangDropdown class="langDropdown" @langChange="handleLangChange" />
-      <div class="title">{{ $t('login.title') }}</div>
+      <div class="title">{{ $t('pages.login.title') }}</div>
       <el-form
         :status-icon="true"
         :model="state.form"
@@ -35,7 +35,7 @@
             class="btn"
             @click="handleLoginClick"
           >
-            {{ $t('login.btnText') }}
+            {{ $t('pages.login.btnText') }}
           </el-button>
         </el-form-item>
       </el-form>
@@ -84,7 +84,7 @@
         {
           required: true,
           trigger: 'blur',
-          message: i18n.global.t('login.accountRuleMessage')
+          message: i18n.global.t('pages.login.accountRuleMessage')
         }
       ],
       /** 密码 */
@@ -92,7 +92,7 @@
         {
           required: true,
           trigger: 'blur',
-          message: i18n.global.t('login.passwordRuleMessage')
+          message: i18n.global.t('pages.login.passwordRuleMessage')
         }
       ]
     },

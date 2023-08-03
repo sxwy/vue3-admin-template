@@ -13,10 +13,12 @@
     <template #dropdown>
       <el-dropdown-menu>
         <RouterLink to="/">
-          <el-dropdown-item>{{ $t('navbar.home') }}</el-dropdown-item>
+          <el-dropdown-item>{{
+            $t('components.layout.navbarUserDropdownHome')
+          }}</el-dropdown-item>
         </RouterLink>
         <el-dropdown-item :divided="true" @click="handleLogout">{{
-          $t('navbar.logout')
+          $t('components.layout.navbarUserDropdownLogout')
         }}</el-dropdown-item>
       </el-dropdown-menu>
     </template>
@@ -28,17 +30,22 @@
   import { ElMessageBox } from 'element-plus'
   import { Setting } from '@element-plus/icons-vue'
   import { useUserStore } from '@/store'
+  import i18n from '@/i18n'
 
   const user = useUserStore()
   const router = useRouter()
 
   /** 点击退出登录按钮 */
   const handleLogout = () => {
-    ElMessageBox.confirm('是否确认退出系统?', '提示', {
-      confirmButtonText: '确定',
-      cancelButtonText: '取消',
-      type: 'warning'
-    })
+    ElMessageBox.confirm(
+      i18n.global.t('components.layout.navbarUserDropdownLogoutTip'),
+      i18n.global.t('common.tipText'),
+      {
+        confirmButtonText: i18n.global.t('common.confirmText'),
+        cancelButtonText: i18n.global.t('common.cancelText'),
+        type: 'warning'
+      }
+    )
       .then(() => {
         user.logout()
         router.push('/login/index')

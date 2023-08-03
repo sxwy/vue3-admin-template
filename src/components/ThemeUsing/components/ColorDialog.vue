@@ -1,10 +1,10 @@
 <template>
   <el-dialog
     class="colorDialog"
-    title="Tips"
     width="30%"
     append-to-body
     draggable
+    :title="$t('common.tipText')"
     :model-value="modelValue"
     @close="handleClose"
   >
@@ -15,10 +15,20 @@
         :predefine="predefineColors"
       />
     </div>
+    <!-- i18n.global.t('common.tipText'),
+      {
+        confirmButtonText: i18n.global.t('common.confirmText'),
+        cancelButtonText: i18n.global.t('common.cancelText'),
+        type: 'warning'
+      } -->
     <template #footer>
       <span class="dialog-footer">
-        <el-button @click="handleClose">Cancel</el-button>
-        <el-button type="primary" @click="handleConfirm"> Confirm </el-button>
+        <el-button @click="handleClose">{{
+          $t('common.cancelText')
+        }}</el-button>
+        <el-button type="primary" @click="handleConfirm">
+          {{ $t('common.confirmText') }}
+        </el-button>
       </span>
     </template>
   </el-dialog>

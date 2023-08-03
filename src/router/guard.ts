@@ -9,7 +9,7 @@ const whiteList = ['/login/index']
 export default (router: Router) => {
   router.beforeEach(async (to, from, next) => {
     document.title = to.meta.title
-      ? i18n.global.t(`route.${to.meta.title}`)
+      ? i18n.global.t(`common.routes.${to.meta.title}`)
       : APP_NAME
     const user = useUserStore()
     if (user.session) {

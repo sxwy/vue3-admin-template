@@ -1,7 +1,10 @@
 <template>
   <el-dropdown trigger="click" class="langDropdown" @command="handleSetLang">
     <div class="content">
-      <el-tooltip :content="$t('navbar.lang')" effect="light">
+      <el-tooltip
+        :content="$t('components.langDropdown.tooltip')"
+        effect="light"
+      >
         <SvgIcon icon="language" class="svgIcon" />
       </el-tooltip>
     </div>
@@ -33,11 +36,11 @@
   const handleSetLang = (lang: string) => {
     app.setlLcaleLang(lang)
     i18n.global.locale.value = lang
-    document.title = i18n.global.t(`route.${route.meta.title}`)
+    document.title = i18n.global.t(`common.routes.${route.meta.title}`)
     emit('langChange', lang)
     ElMessage({
       type: 'success',
-      message: i18n.global.t('toast.switchLangSuccess')
+      message: i18n.global.t('components.langDropdown.switchLangSuccess')
     })
   }
 </script>

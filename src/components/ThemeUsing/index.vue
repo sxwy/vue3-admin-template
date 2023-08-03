@@ -1,6 +1,6 @@
 <template>
   <div class="themeUsing">
-    <el-tooltip :content="$t('navbar.themeUsing')" effect="light">
+    <el-tooltip :content="$t('components.themeUsing.tooltip')" effect="light">
       <SvgIcon icon="change-theme" class="svgIcon" @click="handleClick" />
     </el-tooltip>
     <ColorDialog v-model="state.colorDialogShow" />
