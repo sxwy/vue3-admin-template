@@ -1,7 +1,7 @@
-import RouteSearch from './index.vue'
+import MenuSearch from './index.vue'
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    RouteSearch: typeof RouteSearch
+    MenuSearch: typeof MenuSearch
   }
 }

@@ -5,7 +5,7 @@
       <Breadcrumb />
     </div>
     <div class="right">
-      <RouteSearch class="routeSearch" />
+      <MenuSearch class="menuSearch" />
       <ScreenFull class="screenFull" />
       <ThemeUsing class="themeUsing" />
       <LangDropdown class="langDropdown" />
@@ -20,7 +20,7 @@
   import ScreenFull from '@/components/ScreenFull/index.vue'
   import ThemeUsing from '@/components/ThemeUsing/index.vue'
   import LangDropdown from '@/components/LangDropdown/index.vue'
-  import RouteSearch from '@/components/RouteSearch/index.vue'
+  import MenuSearch from '@/components/MenuSearch/index.vue'
   import NavbarUserDropdown from './NavbarUserDropdown.vue'
 </script>
 
@@ -46,7 +46,7 @@
       display: flex;
       align-items: center;
 
-      .routeSearch,
+      .menuSearch,
       .screenFull,
       .themeUsing,
       .langDropdown {

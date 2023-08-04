@@ -52,7 +52,7 @@ export default {
     screenFull: {
       tooltip: '全屏'
     },
-    routeSearch: {
+    menuSearch: {
       tooltip: '搜索'
     }
   }

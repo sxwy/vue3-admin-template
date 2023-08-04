@@ -52,7 +52,7 @@ export default {
     screenFull: {
       tooltip: 'Screen Full'
     },
-    routeSearch: {
+    menuSearch: {
       tooltip: 'Search'
     }
   }

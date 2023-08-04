@@ -1,6 +1,6 @@
 <template>
-  <div class="routeSearch">
-    <el-tooltip :content="$t('components.routeSearch.tooltip')" effect="light">
+  <div class="menuSearch">
+    <el-tooltip :content="$t('components.menuSearch.tooltip')" effect="light">
       <SvgIcon class="svgIcon" icon="search" @click="handleClick" />
     </el-tooltip>
     <SearchDialog v-model="state.searchDialogShow" />
@@ -27,7 +27,7 @@
 </script>
 
 <style lang="scss" scoped>
-  .routeSearch {
+  .menuSearch {
     cursor: pointer;
 
     .svgIcon {
