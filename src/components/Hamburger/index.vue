@@ -1,5 +1,5 @@
 <template>
-  <div class="navbarHamburger" @click="handleToggleClick">
+  <div class="hamburger" @click="handleToggleClick">
     <SvgIcon class="svg" :icon="icon" />
   </div>
 </template>
@@ -22,7 +22,7 @@
 </script>
 
 <style lang="scss" scoped>
-  .navbarHamburger {
+  .hamburger {
     padding: 15px;
     cursor: pointer;
     transition: background 0.5s;

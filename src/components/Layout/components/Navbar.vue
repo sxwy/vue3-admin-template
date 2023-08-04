@@ -1,8 +1,8 @@
 <template>
   <div class="navbar">
     <div class="left">
-      <NavbarHamburger />
-      <NavbarBreadcrumb />
+      <Hamburger />
+      <Breadcrumb />
     </div>
     <div class="right">
       <ThemeUsing class="themeUsing" />
@@ -13,10 +13,10 @@
 </template>
 
 <script lang="ts" setup>
+  import Hamburger from '@/components/Hamburger/index.vue'
+  import Breadcrumb from '@/components/Breadcrumb/index.vue'
   import ThemeUsing from '@/components/ThemeUsing/index.vue'
   import LangDropdown from '@/components/LangDropdown/index.vue'
-  import NavbarHamburger from './NavbarHamburger.vue'
-  import NavbarBreadcrumb from './NavbarBreadcrumb.vue'
   import NavbarUserDropdown from './NavbarUserDropdown.vue'
 </script>
 

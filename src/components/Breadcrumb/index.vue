@@ -1,5 +1,5 @@
 <template>
-  <el-breadcrumb separator="/" class="navbarBreadcrumb">
+  <el-breadcrumb separator="/" class="breadcrumb">
     <transition-group name="breadcrumb">
       <el-breadcrumb-item
         v-for="(item, index) of route.matched"
@@ -34,7 +34,7 @@
 </script>
 
 <style lang="scss" scoped>
-  .navbarBreadcrumb {
+  .breadcrumb {
     .noRedirect {
       color: #97a8be;
       cursor: text;
