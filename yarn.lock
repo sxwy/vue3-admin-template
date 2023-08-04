@@ -5896,6 +5896,11 @@ sass@^1.62.1:
     immutable "^4.0.0"
     source-map-js ">=0.6.2 <2.0.0"
 
+screenfull@^6.0.2:
+  version "6.0.2"
+  resolved "https://registry.npmmirror.com/screenfull/-/screenfull-6.0.2.tgz#3dbe4b8c4f8f49fb8e33caa8f69d0bca730ab238"
+  integrity sha512-AQdy8s4WhNvUZ6P8F6PB21tSPIYKniic+Ogx0AacBMjKP1GUHN2E9URxQHtCusiwxudnCKkdy4GrHXPPJSkCCw==
+
 "semver@2 || 3 || 4 || 5":
   version "5.7.2"
   resolved "https://registry.npmmirror.com/semver/-/semver-5.7.2.tgz#48d55db737c3287cd4835e17fa13feace1c41ef8"

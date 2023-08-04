@@ -1,6 +1,6 @@
 <template>
   <div class="hamburger" @click="handleToggleClick">
-    <SvgIcon class="svg" :icon="icon" />
+    <SvgIcon class="svgIcon" :icon="icon" />
   </div>
 </template>
 
@@ -31,7 +31,7 @@
       background: rgb(0 0 0 / 10%);
     }
 
-    .svg {
+    .svgIcon {
       display: inline-block;
       vertical-align: middle;
       width: 20px;

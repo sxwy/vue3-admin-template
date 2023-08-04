@@ -48,6 +48,9 @@ export default {
     },
     themeUsing: {
       tooltip: '主题修改'
+    },
+    fullScreen: {
+      tooltip: '全屏'
     }
   }
 }
