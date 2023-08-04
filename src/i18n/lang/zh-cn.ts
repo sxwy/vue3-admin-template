@@ -53,7 +53,8 @@ export default {
       tooltip: '全屏'
     },
     menuSearch: {
-      tooltip: '搜索'
+      tooltip: '搜索',
+      inputPlaceholder: '搜索'
     }
   }
 }

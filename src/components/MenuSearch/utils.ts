@@ -1,14 +1,12 @@
 import type { RouteRecordNormalized, RouteRecordRaw } from 'vue-router'
+import type { SearchResultItem } from './type'
 import i18n from '@/i18n'
 
 /** 生成 Fuse 搜索数据 */
 export const generateFuseData = (
   routes: RouteRecordRaw[] | RouteRecordNormalized[]
 ) => {
-  const result: {
-    title: string
-    path: string
-  }[] = []
+  const result: SearchResultItem[] = []
   routes.forEach((item) => {
     result.push({
       title: i18n.global.t(`common.routes.${item.meta!.title}`),

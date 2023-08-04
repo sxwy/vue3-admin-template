@@ -53,7 +53,8 @@ export default {
       tooltip: 'Screen Full'
     },
     menuSearch: {
-      tooltip: 'Search'
+      tooltip: 'Search',
+      inputPlaceholder: 'Search'
     }
   }
 }
