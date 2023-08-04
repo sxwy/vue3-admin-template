@@ -1,6 +1,6 @@
 <template>
-  <div class="fullScreen" @click="handleToggle">
-    <el-tooltip :content="$t('components.fullScreen.tooltip')" effect="light">
+  <div class="screenFull" @click="handleToggle">
+    <el-tooltip :content="$t('components.screenFull.tooltip')" effect="light">
       <SvgIcon
         class="svgIcon"
         :icon="state.isFullscreen ? 'exit-fullscreen' : 'fullscreen'"
@@ -40,7 +40,7 @@
 </script>
 
 <style lang="scss" scoped>
-  .fullScreen {
+  .screenFull {
     cursor: pointer;
 
     .svgIcon {

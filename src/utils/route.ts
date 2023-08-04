@@ -24,7 +24,7 @@ const findRouteName = (
 }
 
 /** 过滤路由表 */
-export const filterRouters = (routes: RouteRecordNormalized[]) => {
+export const filterRoutes = (routes: RouteRecordNormalized[]) => {
   return routes.filter((item, index) => {
     // 1、过滤没有 name 字段的路由（基础路由或异常路由）
     if (!item.name) {
@@ -36,7 +36,7 @@ export const filterRouters = (routes: RouteRecordNormalized[]) => {
   })
 }
 
-/** 生成路由表 */
+/** 生成菜单 */
 export const generateMenus = (
   routes: RouteRecordRaw[] | RouteRecordNormalized[],
   basePath = ''

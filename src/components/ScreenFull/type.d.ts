@@ -1,7 +1,7 @@
-import FullScreen from './index.vue'
+import ScreenFull from './index.vue'
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    FullScreen: typeof FullScreen
+    ScreenFull: typeof ScreenFull
   }
 }

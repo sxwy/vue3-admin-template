@@ -5,7 +5,8 @@
       <Breadcrumb />
     </div>
     <div class="right">
-      <FullScreen class="fullScreen" />
+      <RouteSearch class="routeSearch" />
+      <ScreenFull class="screenFull" />
       <ThemeUsing class="themeUsing" />
       <LangDropdown class="langDropdown" />
       <NavbarUserDropdown />
@@ -16,9 +17,10 @@
 <script lang="ts" setup>
   import Hamburger from '@/components/Hamburger/index.vue'
   import Breadcrumb from '@/components/Breadcrumb/index.vue'
-  import FullScreen from '@/components/FullScreen/index.vue'
+  import ScreenFull from '@/components/ScreenFull/index.vue'
   import ThemeUsing from '@/components/ThemeUsing/index.vue'
   import LangDropdown from '@/components/LangDropdown/index.vue'
+  import RouteSearch from '@/components/RouteSearch/index.vue'
   import NavbarUserDropdown from './NavbarUserDropdown.vue'
 </script>
 
@@ -44,7 +46,8 @@
       display: flex;
       align-items: center;
 
-      .fullScreen,
+      .routeSearch,
+      .screenFull,
       .themeUsing,
       .langDropdown {
         margin-right: 15px;

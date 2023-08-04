@@ -19,7 +19,7 @@
   import { useAppStore } from '@/store'
   import variables from '@/styles/variables.module.scss'
   import SidebarSubMenu from './SidebarSubMenu.vue'
-  import { filterRouters, generateMenus } from '../utils'
+  import { filterRoutes, generateMenus } from '@/utils'
 
   const route = useRoute()
   const router = useRouter()
@@ -27,8 +27,8 @@
   const app = useAppStore()
 
   const routes = computed(() => {
-    const filterRoutes = filterRouters(router.getRoutes())
-    return generateMenus(filterRoutes)
+    const routeList = filterRoutes(router.getRoutes())
+    return generateMenus(routeList)
   })
 </script>
 

@@ -49,8 +49,11 @@ export default {
     themeUsing: {
       tooltip: 'Theme Modification'
     },
-    fullScreen: {
-      tooltip: 'Full Screen'
+    screenFull: {
+      tooltip: 'Screen Full'
+    },
+    routeSearch: {
+      tooltip: 'Search'
     }
   }
 }

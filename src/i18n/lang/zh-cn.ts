@@ -49,8 +49,11 @@ export default {
     themeUsing: {
       tooltip: '主题修改'
     },
-    fullScreen: {
+    screenFull: {
       tooltip: '全屏'
+    },
+    routeSearch: {
+      tooltip: '搜索'
     }
   }
 }

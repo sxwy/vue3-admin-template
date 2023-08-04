@@ -15,12 +15,6 @@
         :predefine="predefineColors"
       />
     </div>
-    <!-- i18n.global.t('common.tipText'),
-      {
-        confirmButtonText: i18n.global.t('common.confirmText'),
-        cancelButtonText: i18n.global.t('common.cancelText'),
-        type: 'warning'
-      } -->
     <template #footer>
       <span class="dialog-footer">
         <el-button @click="handleClose">{{
