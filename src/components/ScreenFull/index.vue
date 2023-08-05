@@ -3,7 +3,7 @@
     <el-tooltip :content="$t('components.screenFull.tooltip')" effect="light">
       <SvgIcon
         class="svgIcon"
-        :icon="state.isFullscreen ? 'exit-fullscreen' : 'fullscreen'"
+        :icon="state.isFullscreen ? 'fullscreen-exit' : 'fullscreen'"
       />
     </el-tooltip>
   </div>
