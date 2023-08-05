@@ -54,7 +54,11 @@ export default {
     },
     menuSearch: {
       tooltip: 'Search',
-      inputPlaceholder: 'Search'
+      inputPlaceholder: 'Search',
+      empty: 'No Data',
+      enter: 'to select',
+      upDown: 'to navigate',
+      esc: 'to close'
     }
   }
 }

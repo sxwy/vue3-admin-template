@@ -7,35 +7,43 @@
     :model-value="modelValue"
     @close="handleClose"
   >
-    <div class="content">
-      <el-input
-        ref="inputRef"
-        v-model="state.searchContent"
-        size="large"
-        :placeholder="$t('components.menuSearch.inputPlaceholder')"
-        :prefix-icon="Search"
-        clearable
-        @input="handleInputChange"
-      />
-      <div ref="resultRef" class="result">
-        <template v-if="state.searchResult.length">
-          <div
-            class="item"
-            v-for="(item, index) of state.searchResult"
-            :key="index"
-            :data-index="index"
-            :class="{ item_active: state.activeIndex === index }"
-            @click="handleItemClick(item)"
-            >{{ item.title }}</div
-          >
-        </template>
-        <div v-else class="empty">暂无数据</div>
+    <el-input
+      ref="inputRef"
+      v-model="state.searchContent"
+      size="large"
+      class="input"
+      :placeholder="$t('components.menuSearch.inputPlaceholder')"
+      :prefix-icon="Search"
+      clearable
+      @input="handleInputChange"
+    />
+    <div ref="resultRef" class="result">
+      <el-scrollbar v-if="state.searchResult.length">
+        <div
+          class="item"
+          v-for="(item, index) of state.searchResult"
+          :key="index"
+          :data-index="index"
+          :class="{ item_active: state.activeIndex === index }"
+          @click="handleItemClick(item)"
+          >{{ item.title }}</div
+        >
+      </el-scrollbar>
+      <div v-else class="empty">{{ $t('components.menuSearch.empty') }}</div>
+    </div>
+    <div class="footer">
+      <div class="tipItem">
+        <SvgIcon icon="enter" class="svgIcon" />
+        <span>{{ $t('components.menuSearch.enter') }}</span>
       </div>
-      <div class="footer">
-        <SvgIcon icon="enter" class="icon" />
-        <SvgIcon icon="top" class="icon" />
-        <SvgIcon icon="bottom" class="icon" />
-        <SvgIcon icon="esc" class="icon" />
+      <div class="tipItem">
+        <SvgIcon icon="top" class="svgIcon" />
+        <SvgIcon icon="bottom" class="svgIcon" />
+        <span>{{ $t('components.menuSearch.upDown') }}</span>
+      </div>
+      <div class="tipItem">
+        <SvgIcon icon="esc" class="svgIcon" />
+        <span>{{ $t('components.menuSearch.esc') }}</span>
       </div>
     </div>
   </el-dialog>
@@ -177,6 +185,7 @@
 
   const handleItemClick = (item: SearchResultItem) => {
     router.push(item.path)
+    handleClose()
   }
 </script>
 
@@ -199,42 +208,63 @@
   @import '@/styles/variables.module.scss';
 
   .searchDialog {
-    .content {
+    .input {
       padding: 15px 15px 0;
+    }
 
-      .result {
-        .item {
-          cursor: pointer;
-          margin-top: 10px;
-          padding: 10px;
-          border-radius: 5px;
-
-          &_active {
-            color: $menuHoverTextColor;
-            background-color: $subMenuActiveBgColor;
-          }
-        }
+    .result {
+      // padding: 0 15px;
+      :deep(.el-scrollbar__wrap) {
+        max-height: 400px;
       }
 
-      .empty {
-        height: 100px;
+      .item {
+        cursor: pointer;
+        margin: 10px 20px;
+        padding: 15px;
+        border-radius: 5px;
+        box-shadow: 0 1px 3px #d4d9e1;
+
+        &:last-child {
+          margin-bottom: 10px;
+        }
+
+        &_active {
+          color: $menuHoverTextColor;
+          background-color: $subMenuActiveBgColor;
+        }
+      }
+    }
+
+    .empty {
+      height: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .footer {
+      padding: 15px;
+      display: flex;
+      align-items: center;
+      border-top: 1px solid #eee;
+
+      .svgIcon {
         display: flex;
-        justify-content: center;
         align-items: center;
+        justify-content: center;
+        width: 20px;
+        height: 18px;
+        box-shadow: rgb(205 205 230) 0 -2px inset,
+          rgb(255 255 255) 0 0 1px 1px inset, rgb(30 35 90 / 40%) 0 1px 2px 1px;
+        border-radius: 2px;
+        margin-right: 5px;
       }
 
-      .footer {
-        .icon {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 20px;
-          height: 18px;
-          box-shadow: rgb(205 205 230) 0 -2px inset,
-            rgb(255 255 255) 0 0 1px 1px inset,
-            rgb(30 35 90 / 40%) 0 1px 2px 1px;
-          border-radius: 2px;
-        }
+      .tipItem {
+        display: flex;
+        align-items: center;
+        margin-right: 20px;
       }
     }
   }

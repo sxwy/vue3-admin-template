@@ -54,7 +54,11 @@ export default {
     },
     menuSearch: {
       tooltip: '搜索',
-      inputPlaceholder: '搜索'
+      inputPlaceholder: '搜索',
+      empty: '暂无数据',
+      enter: '确认',
+      upDown: '切换',
+      esc: '关闭'
     }
   }
 }
