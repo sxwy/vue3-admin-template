@@ -17,7 +17,7 @@
       clearable
       @input="handleInputChange"
     />
-    <div ref="resultRef" class="result">
+    <div class="result">
       <el-scrollbar v-if="state.searchResult.length">
         <div
           class="item"
@@ -26,6 +26,7 @@
           :data-index="index"
           :class="{ item_active: state.activeIndex === index }"
           @click="handleItemClick(item)"
+          @mouseenter="handleMouseEnter(index)"
           >{{ item.title }}</div
         >
       </el-scrollbar>
@@ -80,7 +81,6 @@
   const emits = defineEmits(['update:modelValue'])
 
   const inputRef = ref<HTMLInputElement | null>(null)
-  const resultRef = ref<HTMLInputElement | null>(null)
 
   const state: State = reactive({
     searchContent: '',
@@ -147,12 +147,7 @@
     }
   }
 
-  const handleMouseEnter = (ev: MouseEvent) => {
-    // 因为是事件捕获，所以判断是当前的父元素则不处理，只处理子元素
-    if (ev.target === resultRef.value) {
-      return
-    }
-    const index = parseInt((ev.target as HTMLElement).dataset.index as string)
+  const handleMouseEnter = (index: number) => {
     state.activeIndex = index
   }
 
@@ -160,14 +155,10 @@
     if (show) {
       setTimeout(() => {
         inputRef.value?.focus() // 自动聚焦
-        resultRef.value!.addEventListener('mouseenter', handleMouseEnter, {
-          capture: true
-        })
       }, 0)
       document.addEventListener('keydown', handleKeyUpDown)
     } else {
       document.removeEventListener('keydown', handleKeyUpDown)
-      document.removeEventListener('mouseenter', handleMouseEnter)
     }
   }
 
