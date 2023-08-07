@@ -1,6 +1,6 @@
 <template>
   <el-breadcrumb separator="/" class="breadcrumb">
-    <transition-group name="breadcrumb">
+    <transition-group name="breadcrumb" appear>
       <el-breadcrumb-item
         v-for="(item, index) of route.matched"
         :key="item.path"
@@ -59,7 +59,7 @@
   .breadcrumb-enter-from,
   .breadcrumb-leave-active {
     opacity: 0;
-    transform: translateX(20px);
+    transform: translateX(30px);
   }
 
   .breadcrumb-leave-active {
