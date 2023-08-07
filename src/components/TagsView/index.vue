@@ -55,7 +55,7 @@
       height: 26px;
       line-height: 26px;
       border: 1px solid #d8dce5;
-      color: $menuTextColor;
+      color: #606266;
       background-color: #fff;
       padding: 0 8px;
       font-size: 12px;
