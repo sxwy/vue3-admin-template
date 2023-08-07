@@ -5,8 +5,7 @@
       v-for="(item, index) of app.tagsViewList"
       :key="index"
       :to="{ path: item.path }"
-      :class="{ item_active: index === state.activeIndex }"
-      @click="handleItemClick(index)"
+      :class="{ item_active: isActive(item.path) }"
     >
       {{ $t(`common.routes.${item.title}`) }}
     </router-link>
@@ -14,22 +13,14 @@
 </template>
 
 <script lang="ts" setup>
-  import { reactive } from 'vue'
+  import { useRoute } from 'vue-router'
   import { useAppStore } from '@/store'
 
-  interface State {
-    /** 当前选择的标签下标 */
-    activeIndex: number
-  }
-
   const app = useAppStore()
+  const route = useRoute()
 
-  const state: State = reactive({
-    activeIndex: 0
-  })
-
-  const handleItemClick = (index: number) => {
-    state.activeIndex = index
+  const isActive = (path: string) => {
+    return path === route.path
   }
 </script>
 
