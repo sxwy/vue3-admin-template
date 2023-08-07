@@ -255,10 +255,11 @@
         box-shadow: 0 1px 3px #d4d9e1;
         display: flex;
         align-items: center;
+        color: $primaryTextColor;
 
         &_active {
-          color: $menuHoverTextColor;
-          background-color: $subMenuActiveBgColor;
+          color: $menuActiveTextColor;
+          background-color: $primaryColor;
         }
 
         .title {

@@ -3,25 +3,29 @@
 :root {
   --sxwy-menu-bg-color: #001529; // 菜单背景颜色
   --sxwy-menu-text-color: #bbb; // 菜单文字颜色
-  --sxwy-menu-hover-text-color: #fff; // 菜单文字悬浮颜色
   --sxwy-menu-active-text-color: #fff; // 菜单激活时的文字颜色
   --sxwy-sub-menu-bg-color: #0c2135; // 子菜单背景颜色
+  --sxwy-primary-color: var(--el-color-primary); // 主色调
+  --sxwy-primary-text-color: #606266; // 默认的文字颜色
+  --sxwy-primary-active-text-color: #fff; // 主色调激活时的文字颜色
 }
 
 $menuBgColor: var(--sxwy-menu-bg-color);
 $menuTextColor: var(--sxwy-menu-text-color);
-$menuHoverTextColor: var(--sxwy-menu-hover-text-color);
 $menuActiveTextColor: var(--sxwy-menu-active-text-color);
-
 $subMenuBgColor: var(--sxwy-sub-menu-bg-color);
-$subMenuActiveBgColor: var(--el-color-primary); // 子菜单激活时的背景颜色
+
+$primaryColor: var(--sxwy-primary-color);
+$primaryTextColor: var(--sxwy-primary-text-color);
+$primaryActiveTextColor: var(--sxwy-primary-active-text-color);
 
 // https://github.com/vitejs/vite/discussions/9601
 :export {
   menuBgColor: $menuBgColor;
   menuTextColor: $menuTextColor;
-  menuHoverTextColor: $menuHoverTextColor;
   menuActiveTextColor: $menuActiveTextColor;
   subMenuBgColor: $subMenuBgColor;
-  subMenuActiveBgColor: $subMenuActiveBgColor;
+  primaryColor: $primaryColor;
+  primaryTextColor: $primaryTextColor;
+  primaryActiveTextColor: $primaryActiveTextColor;
 }

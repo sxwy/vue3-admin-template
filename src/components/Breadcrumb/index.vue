@@ -17,15 +17,10 @@
 </template>
 
 <script lang="ts" setup>
-  import { computed } from 'vue'
   import { type RouteLocationMatched, useRoute, useRouter } from 'vue-router'
-  import variables from '@/styles/variables.module.scss'
 
   const route = useRoute()
   const router = useRouter()
-
-  /** 跳转链接 hover 颜色 */
-  const redirectHoverColor = computed(() => variables.menuBgColor)
 
   /** 点击跳转链接 */
   const handleLinkClick = (item: RouteLocationMatched) => {
@@ -34,6 +29,8 @@
 </script>
 
 <style lang="scss" scoped>
+  @import '@/styles/variables.module.scss';
+
   .breadcrumb {
     .noRedirect {
       color: #97a8be;
@@ -41,13 +38,8 @@
     }
 
     .redirect {
-      color: #666;
+      color: $primaryTextColor;
       font-weight: 600;
-
-      &:hover {
-        /* stylelint-disable-next-line */
-        color: v-bind(redirectHoverColor);
-      }
     }
   }
 

@@ -9,19 +9,19 @@
 
   .el-sub-menu__title {
     &:hover {
-      color: $menuHoverTextColor !important;
+      color: $menuActiveTextColor !important;
     }
   }
 
   .el-menu-item {
     &:hover {
-      color: $menuHoverTextColor;
+      color: $menuActiveTextColor;
       background-color: transparent;
     }
   }
 
   .el-menu-item.is-active {
-    background-color: $subMenuActiveBgColor;
+    background-color: $primaryColor;
   }
 
   .el-menu.el-menu--inline {
