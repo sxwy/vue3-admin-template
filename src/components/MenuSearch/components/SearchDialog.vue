@@ -28,8 +28,10 @@
           :class="{ item_active: state.activeIndex === index }"
           @click="handleItemClick(item)"
           @mouseenter="handleMouseEnter(index)"
-          >{{ item.title }}</div
         >
+          <QuickElIcon :icon="item.icon" :size="20" />
+          <span class="title">{{ item.title }}</span>
+        </div>
       </el-scrollbar>
       <div v-else class="empty">{{ $t('components.menuSearch.empty') }}</div>
     </div>
@@ -58,6 +60,7 @@
   import { useRouter } from 'vue-router'
   import Fuse from 'fuse.js'
   import SvgIcon from '@/components/SvgIcon/index.vue'
+  import QuickElIcon from '@/components/QuickElIcon/index.vue'
   import { filterRoutes, generateMenus } from '@/utils'
   import { useRefs } from '@/hooks'
   import { generateFuseData } from '../utils'
@@ -236,10 +239,16 @@
         padding: 15px;
         border-radius: 5px;
         box-shadow: 0 1px 3px #d4d9e1;
+        display: flex;
+        align-items: center;
 
         &_active {
           color: $menuHoverTextColor;
           background-color: $subMenuActiveBgColor;
+        }
+
+        .title {
+          margin-left: 10px;
         }
       }
     }

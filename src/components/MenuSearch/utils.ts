@@ -10,7 +10,8 @@ export const generateFuseData = (
   routes.forEach((item) => {
     result.push({
       title: i18n.global.t(`common.routes.${item.meta!.title}`),
-      path: item.path
+      path: item.path,
+      icon: item.meta!.menuIcon
     })
     // 递归处理子集
     if (item.children?.length) {

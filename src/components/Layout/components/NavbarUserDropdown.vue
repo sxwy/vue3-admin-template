@@ -6,9 +6,7 @@
         class="avatar"
         :src="user.current?.avatar"
       ></el-avatar>
-      <el-icon>
-        <Setting />
-      </el-icon>
+      <QuickElIcon icon="Setting" />
     </div>
     <template #dropdown>
       <el-dropdown-menu>
@@ -28,7 +26,7 @@
 <script lang="ts" setup>
   import { RouterLink, useRouter } from 'vue-router'
   import { ElMessageBox } from 'element-plus'
-  import { Setting } from '@element-plus/icons-vue'
+  import QuickElIcon from '@/components/QuickElIcon/index.vue'
   import { useUserStore } from '@/store'
   import i18n from '@/i18n'
 
