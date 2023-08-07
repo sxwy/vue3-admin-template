@@ -1,7 +1,7 @@
 <template>
   <el-dialog
     class="colorDialog"
-    width="30%"
+    width="300px"
     append-to-body
     draggable
     :title="$t('common.tipText')"
