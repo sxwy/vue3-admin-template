@@ -62,6 +62,7 @@
   import SvgIcon from '@/components/SvgIcon/index.vue'
   import QuickElIcon from '@/components/QuickElIcon/index.vue'
   import { filterRoutes, generateMenus } from '@/utils'
+  import { useAppStore } from '@/store'
   import { useRefs } from '@/hooks'
   import { generateFuseData } from '../utils'
   import type { SearchResultItem } from '../type'
@@ -86,6 +87,8 @@
 
   const emits = defineEmits(['update:modelValue'])
 
+  let fuse: Fuse<SearchResultItem>
+
   const inputRef = ref<HTMLInputElement | null>(null)
   const scrollbarRef = ref<InstanceType<typeof ElScrollbar> | null>(null)
 
@@ -95,6 +98,7 @@
     activeIndex: 0
   })
 
+  const app = useAppStore()
   const router = useRouter()
   const { refs, setRefs } = useRefs()
 
@@ -111,27 +115,37 @@
     }
   )
 
-  const fuse = new Fuse(routes.value, {
-    // 是否按优先级进行排序
-    shouldSort: true,
-    // 匹配算法放弃的时机， 阈值 0.0 需要完美匹配（字母和位置），阈值 1.0 将匹配任何内容。
-    threshold: 0.4,
-    // 匹配长度超过这个值的才会被认为是匹配的
-    minMatchCharLength: 1,
-    // 将被搜索的键列表。 这支持嵌套路径、加权搜索、在字符串和对象数组中搜索。
-    // name：搜索的键
-    // weight：对应的权重
-    keys: [
-      {
-        name: 'title',
-        weight: 0.7
-      },
-      {
-        name: 'path',
-        weight: 0.3
-      }
-    ]
-  })
+  watch(
+    () => app.localeLang,
+    () => {
+      handleFuseInit()
+    }
+  )
+
+  const handleFuseInit = () => {
+    fuse = new Fuse(routes.value, {
+      // 是否按优先级进行排序
+      shouldSort: true,
+      // 匹配算法放弃的时机， 阈值 0.0 需要完美匹配（字母和位置），阈值 1.0 将匹配任何内容。
+      threshold: 0.4,
+      // 匹配长度超过这个值的才会被认为是匹配的
+      minMatchCharLength: 1,
+      // 将被搜索的键列表。 这支持嵌套路径、加权搜索、在字符串和对象数组中搜索。
+      // name：搜索的键
+      // weight：对应的权重
+      keys: [
+        {
+          name: 'title',
+          weight: 0.7
+        },
+        {
+          name: 'path',
+          weight: 0.3
+        }
+      ]
+    })
+  }
+  handleFuseInit()
 
   const handleScrollToItem = () => {
     const currentItem = refs.value[state.activeIndex] as HTMLElement
