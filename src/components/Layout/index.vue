@@ -2,7 +2,10 @@
   <div class="layout" :class="{ sidebarCollapse: !app.isSidebarCollapse }">
     <Sidebar class="sidebar" />
     <div class="content">
-      <Navbar class="navbar" />
+      <div class="header">
+        <Navbar />
+        <TagsView />
+      </div>
       <AppMain />
     </div>
   </div>
@@ -10,6 +13,7 @@
 
 <script lang="ts" setup>
   import { useAppStore } from '@/store'
+  import TagsView from '@/components/TagsView/index.vue'
   import Sidebar from './components/Sidebar.vue'
   import Navbar from './components/Navbar.vue'
   import AppMain from './components/AppMain.vue'
@@ -42,7 +46,7 @@
       margin-left: $sideBarWidth;
       transition: margin-left $sideBarCollapseTransitionDuration;
 
-      .navbar {
+      .header {
         position: fixed;
         top: 0;
         right: 0;
@@ -60,7 +64,7 @@
     .content {
       margin-left: $sideBarCollapseWidth;
 
-      .navbar {
+      .header {
         width: calc(100% - #{$sideBarCollapseWidth});
       }
     }

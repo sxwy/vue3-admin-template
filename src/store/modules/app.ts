@@ -9,6 +9,8 @@ interface AppState {
   localeLang: string
   /** 当前主题颜色 */
   themePrimaryColor: string
+  /** 标签列表 */
+  tagsViewList: any[]
 }
 
 export const useAppStore = defineStore('app', {
@@ -16,7 +18,8 @@ export const useAppStore = defineStore('app', {
     return {
       isSidebarCollapse: false,
       localeLang: zhCn,
-      themePrimaryColor: defaultThemePrimaryColor
+      themePrimaryColor: defaultThemePrimaryColor,
+      tagsViewList: []
     }
   },
   actions: {
@@ -31,6 +34,13 @@ export const useAppStore = defineStore('app', {
     /** 设置主题颜色 */
     setlThemePrimaryColor(color: string) {
       this.themePrimaryColor = color
+    },
+    /** 设置标签列表 */
+    setTagsViewList(item: any) {
+      const findResult = this.tagsViewList.find((tag) => tag.path === item.path)
+      if (!findResult) {
+        this.tagsViewList.push(item)
+      }
     }
   }
 })

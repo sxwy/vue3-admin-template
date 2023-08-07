@@ -8,7 +8,28 @@
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+  import { watch } from 'vue'
+  import { useRoute } from 'vue-router'
+  import { useAppStore } from '@/store'
+
+  const app = useAppStore()
+  const route = useRoute()
+
+  watch(
+    route,
+    (to) => {
+      const { fullPath, meta } = to
+      app.setTagsViewList({
+        title: meta.title,
+        path: fullPath
+      })
+    },
+    {
+      immediate: true
+    }
+  )
+</script>
 
 <style lang="scss" scoped>
   .appMain {
