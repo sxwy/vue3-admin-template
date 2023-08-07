@@ -47,7 +47,8 @@ export default {
       switchLangSuccess: 'Switch Language Success'
     },
     themeUsing: {
-      tooltip: 'Theme Modification'
+      tooltip: 'Theme Modification',
+      title: 'Theme'
     },
     screenFull: {
       tooltip: 'Screen Full'

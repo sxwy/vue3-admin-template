@@ -47,7 +47,8 @@ export default {
       switchLangSuccess: '切换语言成功'
     },
     themeUsing: {
-      tooltip: '主题修改'
+      tooltip: '主题修改',
+      title: '主题'
     },
     screenFull: {
       tooltip: '全屏'

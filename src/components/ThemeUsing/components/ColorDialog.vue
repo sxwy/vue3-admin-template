@@ -4,7 +4,7 @@
     width="300px"
     append-to-body
     draggable
-    :title="$t('common.tipText')"
+    :title="$t('components.themeUsing.title')"
     :model-value="modelValue"
     @close="handleClose"
   >
