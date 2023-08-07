@@ -19,12 +19,12 @@
       @input="handleInputChange"
     />
     <div class="result">
-      <el-scrollbar v-if="state.searchResult.length">
+      <el-scrollbar v-if="state.searchResult.length" ref="scrollbarRef">
         <div
           class="item"
           v-for="(item, index) of state.searchResult"
+          :ref="setRefs(index)"
           :key="index"
-          :data-index="index"
           :class="{ item_active: state.activeIndex === index }"
           @click="handleItemClick(item)"
           @mouseenter="handleMouseEnter(index)"
@@ -53,11 +53,13 @@
 
 <script lang="ts" setup>
   import { ref, reactive, computed, watch } from 'vue'
+  import { ElScrollbar } from 'element-plus'
   import { Search } from '@element-plus/icons-vue'
   import { useRouter } from 'vue-router'
   import Fuse from 'fuse.js'
   import SvgIcon from '@/components/SvgIcon/index.vue'
   import { filterRoutes, generateMenus } from '@/utils'
+  import { useRefs } from '@/hooks'
   import { generateFuseData } from '../utils'
   import type { SearchResultItem } from '../type'
 
@@ -82,6 +84,7 @@
   const emits = defineEmits(['update:modelValue'])
 
   const inputRef = ref<HTMLInputElement | null>(null)
+  const scrollbarRef = ref<InstanceType<typeof ElScrollbar> | null>(null)
 
   const state: State = reactive({
     searchContent: '',
@@ -90,6 +93,7 @@
   })
 
   const router = useRouter()
+  const { refs, setRefs } = useRefs()
 
   const routes = computed(() => {
     const routeList = filterRoutes(router.getRoutes())
@@ -126,6 +130,21 @@
     ]
   })
 
+  const handleScrollToItem = () => {
+    const currentItem = refs.value[state.activeIndex] as HTMLElement
+    const style = window.getComputedStyle(currentItem, null)
+    const currentItemHeight =
+      parseFloat(style.marginTop) +
+      parseFloat(style.marginBottom) +
+      currentItem.offsetHeight
+    const actualHeight = currentItem.offsetTop + currentItemHeight
+    const scrollbarHeight = scrollbarRef.value!.wrapRef!.offsetHeight
+    scrollbarRef.value!.scrollTo({
+      top: actualHeight - scrollbarHeight,
+      behavior: 'smooth'
+    })
+  }
+
   const handleKeyUpDown = (ev: KeyboardEvent) => {
     if (!state.searchResult.length) {
       return
@@ -137,12 +156,14 @@
       } else {
         state.activeIndex--
       }
+      handleScrollToItem()
     } else if (ev.key === 'ArrowDown') {
       if (state.activeIndex === len) {
         state.activeIndex = 0
       } else {
         state.activeIndex++
       }
+      handleScrollToItem()
     } else if (ev.key === 'Enter') {
       handleItemClick(state.searchResult[state.activeIndex])
     }
@@ -205,7 +226,6 @@
     }
 
     .result {
-      // padding: 0 15px;
       :deep(.el-scrollbar__wrap) {
         max-height: 400px;
       }
@@ -216,10 +236,6 @@
         padding: 15px;
         border-radius: 5px;
         box-shadow: 0 1px 3px #d4d9e1;
-
-        &:last-child {
-          margin-bottom: 10px;
-        }
 
         &_active {
           color: $menuHoverTextColor;
