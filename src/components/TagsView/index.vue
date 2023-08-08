@@ -9,10 +9,10 @@
     >
       {{ $t(`common.routes.${item.title}`) }}
       <QuickElIcon
-        v-if="app.tagsViewList.length > 1"
+        v-show="app.tagsViewList.length > 1"
         icon="Close"
         class="icon"
-        @click.prevent="handleCloseClick(item, index)"
+        @click.prevent.stop="handleCloseClick(item, index)"
       />
     </router-link>
   </div>
