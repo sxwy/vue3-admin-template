@@ -5,7 +5,7 @@
       v-for="(item, index) of app.tagsViewList"
       :key="index"
       :to="{ path: item.path }"
-      :class="{ item_active: isActive(item.path) }"
+      :class="{ item_active: item.path === route.path }"
     >
       {{ $t(`common.routes.${item.title}`) }}
     </router-link>
@@ -18,10 +18,6 @@
 
   const app = useAppStore()
   const route = useRoute()
-
-  const isActive = (path: string) => {
-    return path === route.path
-  }
 </script>
 
 <style lang="scss" scoped>
