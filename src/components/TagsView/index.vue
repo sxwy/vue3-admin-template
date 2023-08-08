@@ -9,6 +9,7 @@
     >
       {{ $t(`common.routes.${item.title}`) }}
       <QuickElIcon
+        v-if="app.tagsViewList.length > 1"
         icon="Close"
         class="icon"
         @click.prevent="handleCloseClick(item, index)"
@@ -27,10 +28,6 @@
   const router = useRouter()
 
   const handleCloseClick = (item: TagsViewItem, index: number) => {
-    // 如果只剩一个 tag 则不允许删除
-    if (app.tagsViewList.length === 1) {
-      return
-    }
     app.removeTagsView(index)
     // 如果点击的是激活项，则删除后需要跳转到上一个 tag
     if (route.path === item.path) {
