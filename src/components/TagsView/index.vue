@@ -8,6 +8,7 @@
       :class="{ item_active: item.path === route.path }"
     >
       {{ $t(`common.routes.${item.title}`) }}
+      <QuickElIcon icon="Close" class="icon" />
     </router-link>
   </div>
 </template>
@@ -15,6 +16,7 @@
 <script lang="ts" setup>
   import { useRoute } from 'vue-router'
   import { useAppStore } from '@/store'
+  import QuickElIcon from '@/components/QuickElIcon/index.vue'
 
   const app = useAppStore()
   const route = useRoute()
@@ -40,7 +42,9 @@
     .item {
       cursor: pointer;
       height: 26px;
-      line-height: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       border: 1px solid #d8dce5;
       background-color: #fff;
       padding: 0 8px;
@@ -48,9 +52,14 @@
       margin-right: 5px;
       color: $primaryTextColor;
 
-      &:hover {
-        color: $primaryColor;
-        border-color: $primaryColor;
+      .icon {
+        transition: width 0.5s;
+        width: 0;
+        margin-left: 5px;
+      }
+
+      &:hover .icon {
+        width: 14px;
       }
 
       &_active {
@@ -58,8 +67,8 @@
         background-color: $primaryColor;
         border-color: $primaryColor;
 
-        &:hover {
-          color: $menuActiveTextColor;
+        .icon {
+          width: 14px;
         }
       }
     }
