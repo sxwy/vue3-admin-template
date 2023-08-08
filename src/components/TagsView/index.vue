@@ -8,18 +8,39 @@
       :class="{ item_active: item.path === route.path }"
     >
       {{ $t(`common.routes.${item.title}`) }}
-      <QuickElIcon icon="Close" class="icon" />
+      <QuickElIcon
+        icon="Close"
+        class="icon"
+        @click.prevent="handleCloseClick(item, index)"
+      />
     </router-link>
   </div>
 </template>
 
 <script lang="ts" setup>
-  import { useRoute } from 'vue-router'
-  import { useAppStore } from '@/store'
+  import { useRoute, useRouter } from 'vue-router'
+  import { useAppStore, type TagsViewItem } from '@/store'
   import QuickElIcon from '@/components/QuickElIcon/index.vue'
 
   const app = useAppStore()
   const route = useRoute()
+  const router = useRouter()
+
+  const handleCloseClick = (item: TagsViewItem, index: number) => {
+    // 如果只剩一个 tag 则不允许删除
+    if (app.tagsViewList.length === 1) {
+      return
+    }
+    app.removeTagsView(index)
+    // 如果点击的是激活项，则删除后需要跳转到上一个 tag
+    if (route.path === item.path) {
+      if (index === 0) {
+        router.push(app.tagsViewList[index].path)
+      } else {
+        router.push(app.tagsViewList[index - 1].path)
+      }
+    }
+  }
 </script>
 
 <style lang="scss" scoped>

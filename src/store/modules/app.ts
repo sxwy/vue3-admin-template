@@ -2,6 +2,11 @@ import { defineStore } from 'pinia'
 import { zhCn } from '@/i18n'
 import { defaultThemePrimaryColor } from '@/constants'
 
+export interface TagsViewItem {
+  title: string
+  path: string
+}
+
 interface AppState {
   /** 侧边栏是否折叠 */
   isSidebarCollapse: boolean
@@ -10,7 +15,7 @@ interface AppState {
   /** 当前主题颜色 */
   themePrimaryColor: string
   /** 标签列表 */
-  tagsViewList: any[]
+  tagsViewList: TagsViewItem[]
 }
 
 export const useAppStore = defineStore('app', {
@@ -35,12 +40,18 @@ export const useAppStore = defineStore('app', {
     setlThemePrimaryColor(color: string) {
       this.themePrimaryColor = color
     },
-    /** 设置标签列表 */
-    setTagsViewList(item: any) {
-      const findResult = this.tagsViewList.find((tag) => tag.path === item.path)
-      if (!findResult) {
-        this.tagsViewList.push(item)
+    /** 添加标签 */
+    addTagsView(tagsView: TagsViewItem) {
+      const ifFind = this.tagsViewList.find(
+        (item) => item.path === tagsView.path
+      )
+      if (!ifFind) {
+        this.tagsViewList.push(tagsView)
       }
+    },
+    /** 删除标签 */
+    removeTagsView(index: number) {
+      this.tagsViewList.splice(index, 1)
     }
   }
 })

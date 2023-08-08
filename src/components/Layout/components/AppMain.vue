@@ -20,7 +20,7 @@
     route,
     (to) => {
       const { fullPath, meta } = to
-      app.setTagsViewList({
+      app.addTagsView({
         title: meta.title,
         path: fullPath
       })
