@@ -24,7 +24,12 @@
   const router = useRouter()
 
   const handleRefresh = () => {
-    router.go(0)
+    const realityPath = app.tagsViewList[props.index].fullPath
+    if (route.fullPath === realityPath) {
+      router.go(0)
+    } else {
+      router.push(realityPath)
+    }
   }
 
   const handleCloseRight = () => {
