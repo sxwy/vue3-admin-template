@@ -4,7 +4,7 @@ import { defaultThemePrimaryColor } from '@/constants'
 
 export interface TagsViewItem {
   title: string
-  path: string
+  fullPath: string
 }
 
 interface AppState {
@@ -21,7 +21,7 @@ interface AppState {
 export const useAppStore = defineStore('app', {
   state(): AppState {
     return {
-      isSidebarCollapse: false,
+      isSidebarCollapse: true,
       localeLang: zhCn,
       themePrimaryColor: defaultThemePrimaryColor,
       tagsViewList: []
@@ -42,16 +42,31 @@ export const useAppStore = defineStore('app', {
     },
     /** 添加标签 */
     addTagsView(tagsView: TagsViewItem) {
-      const ifFind = this.tagsViewList.find(
-        (item) => item.path === tagsView.path
+      const isFind = this.tagsViewList.find(
+        (item) => item.fullPath === tagsView.fullPath
       )
-      if (!ifFind) {
+      if (!isFind) {
         this.tagsViewList.push(tagsView)
       }
     },
     /** 删除标签 */
     removeTagsView(index: number) {
       this.tagsViewList.splice(index, 1)
+    },
+    /** 清除右侧标签 */
+    clearRightTagsView(index: number) {
+      this.tagsViewList.splice(
+        index + 1,
+        this.tagsViewList.length - (index + 1)
+      )
+    },
+    /** 清除其他标签 */
+    clearOtherTagsView(index: number) {
+      this.tagsViewList.splice(
+        index + 1,
+        this.tagsViewList.length - (index + 1)
+      )
+      this.tagsViewList.splice(0, index)
     }
   }
 })

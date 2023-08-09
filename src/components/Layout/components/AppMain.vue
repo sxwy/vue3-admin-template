@@ -22,7 +22,7 @@
       const { fullPath, meta } = to
       app.addTagsView({
         title: meta.title,
-        path: fullPath
+        fullPath
       })
     },
     {
