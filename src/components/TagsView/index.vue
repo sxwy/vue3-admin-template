@@ -1,23 +1,29 @@
 <template>
   <div class="tagsView">
-    <router-link
-      class="item"
-      v-for="(item, index) of app.tagsViewList"
-      :key="index"
-      :to="{ path: item.fullPath }"
-      :class="{ item_active: item.fullPath === route.fullPath }"
-      @contextmenu.prevent="handleContextMenu(index, $event)"
-    >
-      {{ $t(`common.routes.${item.title}`) }}
-      <QuickElIcon
-        v-show="app.tagsViewList.length > 1"
-        icon="Close"
-        class="icon"
-        @click.prevent.stop="handleCloseClick(item, index)"
-      />
-    </router-link>
+    <el-scrollbar ref="scrollbarRef" @wheel="handleScroll">
+      <div class="content">
+        <router-link
+          class="item"
+          v-for="(item, index) of app.tagsViewList"
+          :key="index"
+          :to="{ path: item.fullPath }"
+          :class="{ item_active: item.fullPath === route.fullPath }"
+          @contextmenu.prevent="handleContextMenu(item, index, $event)"
+        >
+          {{ $t(`common.routes.${item.title}`) }}
+          <QuickElIcon
+            v-show="app.tagsViewList.length > 1"
+            icon="Close"
+            class="closeIcon"
+            @click.prevent="handleCloseClick(item, index)"
+          />
+        </router-link>
+      </div>
+    </el-scrollbar>
     <ContextMenu
+      ref="contextMenuRef"
       v-show="state.contextMenu.show"
+      :item="state.clickItem"
       :index="state.clickIndex"
       :style="state.contextMenu.style"
     />
@@ -25,13 +31,16 @@
 </template>
 
 <script lang="ts" setup>
-  import { reactive, watch } from 'vue'
-  import { useRoute, useRouter } from 'vue-router'
+  import { ref, reactive, watch, nextTick } from 'vue'
+  import { ElScrollbar } from 'element-plus'
+  import { useRoute } from 'vue-router'
   import { useAppStore, type TagsViewItem } from '@/store'
   import QuickElIcon from '@/components/QuickElIcon/index.vue'
   import ContextMenu from './components/ContextMenu.vue'
 
   interface State {
+    /** 点击的菜单 */
+    clickItem: TagsViewItem
     /** 点击的菜单下标 */
     clickIndex: number
     /** 右键菜单 */
@@ -48,7 +57,14 @@
     }
   }
 
+  const scrollbarRef = ref<InstanceType<typeof ElScrollbar> | null>(null)
+  const contextMenuRef = ref<InstanceType<typeof ContextMenu> | null>(null)
+
+  const app = useAppStore()
+  const route = useRoute()
+
   const state: State = reactive({
+    clickItem: app.tagsViewList[0],
     clickIndex: 0,
     contextMenu: {
       show: false,
@@ -58,10 +74,6 @@
       }
     }
   })
-
-  const app = useAppStore()
-  const route = useRoute()
-  const router = useRouter()
 
   watch(
     () => state.contextMenu.show,
@@ -74,27 +86,33 @@
     }
   )
 
+  const handleScroll = (ev: WheelEvent) => {
+    scrollbarRef.value!.wrapRef!.scrollLeft =
+      scrollbarRef.value!.wrapRef!.scrollLeft + ev.deltaY
+  }
+
   const handleCloseContextMenu = () => {
     state.contextMenu.show = false
   }
 
-  const handleContextMenu = (index: number, ev: MouseEvent) => {
+  const handleContextMenu = (
+    item: TagsViewItem,
+    index: number,
+    ev: MouseEvent
+  ) => {
     state.clickIndex = index
+    state.clickItem = item
     state.contextMenu.style.top = `${ev.y}px`
     state.contextMenu.style.left = `${ev.x}px`
     state.contextMenu.show = true
   }
 
   const handleCloseClick = (item: TagsViewItem, index: number) => {
-    app.removeTagsView(index)
-    // 如果点击的是激活项，则删除后需要跳转到上一个 tag
-    if (route.fullPath === item.fullPath) {
-      if (index === 0) {
-        router.push(app.tagsViewList[index].fullPath)
-      } else {
-        router.push(app.tagsViewList[index - 1].fullPath)
-      }
-    }
+    state.clickIndex = index
+    state.clickItem = item
+    nextTick(() => {
+      contextMenuRef.value?.handleCloseCurrent()
+    })
   }
 </script>
 
@@ -115,36 +133,45 @@
       text-decoration: none;
     }
 
-    .item {
-      cursor: pointer;
-      height: 26px;
+    .content {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid #d8dce5;
-      background-color: #fff;
-      padding: 0 8px;
-      font-size: 12px;
-      margin-right: 5px;
-      color: $primaryTextColor;
 
-      .icon {
-        transition: width 0.5s;
-        width: 0;
-        margin-left: 5px;
-      }
+      .item {
+        cursor: pointer;
+        height: 26px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        border: 1px solid #d8dce5;
+        background-color: #fff;
+        padding: 0 8px;
+        font-size: 12px;
+        margin-right: 5px;
+        color: $primaryTextColor;
 
-      &:hover .icon {
-        width: 14px;
-      }
+        &:last-child {
+          margin-right: 0;
+        }
 
-      &_active {
-        color: $menuActiveTextColor;
-        background-color: $primaryColor;
-        border-color: $primaryColor;
+        .closeIcon {
+          transition: width 0.5s;
+          width: 0;
+          margin-left: 5px;
+        }
 
-        .icon {
+        &:hover .closeIcon {
           width: 14px;
+        }
+
+        &_active {
+          color: $menuActiveTextColor;
+          background-color: $primaryColor;
+          border-color: $primaryColor;
+
+          .closeIcon {
+            width: 14px;
+          }
         }
       }
     }
