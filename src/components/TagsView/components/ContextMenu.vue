@@ -62,6 +62,7 @@
 
   const handleCloseOther = () => {
     app.clearOtherTagsView(props.index)
+    router.push(props.item!.fullPath)
   }
 
   defineExpose({
@@ -73,13 +74,15 @@
 </script>
 
 <style lang="scss" scoped>
+  @import '@/styles/variables.module.scss';
+
   .contextMenu {
     position: fixed;
     background-color: #fff;
     padding: 5px;
     border-radius: 4px;
     font-size: 12px;
-    color: #333;
+    color: $primaryTextColor;
     box-shadow: 2px 2px 3px 0 rgb(0 0 0 / 30%);
 
     .item {
@@ -88,7 +91,8 @@
       cursor: pointer;
 
       &:hover {
-        background-color: #eee;
+        color: $menuActiveTextColor;
+        background-color: $primaryColor;
       }
     }
   }
