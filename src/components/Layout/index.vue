@@ -35,6 +35,7 @@
       position: fixed;
       top: 0;
       left: 0;
+      z-index: 9;
       width: $sideBarWidth;
       height: 100%;
       transition: width $sideBarCollapseTransitionDuration;
@@ -50,6 +51,7 @@
         position: fixed;
         top: 0;
         right: 0;
+        z-index: 9;
         width: calc(100% - $sideBarWidth);
         transition: width $sideBarCollapseTransitionDuration;
       }

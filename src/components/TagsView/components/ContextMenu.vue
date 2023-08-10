@@ -78,6 +78,7 @@
 
   .contextMenu {
     position: fixed;
+    z-index: 9;
     background-color: #fff;
     padding: 5px;
     border-radius: 4px;

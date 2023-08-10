@@ -2,7 +2,6 @@
   <el-dialog
     class="searchDialog"
     width="650px"
-    append-to-body
     draggable
     :show-close="false"
     :model-value="modelValue"

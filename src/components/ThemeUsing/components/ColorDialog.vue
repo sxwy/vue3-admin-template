@@ -2,7 +2,6 @@
   <el-dialog
     class="colorDialog"
     width="300px"
-    append-to-body
     draggable
     :title="$t('components.themeUsing.title')"
     :model-value="modelValue"
