@@ -121,13 +121,20 @@
 
   .tagsView {
     box-sizing: border-box;
-    height: 35px;
     width: 100%;
     padding: 0 15px;
     display: flex;
     align-items: center;
     background-color: #fff;
     box-shadow: 0 1px 3px 0 rgb(0 0 0 / 12%), 0 0 3px 0 rgb(0 0 0 / 4%);
+
+    :deep(.el-scrollbar) {
+      padding: 5px 0;
+    }
+
+    :deep(.el-scrollbar__bar) {
+      display: none;
+    }
 
     :deep(a) {
       text-decoration: none;
