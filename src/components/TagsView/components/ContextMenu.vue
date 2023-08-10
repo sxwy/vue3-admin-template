@@ -53,7 +53,7 @@
   .contextMenu {
     position: fixed;
     background-color: #fff;
-    padding: 10px;
+    padding: 5px;
     border-radius: 4px;
     font-size: 12px;
     color: #333;

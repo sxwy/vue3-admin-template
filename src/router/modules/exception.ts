@@ -1,12 +1,10 @@
 import type { RouteRecordRaw } from 'vue-router'
-import Layout from '@/components/Layout/index.vue'
 
 /** 异常相关路由 */
 export default {
   name: 'Exception',
   path: '/exception',
   redirect: '/exception/not-found/index',
-  component: Layout,
   meta: {
     title: '异常页面',
     menuShow: false,
