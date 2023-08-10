@@ -35,7 +35,8 @@
   .appMain {
     box-sizing: border-box;
     height: 100%;
-    padding: 104px 20px 20px;
+    // 50px：header，38px：tagsView
+    padding: calc(50px + 38px + 20px) 20px 20px 20px;
     background-color: #eee;
   }
 
