@@ -7,7 +7,7 @@
           v-for="(item, index) of app.tagsViewList"
           :key="index"
           :to="{ path: item.fullPath }"
-          :class="{ item_active: item.fullPath === route.fullPath }"
+          :class="{ item_active: item.name === route.name }"
           @contextmenu.prevent="handleContextMenu(item, index, $event)"
         >
           {{ $t(`common.routes.${item.title}`) }}

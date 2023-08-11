@@ -28,18 +28,18 @@
   const router = useRouter()
 
   const handleRefresh = () => {
-    const realityPath = app.tagsViewList[props.index].fullPath
-    if (route.fullPath === realityPath) {
+    const currentTag = app.tagsViewList[props.index]
+    if (route.name === currentTag.name) {
       router.go(0)
     } else {
-      router.push(realityPath)
+      router.push(currentTag.fullPath)
     }
   }
 
   const handleCloseCurrent = () => {
     app.removeTagsView(props.index)
     // 如果点击的是激活项，则删除后需要跳转到上一个 tag
-    if (route.fullPath === props.item!.fullPath) {
+    if (route.name === props.item!.name) {
       if (props.index === 0) {
         router.push(app.tagsViewList[props.index].fullPath)
       } else {
@@ -50,9 +50,7 @@
 
   const handleCloseRight = () => {
     app.clearRightTagsView(props.index)
-    const isFind = app.tagsViewList.find(
-      (item) => item.fullPath === route.fullPath
-    )
+    const isFind = app.tagsViewList.find((item) => item.name === route.name)
     // 如果当前激活的 tag 被删除，则需要跳转到最后一个
     if (!isFind) {
       const lastTag = app.tagsViewList[app.tagsViewList.length - 1]

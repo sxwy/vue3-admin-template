@@ -19,10 +19,10 @@
   watch(
     route,
     (to) => {
-      const { fullPath, meta } = to
       app.addTagsView({
-        title: meta.title,
-        fullPath
+        name: to.name as string,
+        title: to.meta.title,
+        fullPath: to.fullPath
       })
     },
     {

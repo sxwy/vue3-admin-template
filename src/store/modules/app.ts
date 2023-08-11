@@ -3,6 +3,7 @@ import { zhCn } from '@/i18n'
 import { defaultThemePrimaryColor } from '@/constants'
 
 export interface TagsViewItem {
+  name: string
   title: string
   fullPath: string
 }
@@ -42,11 +43,13 @@ export const useAppStore = defineStore('app', {
     },
     /** 添加标签 */
     addTagsView(tagsView: TagsViewItem) {
-      const isFind = this.tagsViewList.find(
-        (item) => item.fullPath === tagsView.fullPath
+      const index = this.tagsViewList.findIndex(
+        (item) => item.name === tagsView.name
       )
-      if (!isFind) {
+      if (index === -1) {
         this.tagsViewList.push(tagsView)
+      } else {
+        this.tagsViewList[index] = tagsView
       }
     },
     /** 删除标签 */
