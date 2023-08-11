@@ -40,8 +40,8 @@
         <span>{{ $t('components.menuSearch.enter') }}</span>
       </div>
       <div class="tipItem">
-        <SvgIcon icon="top" class="svgIcon" />
-        <SvgIcon icon="bottom" class="svgIcon" />
+        <SvgIcon icon="arrows-top" class="svgIcon" />
+        <SvgIcon icon="arrows-bottom" class="svgIcon" />
         <span>{{ $t('components.menuSearch.upDown') }}</span>
       </div>
       <div class="tipItem">

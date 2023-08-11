@@ -44,12 +44,12 @@ export default {
     },
     langDropdown: {
       tooltip: 'Globalization',
-      switchLangSuccess: 'Switch Language Success'
+      switchLangSuccess: 'Switch language success'
     },
     themeUsing: {
-      tooltip: 'Theme Modification',
+      tooltip: 'Theme',
       title: 'Theme',
-      usingSuccess: 'Switch Theme Success'
+      usingSuccess: 'Switch theme success'
     },
     screenFull: {
       tooltip: 'Screen Full'
@@ -63,7 +63,28 @@ export default {
       esc: 'to close'
     },
     guide: {
-      tooltip: 'guide'
+      tooltip: 'guide',
+      done: 'done',
+      next: 'next',
+      prev: 'prev',
+      sidebarTitle: 'Sidebar',
+      sidebarDescription: 'Menu list',
+      hamburgerTitle: 'Flexible',
+      hamburgerDescription: 'Sidebar flexible',
+      guideTitle: 'Guide',
+      guideDescription: 'Open function boot',
+      menuSearchTitle: 'Search',
+      menuSearchDescription: 'Page menu search',
+      screenFullTitle: 'Screen Full',
+      screenFullDescription: 'Page full screen switch',
+      themeUsingTitle: 'Theme',
+      themeUsingDescription: 'Switch project topic',
+      langDropdownTitle: 'Globalization',
+      langDropdownDescription: 'Switch the language',
+      navbarUserDropdownTitle: 'User',
+      navbarUserDropdownDescription: 'Account information',
+      tagsViewTitle: 'Tabbar',
+      tagsViewDescription: 'Page history'
     }
   }
 }

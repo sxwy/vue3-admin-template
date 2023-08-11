@@ -2,9 +2,10 @@
   <div class="navbar">
     <div class="left">
       <Hamburger />
-      <Breadcrumb />
+      <Breadcrumb class="breadcrumb" />
     </div>
     <div class="right">
+      <Guide class="guide" />
       <MenuSearch class="menuSearch" />
       <ScreenFull class="screenFull" />
       <ThemeUsing class="themeUsing" />
@@ -19,6 +20,7 @@
   import Breadcrumb from '@/components/Breadcrumb/index.vue'
   import ScreenFull from '@/components/ScreenFull/index.vue'
   import ThemeUsing from '@/components/ThemeUsing/index.vue'
+  import Guide from '@/components/Guide/index.vue'
   import LangDropdown from '@/components/LangDropdown/index.vue'
   import MenuSearch from '@/components/MenuSearch/index.vue'
   import NavbarUserDropdown from './NavbarUserDropdown.vue'
@@ -39,13 +41,20 @@
       height: 100%;
       display: flex;
       align-items: center;
+      padding-left: 15px;
+
+      .breadcrumb {
+        margin-left: 15px;
+      }
     }
 
     .right {
       height: 100%;
       display: flex;
       align-items: center;
+      padding-right: 15px;
 
+      .guide,
       .menuSearch,
       .screenFull,
       .themeUsing,

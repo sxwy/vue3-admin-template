@@ -23,7 +23,7 @@
 
 <style lang="scss" scoped>
   .hamburger {
-    padding: 15px;
+    padding: 5px;
     cursor: pointer;
     transition: background 0.5s;
 
@@ -32,10 +32,8 @@
     }
 
     .svgIcon {
-      display: inline-block;
-      vertical-align: middle;
-      width: 20px;
-      height: 20px;
+      width: 22px;
+      height: 22px;
     }
   }
 </style>

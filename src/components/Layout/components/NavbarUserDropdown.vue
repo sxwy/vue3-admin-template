@@ -59,7 +59,6 @@
 
 <style lang="scss" scoped>
   .navbarUserDropdown {
-    padding-right: 15px;
     cursor: pointer;
 
     .avatar {
