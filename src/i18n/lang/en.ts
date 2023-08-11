@@ -48,7 +48,8 @@ export default {
     },
     themeUsing: {
       tooltip: 'Theme Modification',
-      title: 'Theme'
+      title: 'Theme',
+      usingSuccess: 'Switch Theme Success'
     },
     screenFull: {
       tooltip: 'Screen Full'
@@ -60,6 +61,9 @@ export default {
       enter: 'to select',
       upDown: 'to navigate',
       esc: 'to close'
+    },
+    guide: {
+      tooltip: 'guide'
     }
   }
 }

@@ -29,8 +29,10 @@
 
 <script lang="ts" setup>
   import { reactive } from 'vue'
+  import { ElMessage } from 'element-plus'
   import { useAppStore } from '@/store'
   import { setElCSSVar } from '@/utils'
+  import i18n from '@/i18n'
 
   interface State {
     /** 选择的颜色 */
@@ -76,6 +78,10 @@
     app.setlThemePrimaryColor(state.selectColor)
     setElCSSVar(state.selectColor)
     handleClose()
+    ElMessage({
+      type: 'success',
+      message: i18n.global.t('components.themeUsing.usingSuccess')
+    })
   }
 </script>
 

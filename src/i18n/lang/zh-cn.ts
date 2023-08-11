@@ -48,7 +48,8 @@ export default {
     },
     themeUsing: {
       tooltip: '主题修改',
-      title: '主题'
+      title: '主题',
+      usingSuccess: '切换主题成功'
     },
     screenFull: {
       tooltip: '全屏'
@@ -60,6 +61,9 @@ export default {
       enter: '确认',
       upDown: '切换',
       esc: '关闭'
+    },
+    guide: {
+      tooltip: '引导'
     }
   }
 }
