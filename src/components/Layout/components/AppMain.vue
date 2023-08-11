@@ -19,7 +19,7 @@
   watch(
     route,
     (to) => {
-      app.addTagsView({
+      app.updateTagsView({
         name: to.name as string,
         title: to.meta.title,
         fullPath: to.fullPath

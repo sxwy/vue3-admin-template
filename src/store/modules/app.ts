@@ -41,8 +41,8 @@ export const useAppStore = defineStore('app', {
     setlThemePrimaryColor(color: string) {
       this.themePrimaryColor = color
     },
-    /** 添加标签 */
-    addTagsView(tagsView: TagsViewItem) {
+    /** 更新标签 */
+    updateTagsView(tagsView: TagsViewItem) {
       const index = this.tagsViewList.findIndex(
         (item) => item.name === tagsView.name
       )
