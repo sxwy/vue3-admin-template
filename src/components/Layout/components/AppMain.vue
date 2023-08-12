@@ -36,7 +36,7 @@
     box-sizing: border-box;
     height: 100%;
     // 50px：header，38px：tagsView
-    padding: calc(50px + 38px + 20px) 20px 20px 20px;
+    padding: calc(50px + 38px + 15px) 15px 15px 15px;
     background-color: #eee;
   }
 

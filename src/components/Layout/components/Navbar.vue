@@ -41,7 +41,7 @@
       height: 100%;
       display: flex;
       align-items: center;
-      padding-left: 15px;
+      padding-left: 10px;
 
       .breadcrumb {
         margin-left: 15px;
