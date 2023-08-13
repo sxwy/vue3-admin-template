@@ -38,12 +38,13 @@
     // 50px：header，38px：tagsView
     padding: calc(50px + 38px + 15px) 15px 15px 15px;
     background-color: #eee;
+    position: relative;
+    overflow: hidden;
   }
 
   .appMain-leave-active,
   .appMain-enter-active {
     transition: all 0.5s;
-    position: absolute;
   }
 
   .appMain-enter-from {
