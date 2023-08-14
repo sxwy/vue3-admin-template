@@ -39,30 +39,30 @@
   .sidebarMenu {
     border: none;
 
-    .el-sub-menu.is-active {
+    :deep(.el-sub-menu.is-active) {
       .el-sub-menu__title {
         color: $menuActiveTextColor !important;
       }
     }
 
-    .el-sub-menu__title {
+    :deep(.el-sub-menu__title) {
       &:hover {
         color: $menuActiveTextColor !important;
       }
     }
 
-    .el-menu-item {
+    :deep(.el-menu-item) {
       &:hover {
         color: $menuActiveTextColor;
         background-color: transparent;
       }
     }
 
-    .el-menu-item.is-active {
+    :deep(.el-menu-item.is-active) {
       background-color: $primaryColor;
     }
 
-    .el-menu.el-menu--inline {
+    :deep(.el-menu.el-menu--inline) {
       background-color: $subMenuBgColor;
     }
   }
