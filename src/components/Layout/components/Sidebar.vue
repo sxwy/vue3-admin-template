@@ -28,12 +28,14 @@
 <style lang="scss" scoped>
   @import '@/styles/variables.module.scss';
 
+  $logoHeight: 50px; // logo 区域高度
+
   .sidebar {
     background-color: $menuBgColor;
 
     .logo {
       box-sizing: border-box;
-      height: 50px;
+      height: $logoHeight;
       padding: 10px;
       display: flex;
       justify-content: center;
@@ -53,6 +55,14 @@
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+      }
+    }
+
+    .el-scrollbar {
+      height: calc(100% - $logoHeight);
+
+      :deep(.el-scrollbar__bar.is-horizontal) {
+        display: none;
       }
     }
   }

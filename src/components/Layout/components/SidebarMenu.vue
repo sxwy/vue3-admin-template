@@ -33,4 +33,37 @@
   })
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+  @import '@/styles/variables.module.scss';
+
+  .sidebarMenu {
+    border: none;
+
+    .el-sub-menu.is-active {
+      .el-sub-menu__title {
+        color: $menuActiveTextColor !important;
+      }
+    }
+
+    .el-sub-menu__title {
+      &:hover {
+        color: $menuActiveTextColor !important;
+      }
+    }
+
+    .el-menu-item {
+      &:hover {
+        color: $menuActiveTextColor;
+        background-color: transparent;
+      }
+    }
+
+    .el-menu-item.is-active {
+      background-color: $primaryColor;
+    }
+
+    .el-menu.el-menu--inline {
+      background-color: $subMenuBgColor;
+    }
+  }
+</style>
