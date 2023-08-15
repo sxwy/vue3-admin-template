@@ -1,40 +1,60 @@
 <template>
   <div>
-    <el-form class="form" :model="state.form" inline>
-      <el-form-item label="名称">
+    <el-form ref="formRef" class="form" :model="state.form" inline>
+      <el-form-item label="名称" prop="name">
         <el-input v-model="state.form.name" placeholder="请输入" clearable />
       </el-form-item>
-      <el-form-item label="状态">
+      <el-form-item label="状态" prop="state">
         <el-select v-model="state.form.state" placeholder="请选择" clearable>
           <el-option label="正常" :value="1" />
           <el-option label="禁用" :value="0" />
         </el-select>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary">搜索</el-button>
-        <el-button>重置</el-button>
+        <el-button type="primary" @click="handlePageInit">搜索</el-button>
+        <el-button @click="handleReset">重置</el-button>
       </el-form-item>
     </el-form>
-    <div class="table">
+    <div class="content">
       <div class="operation">
         <el-button type="primary">创建</el-button>
       </div>
-      <el-table :data="state.table" stripe>
-        <el-table-column label="名称" align="center" prop="name" />
-        <el-table-column label="状态" align="center" prop="state" />
-      </el-table>
+      <div class="table" v-loading="state.table.loading">
+        <el-table :data="state.table.dataList" stripe>
+          <el-table-column label="名称" align="center" prop="name" />
+          <el-table-column label="状态" align="center" prop="stateStr" />
+          <el-table-column label="操作" align="center">
+            <template #default="scope">
+              <el-button type="primary" link @click="handleEdit(scope.row)"
+                >编辑</el-button
+              >
+              <el-button type="primary" link @click="handleDel(scope.row)"
+                >删除</el-button
+              >
+            </template>
+          </el-table-column>
+        </el-table>
+        <el-pagination
+          class="pagination"
+          layout="total, prev, pager, next, sizes"
+          :background="true"
+          :current-page="state.paging.pageNo"
+          :page-size="state.paging.pageSize"
+          :total="state.paging.totalNum"
+          :page-sizes="[5, 10, 20, 50, 100]"
+          @size-change="handleSizeChange"
+          @current-change="handleCurrentChange"
+        />
+      </div>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-  import { reactive, onMounted } from 'vue'
+  import { ref, reactive, onMounted } from 'vue'
+  import { type FormInstance, ElMessage, ElMessageBox } from 'element-plus'
   import { getRoleList } from './services'
-
-  interface Row {
-    name: string
-    state: number
-  }
+  import type { RoleItem } from './type'
 
   interface State {
     /** 表单 */
@@ -45,22 +65,118 @@
       state: string | number
     }
     /** 表格 */
-    table: Row[]
+    table: {
+      /** 数据列表 */
+      dataList: RoleItem[]
+      /** loading 是否显示 */
+      loading: boolean
+    }
+    /** 分页 */
+    paging: {
+      /** 页码 */
+      pageNo: number
+      /** 页数 */
+      pageSize: number
+      /** 总条数 */
+      totalNum: number
+    }
   }
+
+  const formRef = ref<FormInstance | null>(null)
 
   const state: State = reactive({
     form: {
       name: '',
       state: ''
     },
-    table: []
+    table: {
+      dataList: [],
+      loading: false
+    },
+    paging: {
+      pageNo: 1,
+      pageSize: 10,
+      totalNum: 0
+    }
   })
 
+  /** 页面初始化 */
   const handlePageInit = async () => {
     try {
+      state.table.loading = true
       const result = await getRoleList()
-      state.table = result.list
-    } catch (error) {}
+      state.table.dataList = result.list
+      state.paging.totalNum = result.totalCount
+    } catch (error: any) {
+      console.log(
+        '%c 获取列表数据失败==========>',
+        'color: #4FC08D; font-weight: bold',
+        error
+      )
+      ElMessage({
+        type: 'error',
+        message: error.message ?? '获取列表数据失败'
+      })
+    } finally {
+      state.table.loading = false
+    }
+  }
+
+  /** 分页：一页显示多少条数据 */
+  const handleSizeChange = (pageSize: number) => {
+    state.paging.pageNo = 1
+    state.paging.pageSize = pageSize
+    handlePageInit()
+  }
+
+  /** 分页：显示第几页 */
+  const handleCurrentChange = (page: number) => {
+    state.paging.pageNo = page
+    handlePageInit()
+  }
+
+  /** 点击重置按钮 */
+  const handleReset = () => {
+    formRef.value!.resetFields()
+  }
+
+  /** 点击编辑按钮 */
+  const handleEdit = (row: RoleItem) => {
+    console.log(
+      '%c 当前点击的行==========>',
+      'color: #4FC08D; font-weight: bold',
+      row
+    )
+    ElMessage({
+      type: 'info',
+      message: '点击编辑按钮'
+    })
+  }
+
+  /** 点击删除按钮 */
+  const handleDel = (row: RoleItem) => {
+    console.log(
+      '%c 当前点击的行==========>',
+      'color: #4FC08D; font-weight: bold',
+      row
+    )
+    ElMessageBox.confirm('是否确认删除?', '提示', {
+      confirmButtonText: '确认',
+      cancelButtonText: '取消',
+      type: 'warning'
+    })
+      .then(() => {
+        ElMessage({
+          type: 'success',
+          message: '操作成功'
+        })
+      })
+      .catch(() => {
+        console.log(
+          '%c 点击取消按钮==========>',
+          'color: #4FC08D; font-weight: bold'
+        )
+      })
   }
 
   onMounted(() => {
@@ -75,7 +191,7 @@
     border-radius: 6px;
   }
 
-  .table {
+  .content {
     padding: 18px;
     background-color: #fff;
     border-radius: 6px;
@@ -85,6 +201,10 @@
       display: flex;
       align-items: center;
       margin-bottom: 5px;
+    }
+
+    .pagination {
+      margin-top: 15px;
     }
   }
 </style>

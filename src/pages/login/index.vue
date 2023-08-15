@@ -66,7 +66,7 @@
   }
 
   /** 表单引用 */
-  const formRef = ref<FormInstance>()
+  const formRef = ref<FormInstance | null>(null)
 
   const user = useUserStore()
   const router = useRouter()

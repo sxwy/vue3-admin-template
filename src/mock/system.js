@@ -9,7 +9,8 @@ module.exports = {
       const list = []
       for (let index = 0; index < 23; index++) {
         list.push({
-          name: `名称${index}`,
+          id: '@id',
+          name: '@cname',
           state: index % 2 === 0 ? 1 : 0
         })
       }
