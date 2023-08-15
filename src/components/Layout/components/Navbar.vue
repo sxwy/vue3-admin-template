@@ -38,6 +38,7 @@
     box-shadow: 0 1px 4px rgb(0 21 41 / 8%);
 
     .left {
+      flex-shrink: 0;
       height: 100%;
       display: flex;
       align-items: center;
@@ -49,6 +50,7 @@
     }
 
     .right {
+      flex-shrink: 0;
       height: 100%;
       display: flex;
       align-items: center;
