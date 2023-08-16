@@ -11,8 +11,15 @@
         </el-select>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="handlePageInit">搜索</el-button>
-        <el-button @click="handleReset">重置</el-button>
+        <el-button
+          type="primary"
+          :loading="state.table.loading"
+          @click="handlePageInit"
+          >搜索</el-button
+        >
+        <el-button :loading="state.table.loading" @click="handleReset"
+          >重置</el-button
+        >
       </el-form-item>
     </el-form>
     <div class="content">
