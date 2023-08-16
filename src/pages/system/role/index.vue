@@ -142,6 +142,10 @@
   /** 点击重置按钮 */
   const handleReset = () => {
     formRef.value!.resetFields()
+    state.paging.pageNo = 1
+    state.paging.pageSize = 10
+    state.paging.totalNum = 0
+    handlePageInit()
   }
 
   /** 点击创建按钮 */
