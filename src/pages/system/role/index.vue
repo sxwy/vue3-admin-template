@@ -60,9 +60,9 @@
     /** 表单 */
     form: {
       /** 名称 */
-      name: string
+      name?: string
       /** 类型 */
-      state: string | number
+      state?: number
     }
     /** 表格 */
     table: {
@@ -86,8 +86,8 @@
 
   const state: State = reactive({
     form: {
-      name: '',
-      state: ''
+      name: undefined,
+      state: undefined
     },
     table: {
       dataList: [],
@@ -104,7 +104,11 @@
   const handlePageInit = async () => {
     try {
       state.table.loading = true
-      const result = await getRoleList()
+      const result = await getRoleList({
+        ...state.form,
+        pageNo: state.paging.pageNo,
+        pageSize: state.paging.pageSize
+      })
       state.table.dataList = result.list
       state.paging.totalNum = result.totalCount
     } catch (error: any) {
