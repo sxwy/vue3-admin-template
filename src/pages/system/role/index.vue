@@ -17,7 +17,7 @@
     </el-form>
     <div class="content">
       <div class="operation">
-        <el-button type="primary">创建</el-button>
+        <el-button type="primary" @click="handleAdd">创建</el-button>
       </div>
       <div class="table" v-loading="state.table.loading">
         <el-table :data="state.table.dataList" stripe>
@@ -52,7 +52,7 @@
 
 <script lang="ts" setup>
   import { ref, reactive, onMounted } from 'vue'
-  import { type FormInstance, ElMessage, ElMessageBox } from 'element-plus'
+  import { type FormInstance, ElMessage } from 'element-plus'
   import { getRoleList } from './services'
   import type { RoleItem } from './type'
 
@@ -140,6 +140,14 @@
     formRef.value!.resetFields()
   }
 
+  /** 点击创建按钮 */
+  const handleAdd = () => {
+    ElMessage({
+      type: 'info',
+      message: '点击创建按钮'
+    })
+  }
+
   /** 点击编辑按钮 */
   const handleEdit = (row: RoleItem) => {
     console.log(
@@ -160,23 +168,10 @@
       'color: #4FC08D; font-weight: bold',
       row
     )
-    ElMessageBox.confirm('是否确认删除?', '提示', {
-      confirmButtonText: '确认',
-      cancelButtonText: '取消',
-      type: 'warning'
+    ElMessage({
+      type: 'info',
+      message: '点击删除按钮'
     })
-      .then(() => {
-        ElMessage({
-          type: 'success',
-          message: '操作成功'
-        })
-      })
-      .catch(() => {
-        console.log(
-          '%c 点击取消按钮==========>',
-          'color: #4FC08D; font-weight: bold'
-        )
-      })
   }
 
   onMounted(() => {
