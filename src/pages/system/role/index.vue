@@ -59,6 +59,7 @@
 
 <script lang="ts" setup>
   import { ref, reactive, onMounted } from 'vue'
+  import { useRouter } from 'vue-router'
   import { type FormInstance, ElMessage } from 'element-plus'
   import { getRoleList } from './services'
   import type { RoleItem } from './type'
@@ -106,6 +107,8 @@
       totalNum: 0
     }
   })
+
+  const router = useRouter()
 
   /** 页面初始化 */
   const handlePageInit = async () => {
@@ -174,6 +177,7 @@
       type: 'info',
       message: '点击编辑按钮'
     })
+    router.push('/system/role/edit?n=1')
   }
 
   /** 点击删除按钮 */

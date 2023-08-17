@@ -2,12 +2,12 @@
   <div class="tagsView">
     <el-scrollbar ref="scrollbarRef" @wheel="handleScroll">
       <div class="content">
-        <router-link
+        <div
           class="item"
           v-for="(item, index) of app.tagsViewList"
           :key="index"
-          :to="{ path: item.fullPath }"
           :class="{ item_active: item.name === route.name }"
+          @click="handleItemClick(item)"
           @contextmenu.prevent="handleContextMenu(item, index, $event)"
         >
           {{ $t(`common.routes.${item.title}`) }}
@@ -17,7 +17,7 @@
             class="closeIcon"
             @click.prevent="handleCloseClick(item, index)"
           />
-        </router-link>
+        </div>
       </div>
     </el-scrollbar>
     <ContextMenu
@@ -33,7 +33,7 @@
 <script lang="ts" setup>
   import { ref, reactive, watch, nextTick } from 'vue'
   import { ElScrollbar } from 'element-plus'
-  import { useRoute } from 'vue-router'
+  import { useRoute, useRouter } from 'vue-router'
   import { useAppStore, type TagsViewItem } from '@/store'
   import QuickElIcon from '@/components/QuickElIcon/index.vue'
   import ContextMenu from './components/ContextMenu.vue'
@@ -62,6 +62,7 @@
 
   const app = useAppStore()
   const route = useRoute()
+  const router = useRouter()
 
   const state: State = reactive({
     clickItem: app.tagsViewList[0],
@@ -89,6 +90,10 @@
   const handleScroll = (ev: WheelEvent) => {
     scrollbarRef.value!.wrapRef!.scrollLeft =
       scrollbarRef.value!.wrapRef!.scrollLeft + ev.deltaY
+  }
+
+  const handleItemClick = (item: TagsViewItem) => {
+    router.push(item.fullPath)
   }
 
   const handleCloseContextMenu = () => {
@@ -134,10 +139,6 @@
 
     :deep(.el-scrollbar__bar) {
       display: none;
-    }
-
-    :deep(a) {
-      text-decoration: none;
     }
 
     .content {
