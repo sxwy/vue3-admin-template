@@ -10,7 +10,7 @@
           @click="handleItemClick(item)"
           @contextmenu.prevent="handleContextMenu(item, index, $event)"
         >
-          {{ $t(`common.routes.${item.title}`) }}
+          {{ $t(`common.routes.${item.meta.title}`) }}
           <QuickElIcon
             v-show="app.tagsViewList.length > 1"
             icon="Close"
@@ -33,14 +33,18 @@
 <script lang="ts" setup>
   import { ref, reactive, watch, nextTick } from 'vue'
   import { ElScrollbar } from 'element-plus'
-  import { useRoute, useRouter } from 'vue-router'
-  import { useAppStore, type TagsViewItem } from '@/store'
+  import {
+    type RouteLocationNormalizedLoaded,
+    useRoute,
+    useRouter
+  } from 'vue-router'
+  import { useAppStore } from '@/store'
   import QuickElIcon from '@/components/QuickElIcon/index.vue'
   import ContextMenu from './components/ContextMenu.vue'
 
   interface State {
     /** 点击的菜单 */
-    clickItem: TagsViewItem
+    clickItem: RouteLocationNormalizedLoaded
     /** 点击的菜单下标 */
     clickIndex: number
     /** 右键菜单 */
@@ -92,7 +96,7 @@
       scrollbarRef.value!.wrapRef!.scrollLeft + ev.deltaY
   }
 
-  const handleItemClick = (item: TagsViewItem) => {
+  const handleItemClick = (item: RouteLocationNormalizedLoaded) => {
     router.push(item.fullPath)
   }
 
@@ -101,7 +105,7 @@
   }
 
   const handleContextMenu = (
-    item: TagsViewItem,
+    item: RouteLocationNormalizedLoaded,
     index: number,
     ev: MouseEvent
   ) => {
@@ -112,7 +116,10 @@
     state.contextMenu.show = true
   }
 
-  const handleCloseClick = (item: TagsViewItem, index: number) => {
+  const handleCloseClick = (
+    item: RouteLocationNormalizedLoaded,
+    index: number
+  ) => {
     state.clickIndex = index
     state.clickItem = item
     nextTick(() => {
