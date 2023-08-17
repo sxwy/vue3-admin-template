@@ -2,7 +2,7 @@
   <div class="appMain">
     <router-view v-slot="{ Component, route }">
       <transition name="appMain" mode="out-in" appear>
-        <component :is="Component" :key="route.path" />
+        <component :is="Component" :key="route.fullPath" />
       </transition>
     </router-view>
   </div>
