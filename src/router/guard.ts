@@ -1,5 +1,6 @@
 import type { Router } from 'vue-router'
 import { ElMessage } from 'element-plus'
+import { nprogress } from '@/utils'
 import { useUserStore } from '@/store'
 import i18n from '@/i18n'
 import { APP_NAME } from '@/constants'
@@ -8,6 +9,7 @@ const whiteList = ['/login/index']
 
 export default (router: Router) => {
   router.beforeEach(async (to, from, next) => {
+    nprogress.start()
     document.title = to.meta.title
       ? i18n.global.t(`common.routes.${to.meta.title}`)
       : APP_NAME
@@ -38,5 +40,9 @@ export default (router: Router) => {
         next('/login/index')
       }
     }
+  })
+
+  router.afterEach(() => {
+    nprogress.done()
   })
 }
