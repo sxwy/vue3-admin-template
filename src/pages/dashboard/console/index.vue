@@ -60,6 +60,7 @@
 <script lang="ts" setup>
   import { ref, reactive, onMounted } from 'vue'
   import { type FormInstance, ElMessage } from 'element-plus'
+  import { useTable } from '@/hooks'
   import { getRoleList } from './services'
   import type { RoleItem } from './type'
 
@@ -106,6 +107,11 @@
       totalNum: 0
     }
   })
+
+  // const un = useTable({
+  //   form: state.form,
+  //   paging: state.paging
+  // })
 
   /** 页面初始化 */
   const handlePageInit = async () => {
@@ -190,6 +196,7 @@
   }
 
   onMounted(() => {
+    console.log('%c 222==========>', 'color: #4FC08D; font-weight: bold')
     handlePageInit()
   })
 </script>
