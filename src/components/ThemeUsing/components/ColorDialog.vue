@@ -10,7 +10,6 @@
     <div class="content">
       <el-color-picker
         v-model="state.selectColor"
-        show-alpha
         :predefine="predefineColors"
       />
     </div>
@@ -28,10 +27,11 @@
 </template>
 
 <script lang="ts" setup>
-  import { reactive } from 'vue'
+  import { reactive, watch } from 'vue'
   import { ElMessage } from 'element-plus'
   import { useAppStore } from '@/store'
   import { setElCSSVar } from '@/utils'
+  import { defaultThemePrimaryColor } from '@/constants'
   import i18n from '@/i18n'
 
   interface State {
@@ -56,6 +56,15 @@
     selectColor: app.themePrimaryColor
   })
 
+  watch(
+    () => state.selectColor,
+    (val) => {
+      if (!val) {
+        state.selectColor = defaultThemePrimaryColor
+      }
+    }
+  )
+
   /** 颜色选择器中的预设值 */
   const predefineColors = [
     '#009688',
@@ -71,6 +80,7 @@
   ]
 
   const handleClose = () => {
+    state.selectColor = app.themePrimaryColor
     emits('update:modelValue', false)
   }
 
