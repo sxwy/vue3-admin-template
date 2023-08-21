@@ -1,9 +1,13 @@
-import { onMounted } from 'vue'
+import { reactive, computed, onMounted, toRefs } from 'vue'
 
 /** 参数 */
 interface Options {
   /** 表单 */
   form: object
+  request: (arg: any) => Promise<any>
+}
+
+interface State {
   /** 分页 */
   paging: {
     /** 页码 */
@@ -13,7 +17,13 @@ interface Options {
     /** 总条数 */
     totalNum: number
   }
-  request: (arg: any) => Promise<any>
+  /** 表格 */
+  table: {
+    /** 列表 */
+    list: any[]
+    /** loading 是否展示 */
+    loading: boolean
+  }
 }
 
 /**
@@ -29,16 +39,45 @@ const getCache = () => {
 }
 
 export const useTable = (options: Options) => {
+  const state: State = reactive({
+    table: {
+      list: [],
+      loading: false
+    },
+    paging: {
+      pageNo: 1,
+      pageSize: 10,
+      totalNum: 0
+    }
+  })
+
+  const query = computed(() => {
+    return {
+      ...options.form,
+      pageNo: state.paging.pageNo,
+      pageSize: state.paging.pageSize
+    }
+  })
+
   onMounted(() => {
     getCache()
   })
 
-  const getList = () => {
-    setCache()
-    return options.request({})
+  const getList = async () => {
+    try {
+      setCache()
+      state.table.loading = true
+      const result = await options.request(query)
+      state.table.list = result.list
+      state.paging.totalNum = result.totalNum
+      return result
+    } finally {
+      state.table.loading = false
+    }
   }
 
   return {
+    ...toRefs(state),
     getList
   }
 }
