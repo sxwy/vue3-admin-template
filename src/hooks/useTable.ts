@@ -2,9 +2,9 @@ import { reactive, toRefs } from 'vue'
 
 /** 表格 */
 interface Table<T> {
-  /** 列表 */
+  /** 列表数据 */
   list: T[]
-  /** loading 是否展示 */
+  /** 加载 loading */
   loading: boolean
 }
 

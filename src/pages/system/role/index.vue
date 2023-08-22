@@ -1,11 +1,11 @@
 <template>
   <div>
-    <el-form ref="formRef" class="form" :model="state.form" inline>
+    <el-form ref="formRef" class="form" :model="form" inline>
       <el-form-item label="名称" prop="name">
-        <el-input v-model="state.form.name" placeholder="请输入" clearable />
+        <el-input v-model="form.name" placeholder="请输入" clearable />
       </el-form-item>
       <el-form-item label="状态" prop="state">
-        <el-select v-model="state.form.state" placeholder="请选择" clearable>
+        <el-select v-model="form.state" placeholder="请选择" clearable>
           <el-option label="正常" :value="1" />
           <el-option label="禁用" :value="0" />
         </el-select>
@@ -58,29 +58,20 @@
 </template>
 
 <script lang="ts" setup>
-  import { ref, reactive, onMounted } from 'vue'
-  import { type FormInstance, ElMessage } from 'element-plus'
-  import { useTable } from '@/hooks'
+  import { onMounted } from 'vue'
+  import { ElMessage } from 'element-plus'
+  import { useForm, useTable } from '@/hooks'
   import { getRoleList } from './services'
   import type { RoleItem } from './type'
 
-  interface State {
-    /** 表单 */
-    form: {
-      /** 名称 */
-      name?: string
-      /** 类型 */
-      state?: number
-    }
-  }
-
-  const formRef = ref<FormInstance | null>(null)
-
-  const state: State = reactive({
-    form: {
-      name: undefined,
-      state: undefined
-    }
+  const { formRef, form, handleFormReset } = useForm<{
+    /** 名称 */
+    name?: string
+    /** 类型 */
+    state?: number
+  }>({
+    name: undefined,
+    state: undefined
   })
 
   const {
@@ -94,7 +85,7 @@
     async request({ paging }) {
       try {
         const result = await getRoleList({
-          ...state.form,
+          ...form.value,
           pageNo: paging.pageNo,
           pageSize: paging.pageSize
         })
@@ -118,7 +109,7 @@
 
   /** 点击重置按钮 */
   const handleReset = () => {
-    formRef.value!.resetFields()
+    handleFormReset()
     handlePagingReset()
     handleGetTableList()
   }
