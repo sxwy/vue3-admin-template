@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="listContainer">
     <el-form ref="formRef" class="form" :model="form" inline>
       <el-form-item label="名称" prop="name">
         <el-input v-model="form.name" placeholder="请输入" clearable />
@@ -26,7 +26,7 @@
       <div class="operation">
         <el-button type="primary" @click="handleAdd">创建</el-button>
       </div>
-      <div class="table" v-loading="table.loading">
+      <div v-loading="table.loading">
         <el-table :data="table.list" stripe>
           <el-table-column label="名称" align="center" prop="name" />
           <el-table-column label="状态" align="center" prop="stateStr" />
@@ -163,27 +163,4 @@
   })
 </script>
 
-<style lang="scss" scoped>
-  .form {
-    padding: 18px 18px 0;
-    background-color: #fff;
-    border-radius: 6px;
-  }
-
-  .content {
-    padding: 18px;
-    background-color: #fff;
-    border-radius: 6px;
-    margin-top: 15px;
-
-    .operation {
-      display: flex;
-      align-items: center;
-      margin-bottom: 5px;
-    }
-
-    .pagination {
-      margin-top: 15px;
-    }
-  }
-</style>
+<style lang="scss" scoped></style>

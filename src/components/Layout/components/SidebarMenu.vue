@@ -32,35 +32,4 @@
   })
 </script>
 
-<style lang="scss" scoped>
-  // .sidebarMenu {
-  //   border: none;
-
-  //   :deep(.el-sub-menu.is-active) {
-  //     .el-sub-menu__title {
-  //       color: $menuActiveTextColor !important;
-  //     }
-  //   }
-
-  //   :deep(.el-sub-menu__title) {
-  //     &:hover {
-  //       color: $menuActiveTextColor !important;
-  //     }
-  //   }
-
-  //   :deep(.el-menu-item) {
-  //     &:hover {
-  //       color: $menuActiveTextColor;
-  //       background-color: transparent;
-  //     }
-  //   }
-
-  //   :deep(.el-menu-item.is-active) {
-  //     background-color: $primaryColor;
-  //   }
-
-  //   :deep(.el-menu.el-menu--inline) {
-  //     background-color: $subMenuBgColor;
-  //   }
-  // }
-</style>
+<style lang="scss" scoped></style>

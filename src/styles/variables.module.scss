@@ -19,6 +19,8 @@ $primaryColor: var(--sxwy-primary-color);
 $primaryTextColor: var(--sxwy-primary-text-color);
 $primaryActiveTextColor: var(--sxwy-primary-active-text-color);
 
+$pagePading: 15px; // 页面间距
+
 // https://github.com/vitejs/vite/discussions/9601
 :export {
   menuBgColor: $menuBgColor;
@@ -28,4 +30,5 @@ $primaryActiveTextColor: var(--sxwy-primary-active-text-color);
   primaryColor: $primaryColor;
   primaryTextColor: $primaryTextColor;
   primaryActiveTextColor: $primaryActiveTextColor;
+  pagePading: $pagePading;
 }

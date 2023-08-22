@@ -1,0 +1,29 @@
+$padding: 18px;
+$margin: 5px;
+$borderRadius: 6px;
+$backgroundColor: #fff;
+
+.listContainer {
+  .form {
+    padding: $padding $padding 0;
+    background-color: $backgroundColor;
+    border-radius: $borderRadius;
+    margin-bottom: $pagePading;
+  }
+
+  .content {
+    padding: $padding;
+    background-color: $backgroundColor;
+    border-radius: $borderRadius;
+
+    .operation {
+      display: flex;
+      align-items: center;
+      margin-bottom: $margin;
+    }
+
+    .pagination {
+      margin-top: $margin;
+    }
+  }
+}

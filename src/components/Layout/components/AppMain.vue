@@ -28,11 +28,13 @@
 </script>
 
 <style lang="scss" scoped>
+  @import '@/styles/variables.module.scss';
+
   .appMain {
     box-sizing: border-box;
     min-height: 100%;
     // 50px：header，38px：tagsView
-    padding: calc(50px + 38px + 15px) 15px 15px 15px;
+    padding: calc(50px + 38px + $pagePading) $pagePading $pagePading;
     background-color: #eee;
     position: relative;
     overflow: hidden;
