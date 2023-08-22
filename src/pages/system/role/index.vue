@@ -1,5 +1,5 @@
 <template>
-  <div class="listContainer">
+  <div class="listPage">
     <el-form ref="formRef" class="form" :model="form" inline>
       <el-form-item label="名称" prop="name">
         <el-input v-model="form.name" placeholder="请输入" clearable />
