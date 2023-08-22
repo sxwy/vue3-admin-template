@@ -15,7 +15,7 @@
             v-show="app.tagsViewList.length > 1"
             icon="Close"
             class="closeIcon"
-            @click.prevent="handleCloseClick(item, index)"
+            @click.stop.prevent="handleCloseClick(item, index)"
           />
         </div>
       </div>
