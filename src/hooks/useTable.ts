@@ -1,45 +1,44 @@
-import { reactive, computed, onMounted, toRefs } from 'vue'
+import { reactive, toRefs } from 'vue'
+
+/** 表格 */
+interface Table<T> {
+  /** 列表 */
+  list: T[]
+  /** loading 是否展示 */
+  loading: boolean
+}
+
+/** 分页 */
+interface Paging {
+  /** 页码 */
+  pageNo: number
+  /** 页数 */
+  pageSize: number
+  /** 总条数 */
+  totalNum: number
+}
+
+/** 状态 */
+interface State<T> {
+  table: Table<T>
+  paging: Paging
+}
 
 /** 参数 */
-interface Options {
-  /** 表单 */
-  form: object
-  request: (arg: any) => Promise<any>
+interface Options<T> {
+  request: (options: { paging: Paging }) => Promise<
+    | {
+        list: T[]
+        totalNum: number
+      }
+    | undefined
+  >
 }
 
-interface State {
-  /** 分页 */
-  paging: {
-    /** 页码 */
-    pageNo: number
-    /** 页数 */
-    pageSize: number
-    /** 总条数 */
-    totalNum: number
-  }
-  /** 表格 */
-  table: {
-    /** 列表 */
-    list: any[]
-    /** loading 是否展示 */
-    loading: boolean
-  }
-}
+export const useTable = <T>(options: Options<T>) => {
+  const { request } = options
 
-/**
- * 请求时缓存搜索和分页参数到路由中
- * 页面挂载时从路由中获取对应的参数
- */
-const setCache = () => {
-  console.log('%c set cache==========>', 'color: #4FC08D; font-weight: bold')
-}
-
-const getCache = () => {
-  console.log('%c get cache==========>', 'color: #4FC08D; font-weight: bold')
-}
-
-export const useTable = (options: Options) => {
-  const state: State = reactive({
+  const state: State<T> = reactive({
     table: {
       list: [],
       loading: false
@@ -51,33 +50,40 @@ export const useTable = (options: Options) => {
     }
   })
 
-  const query = computed(() => {
-    return {
-      ...options.form,
-      pageNo: state.paging.pageNo,
-      pageSize: state.paging.pageSize
-    }
-  })
-
-  onMounted(() => {
-    getCache()
-  })
-
-  const getList = async () => {
+  const handleGetTableList = async () => {
     try {
-      setCache()
       state.table.loading = true
-      const result = await options.request(query)
-      state.table.list = result.list
-      state.paging.totalNum = result.totalNum
-      return result
+      const result = await request({
+        paging: state.paging
+      })
+      state.table.list = result?.list ?? []
+      state.paging.totalNum = result?.totalNum ?? 0
     } finally {
       state.table.loading = false
     }
   }
 
+  const handlePagingReset = () => {
+    state.paging.pageNo = 1
+    state.paging.pageSize = 10
+  }
+
+  const handlePagingPageSizeChange = (pageSize: number) => {
+    state.paging.pageNo = 1
+    state.paging.pageSize = pageSize
+    handleGetTableList()
+  }
+
+  const handlePagingPageCurrentChange = (pageNo: number) => {
+    state.paging.pageNo = pageNo
+    handleGetTableList()
+  }
+
   return {
     ...toRefs(state),
-    getList
+    handleGetTableList,
+    handlePagingReset,
+    handlePagingPageSizeChange,
+    handlePagingPageCurrentChange
   }
 }

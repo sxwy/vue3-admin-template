@@ -9,7 +9,7 @@ export const getRoleList = async (data: {
   pageSize?: number
 }) => {
   const result = await baseApi.request<{
-    totalCount: number
+    totalNum: number
     list: RoleItem[]
   }>({
     method: 'POST',

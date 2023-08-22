@@ -7,7 +7,7 @@ module.exports = {
   'POST /base/api/getRoleList/v1.0': (req, res) => {
     setTimeout(() => {
       const list = []
-      const totalCount = 35
+      const totalNum = 35
       for (let index = 0; index < req.body.pageSize; index++) {
         list.push({
           id: '@id',
@@ -19,7 +19,7 @@ module.exports = {
         code: '10000',
         message: 'ok',
         body: {
-          totalCount,
+          totalNum,
           list
         }
       })
