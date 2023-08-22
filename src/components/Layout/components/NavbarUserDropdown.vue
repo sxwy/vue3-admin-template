@@ -33,7 +33,9 @@
   const user = useUserStore()
   const router = useRouter()
 
-  /** 点击退出登录按钮 */
+  /**
+   * 点击退出登录按钮
+   */
   const handleLogout = () => {
     ElMessageBox.confirm(
       i18n.global.t('components.layout.navbarUserDropdownLogoutTip'),

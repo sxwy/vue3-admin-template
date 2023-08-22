@@ -1,7 +1,11 @@
 import { baseApi } from '@/api'
 import type { RoleItem } from './type'
 
-/** 获取角色列表 */
+/**
+ * 获取角色列表
+ * @param data 参数
+ * @returns 返回值
+ */
 export const getRoleList = async (data: {
   name?: string
   state?: number

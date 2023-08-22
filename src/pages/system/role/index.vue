@@ -107,14 +107,18 @@
     }
   })
 
-  /** 点击重置按钮 */
+  /**
+   * 点击重置按钮
+   */
   const handleReset = () => {
     handleFormReset()
     handlePagingReset()
     handleGetTableList()
   }
 
-  /** 点击创建按钮 */
+  /**
+   * 点击创建按钮
+   */
   const handleAdd = () => {
     ElMessage({
       type: 'info',
@@ -122,7 +126,10 @@
     })
   }
 
-  /** 点击编辑按钮 */
+  /**
+   * 点击编辑按钮
+   * @param row 当前的点击项
+   */
   const handleEdit = (row: RoleItem) => {
     console.log(
       '%c 当前点击的行==========>',
@@ -135,7 +142,10 @@
     })
   }
 
-  /** 点击删除按钮 */
+  /**
+   * 点击删除按钮
+   * @param row 当前的点击项
+   */
   const handleDel = (row: RoleItem) => {
     console.log(
       '%c 当前点击的行==========>',

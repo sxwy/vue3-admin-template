@@ -5,7 +5,12 @@ import type {
   RouteRecordName
 } from 'vue-router'
 
-/** 递归查询是否有相同的路由名称 */
+/**
+ * 递归查询是否有相同的路由名称
+ * @param routes 路由信息
+ * @param routeName 当前匹配的路由名称
+ * @returns 返回是否有匹配的路由
+ */
 const findRouteName = (
   routes: RouteRecordRaw[] | RouteRecordNormalized[],
   routeName: RouteRecordName
@@ -23,7 +28,11 @@ const findRouteName = (
   })
 }
 
-/** 过滤路由表 */
+/**
+ * 过滤路由表
+ * @param routes 路由信息
+ * @returns 返回过滤后的路由信息
+ */
 export const filterRoutes = (routes: RouteRecordNormalized[]) => {
   return routes.filter((item, index) => {
     // 1、过滤没有 name 字段的路由（基础路由或异常路由）
@@ -36,7 +45,12 @@ export const filterRoutes = (routes: RouteRecordNormalized[]) => {
   })
 }
 
-/** 生成菜单 */
+/**
+ * 生成菜单
+ * @param routes 路由信息
+ * @param basePath 基础路由
+ * @returns 返回处理后的路由信息
+ */
 export const generateMenus = (
   routes: RouteRecordRaw[] | RouteRecordNormalized[],
   basePath = ''

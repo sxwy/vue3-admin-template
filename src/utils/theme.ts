@@ -16,6 +16,8 @@ const elCSSVarMapMarking: {
 
 /**
  * 根据主色生成色值表
+ * @param primaryColor 当前选择的颜色
+ * @returns 返回色值表
  */
 const generateColors = (primaryColor: string) => {
   const colors: {
@@ -30,6 +32,7 @@ const generateColors = (primaryColor: string) => {
 
 /**
  * 生成色值表，修改 elCSSVar
+ * @param primaryColor 当前选择的颜色
  */
 export const setElCSSVar = (primaryColor: string) => {
   const colors = generateColors(primaryColor)

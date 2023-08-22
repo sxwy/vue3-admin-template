@@ -50,6 +50,9 @@ export const useTable = <T>(options: Options<T>) => {
     }
   })
 
+  /**
+   * 获取表格数据
+   */
   const handleGetTableList = async () => {
     try {
       state.table.loading = true
@@ -63,17 +66,28 @@ export const useTable = <T>(options: Options<T>) => {
     }
   }
 
+  /**
+   * 重置分页数据
+   */
   const handlePagingReset = () => {
     state.paging.pageNo = 1
     state.paging.pageSize = 10
   }
 
+  /**
+   * 页数改变回调事件
+   * @param pageSize 页数
+   */
   const handlePagingPageSizeChange = (pageSize: number) => {
     state.paging.pageNo = 1
     state.paging.pageSize = pageSize
     handleGetTableList()
   }
 
+  /**
+   * 页码改变回调事件
+   * @param pageNo 页码
+   */
   const handlePagingPageCurrentChange = (pageNo: number) => {
     state.paging.pageNo = pageNo
     handleGetTableList()

@@ -6,7 +6,11 @@ import type { LoginQuery, Session, User, Route } from '@/types'
 import { resolveComponent } from '@/utils'
 import Layout from '@/components/Layout/index.vue'
 
-/** 过滤处理路由结构 */
+/**
+ * 过滤处理路由结构
+ * @param routes 路由信息
+ * @returns 返回处理后的路由信息
+ */
 const filterRoutes = (routes: Route[]): Route[] => {
   routes.forEach((item) => {
     if (item.component === 'Layout') {
@@ -24,7 +28,10 @@ const filterRoutes = (routes: Route[]): Route[] => {
   return routes
 }
 
-/** 重置路由表 */
+/**
+ * 重置路由表
+ * @param routes 路由信息
+ */
 const resetRoutes = (routes: Route[]) => {
   routes.forEach((item) => {
     router.removeRoute(item.name)
@@ -47,17 +54,24 @@ export const useUserStore = defineStore('user', {
     }
   },
   actions: {
-    /** 登录初始化 */
+    /**
+     * 登录初始化
+     * @param payload 参数
+     */
     async loginInit(payload: LoginQuery) {
       const result = await login(payload)
       this.session = result
     },
-    /** 更新会话信息 */
+    /**
+     * 更新会话信息
+     */
     async updateSession() {
       const result = await refreshToken()
       this.session = result
     },
-    /** 获取用户信息 */
+    /**
+     * 获取用户信息
+     */
     async userInit() {
       const result = await getUserInfo()
       result.routes = filterRoutes(result.routes)
@@ -66,7 +80,9 @@ export const useUserStore = defineStore('user', {
       })
       this.current = result
     },
-    /** 退出登录 */
+    /**
+     * 退出登录
+     */
     logout() {
       resetRoutes(this.current!.routes)
       this.session = null

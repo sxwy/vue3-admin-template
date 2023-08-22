@@ -1,7 +1,10 @@
 import { baseApi } from '@/api'
 import type { LoginQuery, Session, User } from '@/types'
 
-/** 登录 */
+/**
+ * 登录
+ * @param 参数
+ */
 export const login = (data: LoginQuery) => {
   return baseApi.request<Session>({
     method: 'POST',
@@ -10,7 +13,9 @@ export const login = (data: LoginQuery) => {
   })
 }
 
-/** 刷新 token */
+/**
+ * 刷新 token
+ */
 export const refreshToken = () => {
   return baseApi.request<Session>({
     method: 'POST',
@@ -18,7 +23,9 @@ export const refreshToken = () => {
   })
 }
 
-/** 获取用户信息 */
+/**
+ * 获取用户信息
+ */
 export const getUserInfo = () => {
   return baseApi.request<User>({
     method: 'POST',

@@ -2,7 +2,11 @@ import type { RouteRecordNormalized, RouteRecordRaw } from 'vue-router'
 import type { SearchResultItem } from './type'
 import i18n from '@/i18n'
 
-/** 生成 Fuse 搜索数据 */
+/**
+ * 生成 Fuse 搜索数据
+ * @param routes 路由信息
+ * @returns 返回处理后的路由信息
+ */
 export const generateFuseData = (
   routes: RouteRecordRaw[] | RouteRecordNormalized[]
 ) => {

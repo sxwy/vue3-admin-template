@@ -11,7 +11,9 @@
 
   const app = useAppStore()
 
-  /** 点击切换按钮 */
+  /**
+   * 点击切换按钮
+   */
   const handleToggleClick = () => {
     app.toggleSidebarCollapse()
   }

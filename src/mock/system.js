@@ -3,7 +3,9 @@
 const MockJs = require('mockjs')
 
 module.exports = {
-  /** 获取角色列表 */
+  /**
+   * 获取角色列表
+   */
   'POST /base/api/getRoleList/v1.0': (req, res) => {
     setTimeout(() => {
       const list = []

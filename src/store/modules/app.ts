@@ -30,19 +30,30 @@ export const useAppStore = defineStore('app', {
     }
   },
   actions: {
-    /** 切换侧边栏折叠状态 */
+    /**
+     * 切换侧边栏折叠状态
+     */
     toggleSidebarCollapse() {
       this.isSidebarCollapse = !this.isSidebarCollapse
     },
-    /** 设置语言包 */
+    /**
+     * 设置语言包
+     * @param localeLang 当前选择的语言
+     */
     setlLcaleLang(localeLang: string) {
       this.localeLang = localeLang
     },
-    /** 设置主题颜色 */
+    /**
+     * 设置主题颜色
+     *  @param color 当前选择的颜色
+     */
     setlThemePrimaryColor(color: string) {
       this.themePrimaryColor = color
     },
-    /** 更新标签 */
+    /**
+     * 更新标签
+     * @param tagsView 更新的内容
+     */
     updateTagsView(tagsView: RouteLocationNormalizedLoaded) {
       const index = this.tagsViewList.findIndex(
         (item) => item.name === tagsView.name
@@ -53,18 +64,27 @@ export const useAppStore = defineStore('app', {
         this.tagsViewList[index] = tagsView
       }
     },
-    /** 删除标签 */
+    /**
+     * 删除标签
+     * @param index 当前点击的下标
+     */
     removeTagsView(index: number) {
       this.tagsViewList.splice(index, 1)
     },
-    /** 清除右侧标签 */
+    /**
+     * 清除右侧标签
+     * @param index 当前点击的下标
+     */
     clearRightTagsView(index: number) {
       this.tagsViewList.splice(
         index + 1,
         this.tagsViewList.length - (index + 1)
       )
     },
-    /** 清除其他标签 */
+    /**
+     * 清除其他标签
+     * @param index 当前点击的下标
+     */
     clearOtherTagsView(index: number) {
       this.tagsViewList.splice(
         index + 1,

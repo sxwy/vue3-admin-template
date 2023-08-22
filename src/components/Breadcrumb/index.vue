@@ -22,7 +22,10 @@
   const route = useRoute()
   const router = useRouter()
 
-  /** 点击跳转链接 */
+  /**
+   * 点击跳转链接
+   * @param item 当前的点击项
+   */
   const handleLinkClick = (item: RouteLocationMatched) => {
     router.push(item.path)
   }

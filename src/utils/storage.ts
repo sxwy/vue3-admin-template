@@ -1,4 +1,8 @@
-/** 获取 localStorage */
+/**
+ * 获取 localStorage
+ * @param key 缓存键
+ * @returns 返回缓存内容
+ */
 export const getLocalStorage = (key: string) => {
   try {
     const value = localStorage.getItem(key)
@@ -14,7 +18,12 @@ export const getLocalStorage = (key: string) => {
   }
 }
 
-/** 设置 localStorage */
+/**
+ * 设置 localStorage
+ * @param key 缓存键
+ * @param value 缓存值
+ * @returns
+ */
 export const setLocalStorage = (key: string, value: any) => {
   try {
     return localStorage.setItem(key, JSON.stringify(value))
@@ -27,7 +36,11 @@ export const setLocalStorage = (key: string, value: any) => {
   }
 }
 
-/** 删除 localStorage */
+/**
+ * 删除 localStorage
+ * @param key 缓存键
+ * @returns
+ */
 export const removeLocalStorage = (key: string) => {
   try {
     return localStorage.removeItem(key)
@@ -40,7 +53,10 @@ export const removeLocalStorage = (key: string) => {
   }
 }
 
-/** 清除 localStorage */
+/**
+ * 清除 localStorage
+ * @returns
+ */
 export const clearLocalStorage = () => {
   try {
     return localStorage.clear()
@@ -53,7 +69,11 @@ export const clearLocalStorage = () => {
   }
 }
 
-/** 获取 sessionStorage */
+/**
+ * 获取 sessionStorage
+ * @param key 缓存键
+ * @returns 返回缓存内容
+ */
 export const getSessionStorage = (key: string) => {
   try {
     const value = sessionStorage.getItem(key)
@@ -69,7 +89,12 @@ export const getSessionStorage = (key: string) => {
   }
 }
 
-/** 设置 sessionStorage */
+/**
+ * 设置 sessionStorage
+ * @param key 缓存键
+ * @param value 缓存值
+ * @returns
+ */
 export const setSessionStorage = (key: string, value: any) => {
   try {
     return sessionStorage.setItem(key, JSON.stringify(value))
@@ -82,7 +107,11 @@ export const setSessionStorage = (key: string, value: any) => {
   }
 }
 
-/** 删除 sessionStorage */
+/**
+ * 删除 sessionStorage
+ * @param key 缓存键
+ * @returns
+ */
 export const removeSessionStorage = (key: string) => {
   try {
     return sessionStorage.removeItem(key)
@@ -95,8 +124,11 @@ export const removeSessionStorage = (key: string) => {
   }
 }
 
-/** 清除 sessionStorage */
-export const clearSessionStorage = (key: string) => {
+/**
+ * 清除 sessionStorage
+ * @returns
+ */
+export const clearSessionStorage = () => {
   try {
     return sessionStorage.clear()
   } catch (error) {

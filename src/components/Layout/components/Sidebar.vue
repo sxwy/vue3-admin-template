@@ -19,7 +19,9 @@
   const router = useRouter()
   const app = useAppStore()
 
-  /** 点击 logo 按钮 */
+  /**
+   * 点击 logo 按钮
+   */
   const handleLogoClick = () => {
     router.push('/')
   }

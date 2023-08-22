@@ -100,7 +100,9 @@
     btnLoading: false
   })
 
-  /** 点击登录按钮 */
+  /**
+   * 点击登录按钮
+   */
   const handleLoginClick = () => {
     formRef.value!.validate(async (valid) => {
       if (valid) {
@@ -123,7 +125,9 @@
     })
   }
 
-  /** 切换语言回调 */
+  /**
+   * 切换语言回调
+   */
   const handleLangChange = () => {
     formRef.value!.resetFields()
   }
