@@ -6,7 +6,7 @@ export default {
   path: '/exception',
   redirect: '/exception/not-found/index',
   meta: {
-    title: '异常页面',
+    title: 'Exception',
     menuShow: false,
     menuIcon: '',
     buttons: []
@@ -17,7 +17,7 @@ export default {
       path: 'not-found/index',
       component: () => import('@/pages/exception/not-found/index.vue'),
       meta: {
-        title: '缺省页',
+        title: 'ExceptionNotFoundIndex',
         menuShow: false,
         menuIcon: '',
         buttons: []
