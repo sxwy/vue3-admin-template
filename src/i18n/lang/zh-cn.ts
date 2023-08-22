@@ -2,6 +2,8 @@ export default {
   /** 公共 */
   common: {
     routes: {
+      Exception: '异常页',
+      ExceptionNotFoundIndex: '404',
       LoginIndex: '登录',
       Dashboard: '仪表盘',
       DashboardConsoleIndex: '控制台',

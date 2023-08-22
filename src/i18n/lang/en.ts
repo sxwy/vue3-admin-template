@@ -2,6 +2,8 @@ export default {
   /** 公共 */
   common: {
     routes: {
+      Exception: 'exception',
+      ExceptionNotFoundIndex: '404',
       LoginIndex: 'Login',
       Dashboard: 'Dashboard',
       DashboardConsoleIndex: 'Console',
