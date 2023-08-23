@@ -41,6 +41,9 @@
   }
 
   const handleCloseCurrent = () => {
+    if (app.tagsViewList.length === 1) {
+      return
+    }
     app.removeTagsView(props.index)
     // 如果点击的是激活项，则删除后需要跳转到上一个 tag
     if (route.name === props.item!.name) {
