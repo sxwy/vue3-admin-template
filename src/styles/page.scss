@@ -1,5 +1,4 @@
 $padding: 18px;
-$margin: 5px;
 $borderRadius: 6px;
 $backgroundColor: #fff;
 
@@ -19,11 +18,11 @@ $backgroundColor: #fff;
     .operation {
       display: flex;
       align-items: center;
-      margin-bottom: $margin;
+      margin-bottom: 5px;
     }
 
     .pagination {
-      margin-top: $margin;
+      margin-top: $pagePading;
     }
   }
 }
