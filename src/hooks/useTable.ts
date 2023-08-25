@@ -35,6 +35,9 @@ interface Options<T> {
   >
 }
 
+const defaultPageNo = 1
+const defaultPageSize = 10
+
 export const useTable = <T>(options: Options<T>) => {
   const { request } = options
 
@@ -44,8 +47,8 @@ export const useTable = <T>(options: Options<T>) => {
       loading: false
     },
     paging: {
-      pageNo: 1,
-      pageSize: 10,
+      pageNo: defaultPageNo,
+      pageSize: defaultPageSize,
       totalNum: 0
     }
   })
@@ -70,8 +73,8 @@ export const useTable = <T>(options: Options<T>) => {
    * 重置分页数据
    */
   const handlePagingReset = () => {
-    state.paging.pageNo = 1
-    state.paging.pageSize = 10
+    state.paging.pageNo = defaultPageNo
+    state.paging.pageSize = defaultPageSize
   }
 
   /**
