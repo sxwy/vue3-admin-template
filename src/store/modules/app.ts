@@ -3,12 +3,6 @@ import { type RouteLocationNormalizedLoaded } from 'vue-router'
 import { zhCn } from '@/i18n'
 import { defaultThemePrimaryColor } from '@/constants'
 
-export interface TagsViewItem {
-  name: string
-  title: string
-  fullPath: string
-}
-
 interface AppState {
   /** 侧边栏是否折叠 */
   isSidebarCollapse: boolean
