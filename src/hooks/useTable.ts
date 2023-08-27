@@ -1,4 +1,5 @@
 import { reactive, toRefs } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 
 /** 表格 */
 interface Table<T> {
@@ -35,7 +36,10 @@ interface Options<T> {
   >
 }
 
+/** 默认的页码 */
 const defaultPageNo = 1
+
+/** 默认的页数 */
 const defaultPageSize = 10
 
 export const useTable = <T>(options: Options<T>) => {
@@ -53,6 +57,18 @@ export const useTable = <T>(options: Options<T>) => {
     }
   })
 
+  const route = useRoute()
+  const router = useRouter()
+
+  const handleSetQuery = () => {
+    router.replace({
+      query: {
+        ...route.query,
+        paging: JSON.stringify(state.paging)
+      }
+    })
+  }
+
   /**
    * 获取表格数据
    */
@@ -66,6 +82,7 @@ export const useTable = <T>(options: Options<T>) => {
       state.paging.totalNum = result?.totalNum ?? 0
     } finally {
       state.table.loading = false
+      handleSetQuery()
     }
   }
 
