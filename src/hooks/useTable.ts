@@ -43,6 +43,9 @@ const defaultPageNo = 1
 /** 默认的页数 */
 const defaultPageSize = 10
 
+/** 默认的总数 */
+const defaultTotalNum = 0
+
 export const useTable = <T>(options: Options<T>) => {
   const { form, request } = options
 
@@ -54,17 +57,24 @@ export const useTable = <T>(options: Options<T>) => {
     paging: {
       pageNo: defaultPageNo,
       pageSize: defaultPageSize,
-      totalNum: 0
+      totalNum: defaultTotalNum
     }
   })
 
   const route = useRoute()
   const router = useRouter()
 
+  /** 当前的页面路由 */
+  const currentPath = route.path
+
   /**
    * 设置参数
    */
   const handleSetQuery = () => {
+    // 主要解决当请求未结束时切换路由导致的设置参数与路径不匹配问题
+    if (currentPath !== route.path) {
+      return
+    }
     router.replace({
       query: {
         ...route.query,
@@ -94,7 +104,7 @@ export const useTable = <T>(options: Options<T>) => {
         paging: state.paging
       })
       state.table.list = result?.list ?? []
-      state.paging.totalNum = result?.totalNum ?? 0
+      state.paging.totalNum = result?.totalNum ?? defaultTotalNum
     } finally {
       state.table.loading = false
       handleSetQuery()
