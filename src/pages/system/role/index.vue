@@ -82,6 +82,7 @@
     handlePagingPageSizeChange,
     handlePagingPageCurrentChange
   } = useTable<RoleItem>({
+    form: form.value,
     async request({ paging }) {
       try {
         const result = await getRoleList({

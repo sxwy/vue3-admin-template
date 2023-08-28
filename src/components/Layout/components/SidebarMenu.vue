@@ -1,6 +1,5 @@
 <template>
   <el-menu
-    router
     unique-opened
     :collapse-transition="false"
     :collapse="!app.isSidebarCollapse"

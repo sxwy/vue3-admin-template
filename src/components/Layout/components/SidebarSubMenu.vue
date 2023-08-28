@@ -15,13 +15,22 @@
     ></SidebarSubMenu>
   </el-sub-menu>
   <!-- 渲染一级菜单 -->
-  <el-menu-item v-else :index="route.path">
+  <el-menu-item
+    v-else
+    :index="route.path"
+    @click="handleMenuItemClick(route.path)"
+  >
     <SidebarMenuItem :title="route.meta?.title" :icon="route.meta?.menuIcon" />
   </el-menu-item>
 </template>
 
 <script lang="ts" setup>
-  import type { RouteRecordNormalized, RouteRecordRaw } from 'vue-router'
+  import {
+    useRoute,
+    useRouter,
+    type RouteRecordNormalized,
+    type RouteRecordRaw
+  } from 'vue-router'
   import SidebarMenuItem from './SidebarMenuItem.vue'
 
   interface Props {
@@ -30,6 +39,16 @@
   }
 
   defineProps<Props>()
+
+  const routeInfo = useRoute()
+  const router = useRouter()
+
+  const handleMenuItemClick = (path: string) => {
+    if (path === routeInfo.path) {
+      return
+    }
+    router.push(path)
+  }
 </script>
 
 <style lang="scss" scoped></style>

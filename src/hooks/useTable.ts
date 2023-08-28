@@ -1,4 +1,4 @@
-import { reactive, toRefs } from 'vue'
+import { reactive, toRefs, onMounted, type Ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
 /** 表格 */
@@ -27,6 +27,7 @@ interface State<T> {
 
 /** 参数 */
 interface Options<T> {
+  form: Ref<object>
   request: (options: { paging: Paging }) => Promise<
     | {
         list: T[]
@@ -43,7 +44,7 @@ const defaultPageNo = 1
 const defaultPageSize = 10
 
 export const useTable = <T>(options: Options<T>) => {
-  const { request } = options
+  const { form, request } = options
 
   const state: State<T> = reactive({
     table: {
@@ -60,13 +61,27 @@ export const useTable = <T>(options: Options<T>) => {
   const route = useRoute()
   const router = useRouter()
 
+  /**
+   * 设置参数
+   */
   const handleSetQuery = () => {
     router.replace({
       query: {
         ...route.query,
+        form: JSON.stringify(form),
         paging: JSON.stringify(state.paging)
       }
     })
+  }
+
+  /**
+   * 获取参数
+   */
+  const handleGetQuery = () => {
+    const { paging } = route.query
+    if (typeof paging === 'string') {
+      state.paging = Object.assign(state.paging, JSON.parse(paging))
+    }
   }
 
   /**
@@ -112,6 +127,10 @@ export const useTable = <T>(options: Options<T>) => {
     state.paging.pageNo = pageNo
     handleGetTableList()
   }
+
+  onMounted(() => {
+    handleGetQuery()
+  })
 
   return {
     ...toRefs(state),
