@@ -3,7 +3,7 @@ import type { LoginQuery, Session, User } from '@/types'
 
 /**
  * 登录
- * @param 参数
+ * @param data 参数
  */
 export const login = (data: LoginQuery) => {
   return baseApi.request<Session>({
