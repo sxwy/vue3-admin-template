@@ -12,7 +12,7 @@ switch (__APP_ENV__) {
     break
   case 'prod':
   default:
-    BASE_API = 'https://api.xxx.cn'
+    BASE_API = 'https://mock.apifox.cn/m1/3214739-0-default'
     break
 }
 

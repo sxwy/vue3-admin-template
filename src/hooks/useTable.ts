@@ -1,4 +1,4 @@
-import { reactive, toRefs, onMounted, type Ref } from 'vue'
+import { reactive, toRefs, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
 /** 表格 */
@@ -27,7 +27,7 @@ interface State<T> {
 
 /** 参数 */
 interface Options<T> {
-  form: Ref<object>
+  form: object
   request: (options: { paging: Paging }) => Promise<
     | {
         list: T[]

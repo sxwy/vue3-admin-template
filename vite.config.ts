@@ -10,12 +10,6 @@ import express from 'express'
 
 const APP_ENV = process.env.VITE_APP_ENV as string
 
-const BASE_PATH = {
-  alpha: '//static.xxx.cn/alpha/admin-template',
-  rc: '//static.xxx.cn/rc/admin-template',
-  prod: '//static.xxx.cn/prod/admin-template'
-}[APP_ENV]
-
 const HTTPMockerPlugin = (): Plugin => {
   let config: ResolvedConfig | undefined
   return {
@@ -44,7 +38,7 @@ const HTTPMockerPlugin = (): Plugin => {
 export default defineConfig((config) => {
   const env = loadEnv(config.mode, process.cwd(), '')
   return {
-    base: config.command === 'serve' ? '/' : BASE_PATH,
+    base: config.command === 'serve' ? '/' : './',
     define: {
       __APP_ENV__: `'${env.VITE_APP_ENV}'`
     },
