@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import { BASE_SITE } from '@/constants'
 import {
   basicsRoutes,
@@ -12,7 +12,7 @@ export * from './modules'
 const routes = [...basicsRoutes, exceptionRoutes, loginRoutes, dashboardRoutes]
 
 const router = createRouter({
-  history: createWebHistory(BASE_SITE),
+  history: createWebHashHistory(BASE_SITE),
   routes
 })
 
