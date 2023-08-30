@@ -19,7 +19,11 @@
   watch(
     route,
     (to) => {
-      app.updateTagsView(JSON.parse(JSON.stringify(to)))
+      app.updateTagsView({
+        name: to.name as string,
+        fullPath: to.fullPath,
+        meta: to.meta
+      })
     },
     {
       immediate: true
