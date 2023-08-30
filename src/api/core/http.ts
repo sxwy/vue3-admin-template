@@ -44,6 +44,8 @@ export default (requestConfig = {}) => {
               try {
                 await user.updateSession()
               } catch (error) {
+                httpList = []
+                isRefreshToken = false
                 return Promise.reject(error)
               }
               // 重新执行暂存的多余请求
