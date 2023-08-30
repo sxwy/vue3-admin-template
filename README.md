@@ -206,7 +206,7 @@ yarn format # 修正代码格式
 - 功能：什么功能，例如：report_icon_star
 - 状态：例如：`report_icon_star_half`
 
-ps：图片资源都需要使用 [https://tinypng.com/](https://tinypng.com/) 压缩优化。
+ps：图片资源都需要使用 [tinypng](https://tinypng.com/) 压缩优化。
 
 ### 编程语言
 
