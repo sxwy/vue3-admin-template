@@ -27,7 +27,7 @@ Vue3 + TypeScript + ElementPlus 项目模板
 
 ## 开发规范
 
-参照 [前端开发规范](https://github.com/sxwy/standard/)
+参照 [前端开发规范](https://sxwy.github.io/standard/)
 
 ### 分支管理
 
@@ -121,9 +121,9 @@ yarn format # 修正代码格式
 │   ├── components                    # 通用组件
 │   ├── constants                     # 常量
 │   ├── hooks                         # hook 文件
+│   ├── i18n                          # 国际化
 │   ├── mock                          # 模拟数据
 │   ├── pages                         # 页面
-│   ├── polyfills                     # 补丁
 │   ├── router                        # 路由
 │   ├── services                      # 请求协议
 │   ├── store                         # store modules
@@ -132,6 +132,7 @@ yarn format # 修正代码格式
 │   ├── utils                         # 公共方法
 │   ├── App.vue                       # 根组件
 │   ├── main.ts                       # 主入口
+├── .browserslistrc                   # 浏览器兼容配置
 ├── .cicd                             # 触发 cicd 配置
 ├── .commitlintrc.js                  # commitlint 配置
 ├── .editorconfig                     # 编辑器配置
@@ -205,7 +206,7 @@ yarn format # 修正代码格式
 - 功能：什么功能，例如：report_icon_star
 - 状态：例如：`report_icon_star_half`
 
-ps：图片资源都需要使用 https://tinypng.com/ 压缩优化。
+ps：图片资源都需要使用 [https://tinypng.com/](https://tinypng.com/) 压缩优化。
 
 ### 编程语言
 
@@ -244,16 +245,16 @@ ps：图片资源都需要使用 https://tinypng.com/ 压缩优化。
 
 ### 测试环境
 
-1. 功能 feature 分支合并到 cicd_test 分支，等待 jenkins 构建成功后，再部署测试环境的 sxwy-h5 容器
-2. 访问地址：http://alpha-web.xxx.com/sxwy/admin-template/route
+1. 功能 feature 分支合并到 cicd_test 分支，等待自动化部署
+2. 访问地址：https://sxwy.github.io/admin-template/${route}
 
 ### 预发环境
 
-1. 从 master 新建 release 分支，并填写对应版本信息，再把功能分支合并到 release，最后 release 合并到 cicd_rc，再部署预发环境的 sxwy-h5 容器
-2. 访问地址：https://rc-web.xxx.cn/sxwy/admin-template/route
+1. 从 master 新建 release 分支，并填写对应版本信息，再把功能分支合并到 release，最后 release 合并到 cicd_rc，等待自动化部署
+2. 访问地址：https://sxwy.github.io/admin-template/${route}
 
 ### 正式环境
 
-1. 把预发环境的 release 分支合并到 cicd_prod，再部署正式环境的 sxwy-h5 容器
+1. 把预发环境的 release 分支合并到 cicd_prod，等待自动化部署
 2. 上线后，记得让管理员把对应的 release 分支合并到 master 分支
-3. 访问地址：https://web.xxx.cn/sxwy/admin-template/route
+3. 访问地址：https://sxwy.github.io/admin-template/${route}
