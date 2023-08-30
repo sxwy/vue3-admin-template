@@ -8,16 +8,12 @@
 </template>
 
 <script lang="ts" setup>
-  import { useAppStore } from '@/store'
-  import {
-    type RouteLocationNormalizedLoaded,
-    useRoute,
-    useRouter
-  } from 'vue-router'
+  import { useAppStore, type TagsView } from '@/store'
+  import { useRoute, useRouter } from 'vue-router'
 
   interface Props {
     /** 当前点击的菜单 */
-    item: RouteLocationNormalizedLoaded | null
+    item: TagsView | null
     /** 当前点击的菜单下标 */
     index: number
   }

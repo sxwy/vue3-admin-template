@@ -1,7 +1,16 @@
 import { defineStore } from 'pinia'
-import { type RouteLocationNormalizedLoaded } from 'vue-router'
 import { zhCn } from '@/i18n'
 import { defaultThemePrimaryColor } from '@/constants'
+import type { Meta } from '@/types'
+
+export interface TagsView {
+  /** 路由名称 */
+  name: string
+  /** 路由完整路径 */
+  fullPath: string
+  /** 路由元数据 */
+  meta: Meta
+}
 
 interface AppState {
   /** 侧边栏是否折叠 */
@@ -11,7 +20,7 @@ interface AppState {
   /** 当前主题颜色 */
   themePrimaryColor: string
   /** 标签列表 */
-  tagsViewList: RouteLocationNormalizedLoaded[]
+  tagsViewList: TagsView[]
 }
 
 export const useAppStore = defineStore('app', {
@@ -48,7 +57,7 @@ export const useAppStore = defineStore('app', {
      * 更新标签
      * @param tagsView 更新的内容
      */
-    updateTagsView(tagsView: RouteLocationNormalizedLoaded) {
+    updateTagsView(tagsView: TagsView) {
       const index = this.tagsViewList.findIndex(
         (item) => item.name === tagsView.name
       )

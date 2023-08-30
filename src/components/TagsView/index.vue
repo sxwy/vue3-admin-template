@@ -33,18 +33,14 @@
 <script lang="ts" setup>
   import { ref, reactive, watch, nextTick } from 'vue'
   import { ElScrollbar } from 'element-plus'
-  import {
-    type RouteLocationNormalizedLoaded,
-    useRoute,
-    useRouter
-  } from 'vue-router'
-  import { useAppStore } from '@/store'
+  import { useRoute, useRouter } from 'vue-router'
+  import { useAppStore, type TagsView } from '@/store'
   import QuickElIcon from '@/components/QuickElIcon/index.vue'
   import ContextMenu from './components/ContextMenu.vue'
 
   interface State {
     /** 点击的菜单 */
-    clickItem: RouteLocationNormalizedLoaded
+    clickItem: TagsView
     /** 点击的菜单下标 */
     clickIndex: number
     /** 右键菜单 */
@@ -96,7 +92,7 @@
       scrollbarRef.value!.wrapRef!.scrollLeft + ev.deltaY
   }
 
-  const handleItemClick = (item: RouteLocationNormalizedLoaded) => {
+  const handleItemClick = (item: TagsView) => {
     router.push(item.fullPath)
   }
 
@@ -104,11 +100,7 @@
     state.contextMenu.show = false
   }
 
-  const handleContextMenu = (
-    item: RouteLocationNormalizedLoaded,
-    index: number,
-    ev: MouseEvent
-  ) => {
+  const handleContextMenu = (item: TagsView, index: number, ev: MouseEvent) => {
     state.clickIndex = index
     state.clickItem = item
     state.contextMenu.style.top = `${ev.y}px`
@@ -116,10 +108,7 @@
     state.contextMenu.show = true
   }
 
-  const handleCloseClick = (
-    item: RouteLocationNormalizedLoaded,
-    index: number
-  ) => {
+  const handleCloseClick = (item: TagsView, index: number) => {
     state.clickIndex = index
     state.clickItem = item
     nextTick(() => {
