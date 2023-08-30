@@ -1,6 +1,6 @@
 import { type AxiosRequestConfig, type AxiosResponse } from 'axios'
 
-export class RequestError extends Error {
+export class HTTPError extends Error {
   constructor(
     public code: string,
     public message: string,
@@ -15,13 +15,13 @@ export class RequestError extends Error {
   }
 }
 
-export const createRequestError = (
+export const createHTTPError = (
   code: string,
   message: string,
   config?: AxiosRequestConfig,
   response?: AxiosResponse
 ) => {
-  return new RequestError(code, message, config, response)
+  return new HTTPError(code, message, config, response)
 }
 
 /** 默认的错误码配置 */
