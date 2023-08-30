@@ -1,1 +1,0 @@
-System.register(["./index-legacy-c97ee53a.js"],(function(e,n){"use strict";var t,r,u;return{setters:[e=>{t=e._,r=e.o,u=e.c}],execute:function(){e("default",t({},[["render",function(e,n){return r(),u("div",null," workbench/index ")}]]))}}}));
