@@ -1,1 +1,0 @@
-System.register(["./index-legacy-32d307cb.js"],(function(e,n){"use strict";var t,r,u;return{setters:[e=>{t=e._,r=e.o,u=e.c}],execute:function(){e("default",t({},[["render",function(e,n){return r(),u("div",null," console/index ")}]]))}}}));
