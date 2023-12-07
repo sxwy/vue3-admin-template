@@ -5,12 +5,12 @@ import {
   shallowRef
 } from 'vue'
 
-export function useRefs(): {
+export const useRefs = (): {
   refs: Ref<(Element | ComponentPublicInstance | null)[]>
   setRefs: (
     index: number
   ) => (el: Element | ComponentPublicInstance | null) => void
-} {
+} => {
   const refs = shallowRef([]) as Ref<
     (Element | ComponentPublicInstance | null)[]
   >
