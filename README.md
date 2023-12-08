@@ -6,7 +6,7 @@ Vue3 + TypeScript + ElementPlus 项目模板
 
 - 依赖管理：Yarn
 - 编程语言：HTML + TypeScript + Scss
-- 开发框架： Vue3
+- 开发框架：Vue3
 - 组件库：ElementPlus
 - 公共库：暂无
 
