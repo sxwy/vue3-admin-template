@@ -7,12 +7,14 @@ import { resolveComponent } from '@/utils'
 import Layout from '@/components/Layout/index.vue'
 
 /**
- * 过滤处理路由结构
+ * 生成需要的路由结构
  * @param routes 路由信息
  * @returns 返回处理后的路由信息
  */
-const filterRoutes = (routes: Route[]): Route[] => {
+const generateRoutes = (routes: Route[]): Route[] => {
   routes.forEach((item) => {
+    // 这里主要就是往 component 属性上赋值具体的组件信息
+    // 这边不需要合并 path，和菜单那里的生成逻辑不一样
     if (item.component === 'Layout') {
       ;(item.component as unknown as RouteComponent) = Layout
     } else {
@@ -21,7 +23,7 @@ const filterRoutes = (routes: Route[]): Route[] => {
       )
     }
     if (item.children.length) {
-      item.children = filterRoutes(item.children)
+      item.children = generateRoutes(item.children)
     }
   })
   routes.push(catchAllRoute as Route) // 追加 404 路由
@@ -74,7 +76,7 @@ export const useUserStore = defineStore('user', {
      */
     async userInit() {
       const result = await getUserInfo()
-      result.routes = filterRoutes(result.routes)
+      result.routes = generateRoutes(result.routes)
       result.routes.forEach((item) => {
         router.addRoute(item as unknown as RouteRecordRaw)
       })

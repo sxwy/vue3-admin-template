@@ -35,11 +35,12 @@ const findRouteName = (
  */
 export const filterRoutes = (routes: RouteRecordNormalized[]) => {
   return routes.filter((item, index) => {
-    // 1、过滤没有 name 字段的路由（基础路由或异常路由）
+    // 1. 过滤没有 name 字段的路由（基础路由或异常路由）
     if (!item.name) {
       return false
     }
-    // 2、过滤脱离层级的路由
+    // 2. 过滤脱离层级的子路由，因为 getRoutes 方法会把所有路由（父级包含子级的结构、子级单独的结构）都获取出来
+    // 所以需要把子级去掉，只保留有层级的路由数据
     const residueRoutes = routes.slice(index + 1)
     return !findRouteName(residueRoutes, item.name)
   })
@@ -61,7 +62,7 @@ export const generateMenus = (
     const routePath = path.resolve(basePath, item.path)
     const route: RouteRecordRaw | RouteRecordNormalized = {
       ...item,
-      path: routePath,
+      path: routePath, // 因为路由是有层级关系的，子级路由需要拼接上父级路由，才是一个正常的 path
       children: [] as RouteRecordRaw[]
     }
     // 判断是否在菜单展示
