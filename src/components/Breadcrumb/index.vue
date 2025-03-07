@@ -5,12 +5,12 @@
         v-for="(item, index) of route.matched"
         :key="item.path"
       >
-        <span v-if="index === route.matched.length - 1" class="noRedirect">{{
-          $t(`common.routes.${item.meta.title}`)
-        }}</span>
-        <a v-else class="redirect" @click.prevent="handleLinkClick(item)">{{
-          $t(`common.routes.${item.meta.title}`)
-        }}</a>
+        <span v-if="index === route.matched.length - 1" class="noRedirect">
+          {{ $t(`common.routes.${item.meta.title}`) }}
+        </span>
+        <a v-else class="redirect" @click.prevent="handleLinkClick(item)">
+          {{ $t(`common.routes.${item.meta.title}`) }}
+        </a>
       </el-breadcrumb-item>
     </transition-group>
   </el-breadcrumb>
