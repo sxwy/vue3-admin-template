@@ -15,9 +15,9 @@
 
   const app = useAppStore()
 
-  setElCSSVar(app.themePrimaryColor)
-
   const locale = computed(() => (app.localeLang === zhCn ? zhCnLang : enLang))
+
+  setElCSSVar(app.themePrimaryColor)
 </script>
 
 <style lang="scss"></style>
