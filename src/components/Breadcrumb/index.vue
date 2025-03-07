@@ -2,10 +2,10 @@
   <el-breadcrumb separator="/" class="breadcrumb">
     <transition-group name="breadcrumb" appear>
       <el-breadcrumb-item
-        v-for="(item, index) of route.matched"
+        v-for="(item, index) of state.dataList"
         :key="item.path"
       >
-        <span v-if="index === route.matched.length - 1" class="noRedirect">
+        <span v-if="index === state.dataList.length - 1" class="noRedirect">
           {{ $t(`common.routes.${item.meta.title}`) }}
         </span>
         <a v-else class="redirect" @click.prevent="handleLinkClick(item)">
@@ -17,10 +17,36 @@
 </template>
 
 <script lang="ts" setup>
+  import { watch, reactive } from 'vue'
   import { type RouteLocationMatched, useRoute, useRouter } from 'vue-router'
+
+  interface State {
+    /** 路由数据列表 */
+    dataList: RouteLocationMatched[]
+  }
+
+  const state: State = reactive({
+    dataList: []
+  })
 
   const route = useRoute()
   const router = useRouter()
+
+  const handleGetDataList = () => {
+    state.dataList = route.matched.filter(
+      (item) => item.meta && item.meta.title
+    )
+  }
+
+  watch(
+    route,
+    () => {
+      handleGetDataList()
+    },
+    {
+      immediate: true
+    }
+  )
 
   /**
    * 点击跳转链接
