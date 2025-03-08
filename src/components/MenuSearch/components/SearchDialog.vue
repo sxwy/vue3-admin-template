@@ -53,7 +53,7 @@
 </template>
 
 <script lang="ts" setup>
-  import { ref, reactive, computed, watch } from 'vue'
+  import { ref, reactive, computed, watch, nextTick } from 'vue'
   import { ElScrollbar } from 'element-plus'
   import { Search } from '@element-plus/icons-vue'
   import { useRouter } from 'vue-router'
@@ -101,10 +101,10 @@
   const router = useRouter()
   const { refs, setRefs } = useRefs()
 
-  const routes = computed(() => {
+  const fuseData = computed(() => {
     const routeList = filterRoutes(router.getRoutes())
     const menus = generateMenus(routeList)
-    return generateFuseData(menus)
+    return generateFuseData(menus) // 把多维数组转换成一维数组
   })
 
   watch(
@@ -114,15 +114,8 @@
     }
   )
 
-  watch(
-    () => app.localeLang,
-    () => {
-      handleFuseInit()
-    }
-  )
-
   const handleFuseInit = () => {
-    fuse = new Fuse(routes.value, {
+    fuse = new Fuse(fuseData.value, {
       // 是否按优先级进行排序
       shouldSort: true,
       // 匹配算法放弃的时机， 阈值 0.0 需要完美匹配（字母和位置），阈值 1.0 将匹配任何内容。
@@ -144,7 +137,16 @@
       ]
     })
   }
-  handleFuseInit()
+
+  watch(
+    () => app.localeLang,
+    () => {
+      handleFuseInit()
+    },
+    {
+      immediate: true
+    }
+  )
 
   const handleScrollToItem = () => {
     const currentItem = refs.value[state.activeIndex] as HTMLElement

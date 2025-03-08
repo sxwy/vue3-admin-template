@@ -8,7 +8,7 @@
     :background-color="variables.menuBgColor"
     :active-text-color="variables.menuActiveTextColor"
   >
-    <SidebarSubMenu v-for="item of routes" :route="item" :key="item.path" />
+    <SidebarSubMenu v-for="item of menus" :route="item" :key="item.path" />
   </el-menu>
 </template>
 
@@ -25,7 +25,7 @@
 
   const app = useAppStore()
 
-  const routes = computed(() => {
+  const menus = computed(() => {
     const routeList = filterRoutes(router.getRoutes())
     return generateMenus(routeList)
   })
