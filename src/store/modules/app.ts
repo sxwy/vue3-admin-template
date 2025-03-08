@@ -89,10 +89,7 @@ export const useAppStore = defineStore('app', {
      * @param index 当前点击的下标
      */
     clearOtherTagsView(index: number) {
-      this.tagsViewList.splice(
-        index + 1,
-        this.tagsViewList.length - (index + 1)
-      )
+      this.clearRightTagsView(index)
       this.tagsViewList.splice(0, index)
     }
   }

@@ -44,7 +44,7 @@
     // 如果点击的是激活项，则删除后需要跳转到上一个 tag
     if (route.name === props.item!.name) {
       if (props.index === 0) {
-        router.push(app.tagsViewList[props.index].fullPath)
+        router.push(app.tagsViewList[0].fullPath)
       } else {
         router.push(app.tagsViewList[props.index - 1].fullPath)
       }
